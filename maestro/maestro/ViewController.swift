@@ -10,21 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var paired_status: UILabel!
+    @IBOutlet weak var pairedStatus: UILabel!
     
-    @IBOutlet weak var pairing_button: UIButton!
+    @IBOutlet weak var pairingButton: UIButton!
     var paired = false
     
     @IBAction func beginPairing(_ sender: Any) {
         if paired {
-            paired_status.text = "Unpaired"
-            pairing_button.backgroundColor = UIColor.blue
-            pairing_button.setTitle("Begin Pairing", for: .normal)
+            pairedStatus.text = "Unpaired"
+            pairingButton.backgroundColor = UIColor.blue
+            pairingButton.setTitle("Begin Pairing", for: .normal)
             paired = false
         } else {
-            paired_status.text = "Paired"
-            pairing_button.backgroundColor = UIColor.red
-            pairing_button.setTitle("End Pairing", for: .normal)
+            pairedStatus.text = "Paired"
+            pairingButton.backgroundColor = UIColor.red
+            pairingButton.setTitle("End Pairing", for: .normal)
             paired = true
         }
     }

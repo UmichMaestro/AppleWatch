@@ -19,11 +19,20 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="maestro_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <button alignment="left" title="Pair with Computer" id="2OC-id-fTD"/>
+                        <button width="133" alignment="left" title="Begin Pairing" id="2OC-id-fTD">
+                            <color key="backgroundColor" red="0.016812203327365712" green="0.060371970375203372" blue="0.40550113341968907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="beginPairing" destination="AgC-eL-Hgc" id="SKS-nJ-VgJ"/>
+                            </connections>
+                        </button>
                         <label width="136" height="76" alignment="left" text="Unpaired" textAlignment="center" id="jRd-0D-MZR">
                             <fontDescription key="font" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="30"/>
                         </label>
                     </items>
+                    <connections>
+                        <outlet property="pairingButton" destination="2OC-id-fTD" id="W9F-z7-ebD"/>
+                        <outlet property="pairingStatus" destination="jRd-0D-MZR" id="ugw-uX-If3"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>

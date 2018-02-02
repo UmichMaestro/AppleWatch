@@ -8,30 +8,23 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="ArialHB.ttc">
-            <string>ArialHebrew-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="maestro_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <button width="133" alignment="left" title="Begin Pairing" id="2OC-id-fTD">
-                            <color key="backgroundColor" red="0.016812203327365712" green="0.060371970375203372" blue="0.40550113341968907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="beginPairing" destination="AgC-eL-Hgc" id="SKS-nJ-VgJ"/>
-                            </connections>
-                        </button>
-                        <label width="136" height="76" alignment="left" text="Unpaired" textAlignment="center" id="jRd-0D-MZR">
-                            <fontDescription key="font" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="30"/>
-                        </label>
+                        <label alignment="left" text="X = " id="ccy-oq-w47"/>
+                        <label width="20" alignment="left" text="-" id="CAJ-cz-XCD"/>
+                        <label height="20" alignment="left" text="Y = " id="gTO-TI-1dX"/>
+                        <label alignment="left" text="-" id="gjN-b3-5f2"/>
+                        <label alignment="left" text="Z = " id="9I6-S3-Lnd"/>
+                        <label width="22" alignment="left" text="-" id="nAm-st-3Dd"/>
                     </items>
                     <connections>
-                        <outlet property="pairingButton" destination="2OC-id-fTD" id="W9F-z7-ebD"/>
-                        <outlet property="pairingStatus" destination="jRd-0D-MZR" id="ugw-uX-If3"/>
+                        <outlet property="xValues" destination="CAJ-cz-XCD" id="3mj-R0-rcY"/>
+                        <outlet property="yValues" destination="gjN-b3-5f2" id="9uS-q2-lIm"/>
+                        <outlet property="zValues" destination="nAm-st-3Dd" id="Xfg-D7-PDa"/>
                     </connections>
                 </controller>
             </objects>

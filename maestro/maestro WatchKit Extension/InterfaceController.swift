@@ -54,7 +54,7 @@ class InterfaceController: WKInterfaceController {
             let mainQueue: OperationQueue = OperationQueue.main
             
             // start accelerometer updates
-            self.motionManager.startAccelerometerUpdates(to: mainQueue, withHandler: { (accelerometerData:CMAccelerometerData?, error:NSError?) -> Void in
+            self.motionManager.startAccelerometerUpdates(to: mainQueue, withHandler: { (accelerometerData:CMAccelerometerData?, error:Error?) -> Void in
                 // errors
                 if (error != nil) {
                     print("error: \(String(describing: error?.localizedDescription))")
@@ -63,9 +63,9 @@ class InterfaceController: WKInterfaceController {
                     if ((accelerometerData) != nil) {
                         
                         // get accelerations values
-                        let x:String = NSString(format: "%.2f", (accelerometerData?.acceleration.x)!) as String
-                        let y:String = NSString(format: "%.2f", (accelerometerData?.acceleration.y)!) as String
-                        let z:String = NSString(format: "%.2f", (accelerometerData?.acceleration.z)!) as String
+                        let x:String = String(format: "%.2f", (accelerometerData?.acceleration.x)!) as String
+                        let y:String = String(format: "%.2f", (accelerometerData?.acceleration.y)!) as String
+                        let z:String = String(format: "%.2f", (accelerometerData?.acceleration.z)!) as String
                         
                         print("x: \(x)")
                         print("y: \(y)")
@@ -77,9 +77,9 @@ class InterfaceController: WKInterfaceController {
                         self.zValues.setText(z)
                     }
                 }
-                } as! CMAccelerometerHandler)
+                } )
             
-            self.motionManager.startGyroUpdates(to: mainQueue, withHandler: { (gyroData:CMGyroData?, error:NSError?) -> Void in
+            self.motionManager.startGyroUpdates(to: mainQueue, withHandler: { (gyroData:CMGyroData?, error:Error?) -> Void in
                 // errors
                 if (error != nil) {
                     print("error: \(String(describing: error?.localizedDescription))")
@@ -88,9 +88,9 @@ class InterfaceController: WKInterfaceController {
                     if ((gyroData) != nil) {
                         
                         // get accelerations values
-                        let x:String = NSString(format: "%.2f", (gyroData?.rotationRate.x)!) as String
-                        let y:String = NSString(format: "%.2f", (gyroData?.rotationRate.y)!) as String
-                        let z:String = NSString(format: "%.2f", (gyroData?.rotationRate.z)!) as String
+                        let x:String = String(format: "%.2f", (gyroData?.rotationRate.x)!) as String
+                        let y:String = String(format: "%.2f", (gyroData?.rotationRate.y)!) as String
+                        let z:String = String(format: "%.2f", (gyroData?.rotationRate.z)!) as String
                         
                         print("x: \(x)")
                         print("y: \(y)")
@@ -102,7 +102,8 @@ class InterfaceController: WKInterfaceController {
                         self.zValues.setText(z)
                     }
                 }
-                } as! CMGyroHandler)
+                
+            } )
 
         }
     }

@@ -26,12 +26,13 @@ class InterfaceController: WKInterfaceController {
         self.xValues.setText("-")
         self.yValues.setText("-")
         self.zValues.setText("-")
+        getMotionManagerUpdates()
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        getMotionManagerUpdates()
+        //getMotionManagerUpdates()
     }
     
     override func didDeactivate() {
@@ -53,8 +54,8 @@ class InterfaceController: WKInterfaceController {
             // operation main queue
             let mainQueue: OperationQueue = OperationQueue.main
             
-            // start accelerometer updates
-            self.motionManager.startAccelerometerUpdates(to: mainQueue, withHandler: { (accelerometerData:CMAccelerometerData?, error:Error?) -> Void in
+            // define handler
+            let accelHandler: CMAccelerometerHandler = { (accelerometerData:CMAccelerometerData?, error:Error?) -> Void in
                 // errors
                 if (error != nil) {
                     print("error: \(String(describing: error?.localizedDescription))")
@@ -77,9 +78,42 @@ class InterfaceController: WKInterfaceController {
                         self.zValues.setText(z)
                     }
                 }
-                } )
+            }
             
-            self.motionManager.startGyroUpdates(to: mainQueue, withHandler: { (gyroData:CMGyroData?, error:Error?) -> Void in
+            // start accelerometer updates
+            self.motionManager.startAccelerometerUpdates(to: mainQueue, withHandler: accelHandler)
+            
+            
+            let gyroHandler: CMGyroHandler = { (gyroData:CMGyroData?, error:Error?) -> Void in
+                // errors
+                if (error != nil) {
+                    print("error: \(String(describing: error?.localizedDescription))")
+                }else{
+                    // success
+                    if ((gyroData) != nil) {
+                        
+                        // get accelerations values
+                        let x:String = String(format: "%.2f", (gyroData?.rotationRate.x)!) as String
+                        let y:String = String(format: "%.2f", (gyroData?.rotationRate.y)!) as String
+                        let z:String = String(format: "%.2f", (gyroData?.rotationRate.z)!) as String
+                        
+                        print("x: \(x)")
+                        print("y: \(y)")
+                        print("z: \(z)")
+                        
+                        // set text labels
+                        self.xValues.setText(x)
+                        self.yValues.setText(y)
+                        self.zValues.setText(z)
+                    }
+                }
+            }
+            
+            
+            //self.motionManager.startGyroUpdates(to: mainQueue, withHandler: gyroHandler)
+                
+                /*
+                { (gyroData:CMGyroData?, error:Error?) -> Void in
                 // errors
                 if (error != nil) {
                     print("error: \(String(describing: error?.localizedDescription))")
@@ -104,6 +138,7 @@ class InterfaceController: WKInterfaceController {
                 }
                 
             } )
+            */
 
         }
     }

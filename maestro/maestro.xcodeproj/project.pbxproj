@@ -16,7 +16,6 @@
 		44F2CA72201E671700DA2E6C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44F2CA70201E671700DA2E6C /* Interface.storyboard */; };
 		44F2CA74201E671700DA2E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F2CA73201E671700DA2E6C /* Assets.xcassets */; };
 		44F2CA7B201E671700DA2E6C /* maestro WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 44F2CA7A201E671700DA2E6C /* maestro WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		44F2CA80201E671700DA2E6C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA7F201E671700DA2E6C /* InterfaceController.swift */; };
 		44F2CA82201E671700DA2E6C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA81201E671700DA2E6C /* ExtensionDelegate.swift */; };
 		44F2CA84201E671700DA2E6C /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA83201E671700DA2E6C /* NotificationController.swift */; };
 		44F2CA86201E671700DA2E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F2CA85201E671700DA2E6C /* Assets.xcassets */; };
@@ -305,7 +304,6 @@
 			files = (
 				44F2CA84201E671700DA2E6C /* NotificationController.swift in Sources */,
 				44F2CA82201E671700DA2E6C /* ExtensionDelegate.swift in Sources */,
-				44F2CA80201E671700DA2E6C /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

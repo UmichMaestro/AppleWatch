@@ -30,8 +30,18 @@
                         <label width="105" alignment="left" text="-" id="jax-62-fhD"/>
                         <label alignment="left" text="Z = " id="FS7-zV-7AY"/>
                         <label width="136" alignment="left" text="-" id="FpE-ro-yxC"/>
+                        <label alignment="left" text="Display Attitude" id="55H-ht-BQD"/>
+                        <label alignment="left" text="Pitch =" id="frp-r9-zZ2"/>
+                        <label width="59" alignment="left" text="-" id="N8C-lS-kCm"/>
+                        <label alignment="left" text="Yaw =" id="CmZ-GG-PZq"/>
+                        <label width="64" alignment="left" text="-" id="uE0-Mm-aRb"/>
+                        <label alignment="left" text="Roll =" id="lLs-Hs-FZK"/>
+                        <label width="72" alignment="left" text="-" id="CY9-sM-AFK"/>
                     </items>
                     <connections>
+                        <outlet property="attitudePitch" destination="N8C-lS-kCm" id="MPz-bF-hf6"/>
+                        <outlet property="attitudeRoll" destination="CY9-sM-AFK" id="j3S-Co-RpZ"/>
+                        <outlet property="attitudeYaw" destination="uE0-Mm-aRb" id="0Hb-cp-26f"/>
                         <outlet property="xValueGyro" destination="Hk3-Hq-h4k" id="gL2-zX-rl7"/>
                         <outlet property="xValues" destination="CAJ-cz-XCD" id="3mj-R0-rcY"/>
                         <outlet property="yValueGyro" destination="jax-62-fhD" id="IeD-QW-brz"/>
@@ -41,7 +51,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="344"/>
+            <point key="canvasLocation" x="220" y="343.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44F2CA5D201E671700DA2E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA5C201E671700DA2E6C /* AppDelegate.swift */; };
-		44F2CA5F201E671700DA2E6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA5E201E671700DA2E6C /* ViewController.swift */; };
+		441F2639202ABA0D00C5C6E1 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA7F201E671700DA2E6C /* InterfaceController.swift */; };
+		441F263A202ABA0E00C5C6E1 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA7F201E671700DA2E6C /* InterfaceController.swift */; };
+		441F263B202ABA1100C5C6E1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA83201E671700DA2E6C /* NotificationController.swift */; };
+		441F263E202ABA2F00C5C6E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA5C201E671700DA2E6C /* AppDelegate.swift */; };
+		441F263F202ABA3300C5C6E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2CA5E201E671700DA2E6C /* ViewController.swift */; };
 		44F2CA62201E671700DA2E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44F2CA60201E671700DA2E6C /* Main.storyboard */; };
 		44F2CA64201E671700DA2E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F2CA63201E671700DA2E6C /* Assets.xcassets */; };
 		44F2CA67201E671700DA2E6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44F2CA65201E671700DA2E6C /* LaunchScreen.storyboard */; };
@@ -293,8 +296,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44F2CA5F201E671700DA2E6C /* ViewController.swift in Sources */,
-				44F2CA5D201E671700DA2E6C /* AppDelegate.swift in Sources */,
+				441F263F202ABA3300C5C6E1 /* ViewController.swift in Sources */,
+				441F263E202ABA2F00C5C6E1 /* AppDelegate.swift in Sources */,
+				441F263B202ABA1100C5C6E1 /* NotificationController.swift in Sources */,
+				441F2639202ABA0D00C5C6E1 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				441F263A202ABA0E00C5C6E1 /* InterfaceController.swift in Sources */,
 				44F2CA84201E671700DA2E6C /* NotificationController.swift in Sources */,
 				44F2CA82201E671700DA2E6C /* ExtensionDelegate.swift in Sources */,
 			);

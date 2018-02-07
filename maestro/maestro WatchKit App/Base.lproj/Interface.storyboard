@@ -14,21 +14,34 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="maestro_WatchKit_App" customModuleProvider="target">
                     <items>
+                        <label width="134" height="20" alignment="left" text="Display Accel" id="fVu-pm-UJt">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
                         <label alignment="left" text="X = " id="ccy-oq-w47"/>
-                        <label width="20" alignment="left" text="-" id="CAJ-cz-XCD"/>
+                        <label width="96" alignment="left" text="-" id="CAJ-cz-XCD"/>
                         <label height="20" alignment="left" text="Y = " id="gTO-TI-1dX"/>
-                        <label alignment="left" text="-" id="gjN-b3-5f2"/>
+                        <label width="112" alignment="left" text="-" id="gjN-b3-5f2"/>
                         <label alignment="left" text="Z = " id="9I6-S3-Lnd"/>
-                        <label width="22" alignment="left" text="-" id="nAm-st-3Dd"/>
+                        <label width="107" alignment="left" text="-" id="nAm-st-3Dd"/>
+                        <label height="20" alignment="left" text="Display Gyro" id="YbH-d3-N8q"/>
+                        <label alignment="left" text="X = " id="tNc-Ae-8l9"/>
+                        <label width="113" height="20" alignment="left" text="-" id="Hk3-Hq-h4k"/>
+                        <label alignment="left" text="Y = " id="baK-ek-jRV"/>
+                        <label width="105" alignment="left" text="-" id="jax-62-fhD"/>
+                        <label alignment="left" text="Z = " id="FS7-zV-7AY"/>
+                        <label width="136" alignment="left" text="-" id="FpE-ro-yxC"/>
                     </items>
                     <connections>
+                        <outlet property="xValueGyro" destination="Hk3-Hq-h4k" id="gL2-zX-rl7"/>
                         <outlet property="xValues" destination="CAJ-cz-XCD" id="3mj-R0-rcY"/>
+                        <outlet property="yValueGyro" destination="jax-62-fhD" id="IeD-QW-brz"/>
                         <outlet property="yValues" destination="gjN-b3-5f2" id="9uS-q2-lIm"/>
+                        <outlet property="zValueGyro" destination="FpE-ro-yxC" id="kAv-GL-OCY"/>
                         <outlet property="zValues" destination="nAm-st-3Dd" id="Xfg-D7-PDa"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="344"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

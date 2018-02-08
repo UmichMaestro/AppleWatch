@@ -22,6 +22,9 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var xValueGyro: WKInterfaceLabel!
     @IBOutlet var yValueGyro: WKInterfaceLabel!
     @IBOutlet var zValueGyro: WKInterfaceLabel!
+    @IBOutlet var attitudePitch: WKInterfaceLabel!
+    @IBOutlet var attitudeYaw: WKInterfaceLabel!
+    @IBOutlet var attitudeRoll: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -86,7 +89,6 @@ class InterfaceController: WKInterfaceController {
                         self.xValueGyro.setText(gyroX)
                         self.yValueGyro.setText(gyroY)
                         self.zValueGyro.setText(gyroZ)
- 
                         
                         // get accelerations values
                         let x:String = String(format: "%.2f", (gyroData?.userAcceleration.x)!) as String
@@ -101,6 +103,24 @@ class InterfaceController: WKInterfaceController {
                         self.xValues.setText(x)
                         self.yValues.setText(y)
                         self.zValues.setText(z)
+                        
+                        
+                        
+                        // get gyroscopes values
+                        let pitch:String = String(format: "%.2f", (gyroData?.attitude.pitch)!) as String
+                        let yaw:String = String(format: "%.2f", (gyroData?.attitude.yaw
+                            )!) as String
+                        let roll:String = String(format: "%.2f", (gyroData?.attitude.roll)!) as String
+                        
+                        print("pitch: \(pitch)")
+                        print("yaw y: \(yaw)")
+                        print("roll: \(roll)")
+                        
+                        // set text labels
+                        self.attitudePitch.setText(pitch)
+                        self.attitudeYaw.setText(yaw)
+                        self.attitudeRoll.setText(roll)
+                        
                     }
                 }
             }
@@ -110,41 +130,6 @@ class InterfaceController: WKInterfaceController {
             self.yValueGyro.setText("not")
             self.zValueGyro.setText("available")
         }
-        
-        /*
-        // get current accelerometerData
-        if (self.motionManager.is) {
-            
-            // define handler
-            let accelHandler: CMDeviceMotionHandler = { (accelerometerData:CMDeviceMotion?, error:Error?) -> Void in
-                // errors
-                if (error != nil) {
-                    print("error: \(String(describing: error?.localizedDescription))")
-                }else{
-                    // success
-                    if ((accelerometerData) != nil) {
-                        
-                        // get accelerations values
-                        let x:String = String(format: "%.2f", (accelerometerData?.userAcceleration.x)!) as String
-                        let y:String = String(format: "%.2f", (accelerometerData?.userAcceleration.y)!) as String
-                        let z:String = String(format: "%.2f", (accelerometerData?.userAcceleration.z)!) as String
-                        
-                        print("accel x: \(x)")
-                        print("accel y: \(y)")
-                        print("accel z: \(z)")
-                        
-                        // set text labels
-                        self.xValues.setText(x)
-                        self.yValues.setText(y)
-                        self.zValues.setText(z)
-                    }
-                }
-            }
-            
-            // start accelerometer updates
-            self.motionManager.startDeviceMotionUpdates(to: accelQueue, withHandler: accelHandler)
-        }
-        */
         
     }
 

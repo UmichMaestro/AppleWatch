@@ -59,8 +59,7 @@ class InterfaceController: WKInterfaceController {
         let gyroQueue: OperationQueue = OperationQueue.main
         
         // init interval for update (NSTimeInterval)
-        self.motionManager.accelerometerUpdateInterval = 0.1
-        self.motionManager.gyroUpdateInterval = 0.1
+        self.motionManager.deviceMotionUpdateInterval = 1
         
         // get current gyro data
         if (self.motionManager.isDeviceMotionAvailable) {
@@ -73,7 +72,7 @@ class InterfaceController: WKInterfaceController {
                     // success
                     if ((gyroData) != nil) {
                         
-                        /*
+                        
                         // get gyroscopes values
                         let gyroX:String = String(format: "%.2f", (gyroData?.rotationRate.x)!) as String
                         let gyroY:String = String(format: "%.2f", (gyroData?.rotationRate.y)!) as String
@@ -88,7 +87,6 @@ class InterfaceController: WKInterfaceController {
                         self.yValueGyro.setText(gyroY)
                         self.zValueGyro.setText(gyroZ)
  
-                        */
                         
                         // get accelerations values
                         let x:String = String(format: "%.2f", (gyroData?.userAcceleration.x)!) as String

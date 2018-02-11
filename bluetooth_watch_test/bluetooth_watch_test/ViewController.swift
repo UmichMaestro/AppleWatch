@@ -22,7 +22,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
 
     let peripheralManager = CBPeripheralManager()
 
-    let watchDataUUID = [CBUUID(string UUIDString: "180D")]
+    let watchDataUUID = [CBUUID(UUIDString: "180D")]
     
     
     

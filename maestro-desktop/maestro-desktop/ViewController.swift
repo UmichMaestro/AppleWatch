@@ -9,33 +9,20 @@
 import Cocoa
 import CoreBluetooth
 
-class ViewController: NSViewController {
-
+class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
-    let ourUUID = CFUUIDCreateFromString(nil, "000" as CFString)
-    let centralManager = CBCentralManager()
+    var centralManager:CBCentralManager!
+    //var peripheral = CBPeripheral()
     
-    @IBOutlet var connectedLabel: NSTextField!
-    @IBOutlet var inputValue: NSTextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("before scan")
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print("state updated")
+        print(central.state)
         scanForWatch()
-        // Do any additional setup after loading the view.
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
     
     func scanForWatch() {
         print("in scan")
-        print("after centralManager")
-        if centralManager.state == .poweredOn {
+        if centralManager.state == CBManagerState.poweredOn {
             centralManager.scanForPeripherals(withServices:nil, options:nil )
         } else {
             print("bluetooth not turned on")
@@ -44,12 +31,79 @@ class ViewController: NSViewController {
     }
     
     func centralManager(_ central: CBCentralManager,
-                                 didDiscover peripheral: CBPeripheral,
-                                 advertisementData: [String : Any],
-                                 rssi RSSI: NSNumber) {
+                        didDiscover peripheral: CBPeripheral,
+                        advertisementData: [String : Any],
+                        rssi RSSI: NSNumber) {
         print("found a peripheral")
-        print("it's local name key is")
-        print(advertisementData[CBAdvertisementDataLocalNameKey]!)
+        let device = (advertisementData as NSDictionary).object(forKey: CBAdvertisementDataLocalNameKey) as? String
+        if device?.contains("Y") == true {
+            self.centralManager.stopScan()
+            //self.peripheral = peripheral
+            //self.peripheral.delegate = self
+        }
+        
+        if advertisementData[CBAdvertisementDataIsConnectable] != nil {
+            print(advertisementData[CBAdvertisementDataLocalNameKey])
+            /*
+            if (advertisementData[CBAdvertisementDataServiceUUIDsKey] as AnyObject).contains(ourUUID) {
+                let dataServiceArray = advertisementData[CBAdvertisementDataServiceDataKey]!
+                let ourData = (dataServiceArray as AnyObject)[ourUUID]
+            }
+            */
+        }
+    }
+    
+    @IBOutlet var connectedLabel: NSTextField!
+    @IBOutlet var inputValue: NSTextField!
+    
+    let ourUUID = NSUUID()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        centralManager = CBCentralManager(delegate: self, queue: nil)
+    }
+
+    override var representedObject: Any? {
+        didSet {
+        // Update the view, if already loaded.
+        }
+    }
+}
+
+/*
+class fiestaParrot: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
+    
+    let ourUUID = CFUUIDCreateFromString(nil, "000" as CFString)
+    
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print("state updated")
+        scanForWatch()
+    }
+    
+    func scanForWatch() {
+        print("in scan")
+        if centralManager.state == CBManagerState.poweredOn {
+            centralManager.scanForPeripherals(withServices:nil, options:nil )
+        } else {
+            print("bluetooth not turned on")
+        }
+        print("after scan")
+    }
+    
+    func centralManager(_ central: CBCentralManager,
+                        didDiscover peripheral: CBPeripheral,
+                        advertisementData: [String : Any],
+                        rssi RSSI: NSNumber) {
+        print("found a peripheral")
+        let device = (advertisementData as NSDictionary).object(forKey: CBAdvertisementDataLocalNameKey) as? String
+        if device?.contains("Y") == true {
+            self.centralManager.stopScan()
+            self.peripheral = peripheral
+            self.peripheral.delegate = self
+        }
+        
         if advertisementData[CBAdvertisementDataIsConnectable] != nil {
             if (advertisementData[CBAdvertisementDataServiceUUIDsKey] as AnyObject).contains(ourUUID) {
                 let dataServiceArray = advertisementData[CBAdvertisementDataServiceDataKey]!
@@ -59,3 +113,20 @@ class ViewController: NSViewController {
     }
 }
 
+protocol fiestaParrotDelegate {
+    
+    init() {
+    super.init()
+    }
+    
+    func didGet(reading: Reading)
+}
+
+class Reading {
+    func doNothing() {
+        if "i" == "eye" {
+            let eye = "i"
+        }
+    }
+}
+ */

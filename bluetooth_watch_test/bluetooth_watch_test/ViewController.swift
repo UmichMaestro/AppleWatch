@@ -14,29 +14,54 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     var peripheralManager: CBPeripheralManager?
     
-    let uuid = NSUUID()
-    
-    let identifier = NSBundle.mainBundle().bundleIdentifier!
-    
-    
+    var transferCharacteristic: CBMutableCharacteristic?
+    var dataToSend: Data?
+    var sendDataIndex: Int?
 
-    let peripheralManager = CBPeripheralManager()
-
-    let watchDataUUID = [CBUUID(UUIDString: "180D")]
-    
-    
-    
-    
-    /*
-    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager)
+    override func viewDidLoad()
     {
-        print("state: \(peripheral.state)")
+        super.viewDidLoad()
+        
+        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        
     }
     
-    let advertisementData = [CDAdvertisementDataLocalNameKey: "Test Device"]
-    peripheralManager.startAdvertising(advertisementData)
+    override func viewDidDisappear(_ animated: Bool)
+    {
+        super.viewDidDisappear(animated)
+        //if the app is not on the screen, don't put yourself out there Apple watch
+        peripheralManager?.stopAdvertising()
+    }
     
-    func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager)
+    {
+        print("state: \(peripheral.state)")
+        //if the peripheral isn't on, this just won't work
+        if(peripheral.state != .poweredOn)
+        {
+            return
+        }
+        
+        print("we are powered on!")
+        //create the service
+        transferCharacteristic = CBMutableCharacteristic(type: transferCharacteristicUUID, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable
+        )
+        
+        let transferService = CBMutableService(type: transferServiceUUID, primary: true)
+        
+        transferService.characteristics = [transferCharacteristic!]
+        
+        peripheralManager?.add(transferService)
+        
+        peripheralManager!.startAdvertising([
+            CBAdvertisementDataServiceUUIDsKey : [transferServiceUUID] ])
+    }
+    
+    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?)
     {
         if let error = error {
             print("Failed... error: \(error)")
@@ -46,24 +71,29 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         print("Succeeded!")
     }
     
-    peripheralManager.stopAdvertising()
-    
-    let serviceUUID = CBUUID(string: kServiceUUID)
-    let service = CBMutableService(type: serviceUUID, primary: true)
-    
-    let character
-    */
+    //when someone subs to our char., start sending the data
+    func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
+    {
+        print("central subbed to the char.")
+       
+        let myValue = "hello"
+        let sendingValue = myValue.data(using: String.Encoding.utf8)
+        
+        let didSend = peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil)
+        print("didSendValue: \(didSend ?? false)")
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if(didSend == true)
+        {
+            print("message sent")
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+ 
+    func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic)
+    {
+        print("Central unsubbed from char.")
+        
     }
-
 
 }
 

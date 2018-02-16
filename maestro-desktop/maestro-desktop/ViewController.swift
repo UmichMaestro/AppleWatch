@@ -9,10 +9,14 @@
 import Cocoa
 import CoreBluetooth
 
+
+
+var our_periph : CBPeripheral?
+
+
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     var centralManager:CBCentralManager!
-    //var peripheral = CBPeripheral()
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("state updated")
@@ -23,7 +27,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     func scanForWatch() {
         print("in scan")
         if centralManager.state == CBManagerState.poweredOn {
-            centralManager.scanForPeripherals(withServices:nil, options:nil )
+            centralManager.scanForPeripherals(withServices:[transferServiceUUID], options:nil )
         } else {
             print("bluetooth not turned on")
         }
@@ -35,23 +39,84 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                         advertisementData: [String : Any],
                         rssi RSSI: NSNumber) {
         print("found a peripheral")
-        let device = (advertisementData as NSDictionary).object(forKey: CBAdvertisementDataLocalNameKey) as? String
-        if device?.contains("Y") == true {
-            self.centralManager.stopScan()
-            //self.peripheral = peripheral
-            //self.peripheral.delegate = self
-        }
         
         if advertisementData[CBAdvertisementDataIsConnectable] != nil {
-            print(advertisementData[CBAdvertisementDataLocalNameKey])
-            /*
-            if (advertisementData[CBAdvertisementDataServiceUUIDsKey] as AnyObject).contains(ourUUID) {
+            print(advertisementData)
+            //print(advertisementData[CBAdvertisementDataLocalNameKey]!)
+            if (advertisementData[CBAdvertisementDataServiceUUIDsKey] as AnyObject).contains(transferServiceUUID) {
+                self.centralManager.stopScan()
+                
+                our_periph = peripheral
+                our_periph?.delegate = self
+                central.connect(our_periph!, options: nil)
+                print("connected")
+                /*
                 let dataServiceArray = advertisementData[CBAdvertisementDataServiceDataKey]!
-                let ourData = (dataServiceArray as AnyObject)[ourUUID]
+                let ourData = (dataServiceArray as AnyObject)[transferServiceUUID]
+                print(ourData)
+                */
             }
-            */
         }
     }
+    
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        peripheral.discoverServices([transferServiceUUID])
+        
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print("disconnected")
+        
+        central.scanForPeripherals(withServices: [transferServiceUUID], options: nil)
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        for service in peripheral.services! {
+            let thisService = service
+            
+            if service.uuid == transferServiceUUID {
+                peripheral.discoverCharacteristics([transferCharacteristicUUID], for: thisService)
+                
+                print("debug past discover")
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        for charactistic in service.characteristics! {
+            let thisChar = charactistic as CBCharacteristic
+            
+            if thisChar.uuid == transferCharacteristicUUID {
+                our_periph?.setNotifyValue(true, for: thisChar)
+                
+                print("debug after set notify")
+                
+                peripheral.readValue(for: thisChar)
+            }
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if characteristic.uuid == transferCharacteristicUUID {
+            
+            if let data = characteristic.value {
+                let content = String(data: data, encoding: String.Encoding.utf8)
+                // display
+                print("before print")
+                print(content!)
+                print("after print")
+            } else {
+                print("characteristic was nil")
+            }
+            
+            
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
+        print("I don't know what this should be doing")
+    }
+        
     
     @IBOutlet var connectedLabel: NSTextField!
     @IBOutlet var inputValue: NSTextField!

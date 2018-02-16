@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44634CDE203765CD008C3EB8 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44634CDD203765CD008C3EB8 /* Definitions.swift */; };
 		44EA7EEF202CDC3800CBDFE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA7EEE202CDC3800CBDFE9 /* AppDelegate.swift */; };
 		44EA7EF1202CDC3800CBDFE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA7EF0202CDC3800CBDFE9 /* ViewController.swift */; };
 		44EA7EF3202CDC3800CBDFE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44EA7EF2202CDC3800CBDFE9 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 
 /* Begin PBXFileReference section */
 		44558E5A2030D88F0017BE10 /* maestro-desktop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "maestro-desktop.entitlements"; sourceTree = "<group>"; };
+		44634CDD203765CD008C3EB8 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		44EA7EEB202CDC3800CBDFE9 /* maestro-desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maestro-desktop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EA7EEE202CDC3800CBDFE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44EA7EF0202CDC3800CBDFE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				44558E5A2030D88F0017BE10 /* maestro-desktop.entitlements */,
 				44EA7EEE202CDC3800CBDFE9 /* AppDelegate.swift */,
+				44634CDD203765CD008C3EB8 /* Definitions.swift */,
 				44EA7EF0202CDC3800CBDFE9 /* ViewController.swift */,
 				44EA7EF2202CDC3800CBDFE9 /* Assets.xcassets */,
 				44EA7EF4202CDC3800CBDFE9 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44EA7EF1202CDC3800CBDFE9 /* ViewController.swift in Sources */,
+				44634CDE203765CD008C3EB8 /* Definitions.swift in Sources */,
 				44EA7EEF202CDC3800CBDFE9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -75,12 +75,18 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
         print("central subbed to the char.")
-       
-        let myValue = "hello"
-        let sendingValue = myValue.data(using: String.Encoding.utf8)
+        let myValues = ["hello", "this", "is", "a", "list"]
+        var didSend = Bool()
+        for myValue in myValues {
+            //let myValue = "hello"
+            print(myValue)
+            let sendingValue = myValue.data(using: String.Encoding.utf8)
         
-        let didSend = peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil)
-        print("didSendValue: \(didSend ?? false)")
+            didSend = (peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil))!
+            
+            print("didSendValue: \(didSend )")
+        }
+        print("didSendValue: \(didSend )")
 
         
         if(didSend == true)
@@ -93,6 +99,23 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     {
         print("Central unsubbed from char.")
         
+    }
+    
+    func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager) {
+        var didSend = Bool()
+        let myValue = "isReady"
+        print(myValue)
+        let sendingValue = myValue.data(using: String.Encoding.utf8)
+        
+        didSend = (peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil))!
+        
+        print("didSendValue: \(didSend )")
+        
+        
+        if(didSend == true)
+        {
+            print("message sent")
+        }
     }
 
 }

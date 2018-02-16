@@ -614,6 +614,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project-4.bluetooth-watch-test.watchkitapp.watchkitextension";
@@ -631,6 +632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project-4.bluetooth-watch-test.watchkitapp.watchkitextension";
@@ -649,6 +651,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				IBSC_MODULE = bluetooth_watch_test_WatchKit_Extension;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project-4.bluetooth-watch-test.watchkitapp";
@@ -667,6 +670,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				IBSC_MODULE = bluetooth_watch_test_WatchKit_Extension;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project-4.bluetooth-watch-test.watchkitapp";
@@ -684,6 +688,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				INFOPLIST_FILE = bluetooth_watch_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project-4.bluetooth-watch-test";
@@ -698,6 +703,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				INFOPLIST_FILE = bluetooth_watch_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Project-4.bluetooth-watch-test";

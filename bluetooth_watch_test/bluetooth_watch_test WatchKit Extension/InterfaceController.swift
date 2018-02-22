@@ -19,11 +19,6 @@ class InterfaceController: WKInterfaceController, CBPeripheralManagerDelegate {
     var transferCharacteristic: CBMutableCharacteristic?
     var dataToSend: Data?
     var sendDataIndex: Int?
-    
-    required override init() {
-        super.init()
-        peripheralManager?.delegate = self
-    }
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -45,6 +40,8 @@ class InterfaceController: WKInterfaceController, CBPeripheralManagerDelegate {
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager)
     {
+        
+        /*
         print("state: \(peripheral.state)")
         //if the peripheral isn't on, this just won't work
         if(peripheral.state != .poweredOn)
@@ -66,6 +63,7 @@ class InterfaceController: WKInterfaceController, CBPeripheralManagerDelegate {
         
         peripheralManager!.startAdvertising([
             CBAdvertisementDataServiceUUIDsKey : [transferServiceUUID] ])
+    */
     }
     
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?)

@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>umich.edu.bluetooth-watch-test</string>
+	<string>epskamp.bluetooth-watch-test</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

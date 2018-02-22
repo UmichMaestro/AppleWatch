@@ -283,7 +283,7 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.maestro-desktop";
@@ -299,7 +299,7 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.maestro-desktop";

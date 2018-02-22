@@ -75,24 +75,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
         print("central subbed to the char.")
-        let myValues = ["hello", "this", "is", "a", "list"]
-        var didSend = Bool()
-        for myValue in myValues {
-            //let myValue = "hello"
-            print(myValue)
-            let sendingValue = myValue.data(using: String.Encoding.utf8)
-        
-            didSend = (peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil))!
-            
-            print("didSendValue: \(didSend )")
-        }
-        print("didSendValue: \(didSend )")
-
-        
-        if(didSend == true)
-        {
-            print("message sent")
-        }
+       
+        sendData()
     }
  
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic)
@@ -101,20 +85,25 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         
     }
     
-    func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager) {
-        var didSend = Bool()
-        let myValue = "isReady"
-        print(myValue)
-        let sendingValue = myValue.data(using: String.Encoding.utf8)
-        
-        didSend = (peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil))!
-        
-        print("didSendValue: \(didSend )")
-        
-        
-        if(didSend == true)
-        {
-            print("message sent")
+    func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
+    {
+        sendData()
+    }
+    
+    func sendData()
+    {
+        let myValues = ["hello", "this", "is", "a", "list"]
+        var didSend = true
+        for myValue in myValues {
+            print(myValue)
+            let sendingValue = myValue.data(using: String.Encoding.utf8)
+            didSend = (peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil))!
+            print("didSendValue: \(didSend )")
+            
+            if(!didSend)
+            {
+                return
+            }
         }
     }
 

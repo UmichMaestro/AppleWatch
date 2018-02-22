@@ -617,7 +617,7 @@
 				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.bluetooth-watch-test.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "epskamp.bluetooth-watch-test.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -635,7 +635,7 @@
 				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.bluetooth-watch-test.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "epskamp.bluetooth-watch-test.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -654,7 +654,7 @@
 				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				IBSC_MODULE = bluetooth_watch_test_WatchKit_Extension;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.bluetooth-watch-test.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "epskamp.bluetooth-watch-test.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -673,7 +673,7 @@
 				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				IBSC_MODULE = bluetooth_watch_test_WatchKit_Extension;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.bluetooth-watch-test.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "epskamp.bluetooth-watch-test.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -691,7 +691,7 @@
 				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				INFOPLIST_FILE = bluetooth_watch_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.bluetooth-watch-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "epskamp.bluetooth-watch-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -706,7 +706,7 @@
 				DEVELOPMENT_TEAM = M6CZ23K4CP;
 				INFOPLIST_FILE = bluetooth_watch_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.bluetooth-watch-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "epskamp.bluetooth-watch-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

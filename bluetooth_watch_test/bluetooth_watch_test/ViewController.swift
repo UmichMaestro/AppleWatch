@@ -9,7 +9,6 @@
 import UIKit
 import CoreBluetooth
 
-
 class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     var peripheralManager: CBPeripheralManager?
@@ -17,6 +16,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     var transferCharacteristic: CBMutableCharacteristic?
     var dataToSend: Data?
     var sendDataIndex: Int?
+    var toSend: [Int] = [1]
 
     override func viewDidLoad()
     {
@@ -48,17 +48,24 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         
         print("we are powered on!")
         //create the service
-        transferCharacteristic = CBMutableCharacteristic(type: transferCharacteristicUUID, properties: CBCharacteristicProperties.notify, value: nil, permissions: CBAttributePermissions.readable
+        transferCharacteristic = CBMutableCharacteristic(
+            type: transferCharacteristicUUID,
+            properties: CBCharacteristicProperties.notify,
+            value: nil,
+            permissions: CBAttributePermissions.readable
         )
-        
-        let transferService = CBMutableService(type: transferServiceUUID, primary: true)
-        
+        // Then the service
+        let transferService = CBMutableService(
+            type: transferServiceUUID,
+            primary: true
+        )
         transferService.characteristics = [transferCharacteristic!]
         
         peripheralManager?.add(transferService)
         
         peripheralManager!.startAdvertising([
-            CBAdvertisementDataServiceUUIDsKey : [transferServiceUUID] ])
+            CBAdvertisementDataServiceUUIDsKey : [transferServiceUUID]
+            ])
     }
     
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?)
@@ -75,14 +82,14 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
         print("central subbed to the char.")
-       
-        sendData()
+        while true {
+            sendData()
+        }
     }
  
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic)
     {
         print("Central unsubbed from char.")
-        
     }
     
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
@@ -92,20 +99,17 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     func sendData()
     {
-        let myValues = ["hello", "this", "is", "a", "list"]
-        var didSend = true
-        for myValue in myValues {
-            print(myValue)
-            let sendingValue = myValue.data(using: String.Encoding.utf8)
-            didSend = (peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil))!
-            print("didSendValue: \(didSend )")
-            
-            if(!didSend)
-            {
-                return
-            }
+        let myValue = String(describing: toSend)
+        var didSend = true 
+        print(myValue)
+        let sendingValue = myValue.data(using: String.Encoding.utf8)
+        didSend = (peripheralManager?.updateValue(sendingValue!, for: transferCharacteristic!, onSubscribedCentrals: nil))!
+        print("didSendValue: \(didSend )")
+        
+        if(!didSend)
+        {
+            return
         }
     }
-
 }
 

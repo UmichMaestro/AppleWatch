@@ -21,10 +21,10 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("state updated")
         print(central.state)
-        scanForWatch()
+        scanForPeriph()
     }
     
-    func scanForWatch() {
+    func scanForPeriph() {
         print("in scan")
         if centralManager.state == CBManagerState.poweredOn {
             centralManager.scanForPeripherals(withServices:[transferServiceUUID], options:nil )

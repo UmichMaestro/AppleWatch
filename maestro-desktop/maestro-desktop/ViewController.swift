@@ -100,10 +100,10 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         if characteristic.uuid == transferCharacteristicUUID {
             
             if let data = characteristic.value {
-                let content = String(data: data, encoding: String.Encoding.utf8)
+                let content = data.to(type: Double.self)
                 // display
                 print("before print")
-                print(content!)
+                print(content)
                 print("after print")
             } else {
                 print("characteristic was nil")
@@ -137,61 +137,14 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
 }
 
-/*
-class fiestaParrot: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate{
+extension Data {
     
-    let ourUUID = CFUUIDCreateFromString(nil, "000" as CFString)
-    
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        print("state updated")
-        scanForWatch()
+    init<T>(from value: T) {
+        var value = value
+        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
     }
     
-    func scanForWatch() {
-        print("in scan")
-        if centralManager.state == CBManagerState.poweredOn {
-            centralManager.scanForPeripherals(withServices:nil, options:nil )
-        } else {
-            print("bluetooth not turned on")
-        }
-        print("after scan")
-    }
-    
-    func centralManager(_ central: CBCentralManager,
-                        didDiscover peripheral: CBPeripheral,
-                        advertisementData: [String : Any],
-                        rssi RSSI: NSNumber) {
-        print("found a peripheral")
-        let device = (advertisementData as NSDictionary).object(forKey: CBAdvertisementDataLocalNameKey) as? String
-        if device?.contains("Y") == true {
-            self.centralManager.stopScan()
-            self.peripheral = peripheral
-            self.peripheral.delegate = self
-        }
-        
-        if advertisementData[CBAdvertisementDataIsConnectable] != nil {
-            if (advertisementData[CBAdvertisementDataServiceUUIDsKey] as AnyObject).contains(ourUUID) {
-                let dataServiceArray = advertisementData[CBAdvertisementDataServiceDataKey]!
-                let ourData = (dataServiceArray as AnyObject)[ourUUID!]
-            }
-        }
+    func to<T>(type:T.Type) -> T {
+        return self.withUnsafeBytes{ $0.pointee}
     }
 }
-
-protocol fiestaParrotDelegate {
-    
-    init() {
-    super.init()
-    }
-    
-    func didGet(reading: Reading)
-}
-
-class Reading {
-    func doNothing() {
-        if "i" == "eye" {
-            let eye = "i"
-        }
-    }
-}
- */

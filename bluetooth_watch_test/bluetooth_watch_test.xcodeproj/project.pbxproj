@@ -108,6 +108,7 @@
 		3BC1013E202E350E0064BC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC1013F202E350E0064BC62 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		44634D252038D0C6008C3EB8 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		44C80DD12043BA4A00E65BCD /* bluetooth_watch_test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bluetooth_watch_test.entitlements; sourceTree = "<group>"; };
 		44E819A1203F52A80038E03C /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +153,7 @@
 				3BC10126202E350D0064BC62 /* bluetooth_watch_test WatchKit App */,
 				3BC10135202E350D0064BC62 /* bluetooth_watch_test WatchKit Extension */,
 				3BC100FB202E350D0064BC62 /* Products */,
+				44C80DCE2043BA4900E65BCD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +172,7 @@
 		3BC100FC202E350D0064BC62 /* bluetooth_watch_test */ = {
 			isa = PBXGroup;
 			children = (
+				44C80DD12043BA4A00E65BCD /* bluetooth_watch_test.entitlements */,
 				44E819A1203F52A80038E03C /* Definitions.swift */,
 				3BC100FD202E350D0064BC62 /* AppDelegate.swift */,
 				3BC100FF202E350D0064BC62 /* ViewController.swift */,
@@ -221,6 +224,13 @@
 				3BC1013F202E350E0064BC62 /* PushNotificationPayload.apns */,
 			);
 			path = "bluetooth_watch_test WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		44C80DCE2043BA4900E65BCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +338,11 @@
 					3BC100F9202E350D0064BC62 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
 					};
 					3BC1010D202E350D0064BC62 = {
 						CreatedOnToolsVersion = 9.2;

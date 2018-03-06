@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
             endingLineNumber = "136"
-            landmarkName = "sendData(input:)"
+            landmarkName = "peripheralManagerIsReady(toUpdateSubscribers:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
             endingLineNumber = "120"
-            landmarkName = "peripheralManagerIsReady(toUpdateSubscribers:)"
+            landmarkName = "peripheralManager(_:central:didSubscribeTo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

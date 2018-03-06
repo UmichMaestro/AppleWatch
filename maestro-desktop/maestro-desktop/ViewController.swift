@@ -16,6 +16,22 @@ var our_periph : CBPeripheral?
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    
+    @IBOutlet var accelX: NSTextField!
+    @IBOutlet var accelY: NSTextField!
+    @IBOutlet var accelZ: NSTextField!
+    
+    @IBOutlet var gyroX: NSTextField!
+    @IBOutlet var gyroY: NSTextFieldCell!
+    @IBOutlet var gyroZ: NSTextField!
+    
+    @IBOutlet var attitudePitch: NSTextField!
+    @IBOutlet var attitudeYaw: NSTextField!
+    @IBOutlet var attitudeRoll: NSTextField!
+    
+    var whichLabel = 0
+    
+    
     var centralManager:CBCentralManager!
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -105,6 +121,48 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 print("before print")
                 print(content)
                 print("after print")
+            
+                switch whichLabel {
+                case 0:
+                    gyroX.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 1:
+                    gyroY.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 2:
+                    gyroZ.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 3:
+                    accelX.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 4:
+                    accelY.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 5:
+                    accelZ.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 6:
+                    attitudePitch.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 7:
+                    attitudeYaw.stringValue = String(content)
+                    whichLabel += 1
+                    break
+                case 8:
+                    attitudeRoll.stringValue = String(content)
+                    whichLabel = 0
+                    break
+                default:
+                    print("something's gone horribly wrong")
+                    assert(false, "whichLabel is bigger than 8")
+                }
             } else {
                 print("characteristic was nil")
             }

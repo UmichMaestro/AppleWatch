@@ -30,8 +30,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         toSendIndex = 0
         numberSent = 0
         
-        getMotionManagerUpdates()
-        
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         
     }
@@ -93,6 +91,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     {
         print("central subbed to the char.")
         
+        getMotionManagerUpdates()
+        
         /*
         // Get data
         dataToSend = toSend[toSendIndex]
@@ -113,7 +113,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
     {
-        let coreMotion = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         
         /*
         // Get data
@@ -239,7 +238,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                 return
             }
             */
-            
         }
     }
     

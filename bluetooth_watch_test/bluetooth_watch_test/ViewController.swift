@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  bluetooth_watch_test
 //
-//  Created by Maddie Wilson on 2/9/18.
-//  Copyright © 2018 Maddie Wilson. All rights reserved.
+//  Maestro 2018
 //
 
 import UIKit
@@ -12,26 +11,32 @@ import CoreMotion
 
 class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
+    //CoreMotion "controlling object"
     let motionManager = CMMotionManager()
     
+    //Bluetooth "controlling object"
     var peripheralManager: CBPeripheralManager?
     
+    //variables to package up data and send it via Bluetooth
     var transferCharacteristic: CBMutableCharacteristic?
-    var dataToSend: Double?
-    var sendDataIndex = Int(0)
-    var toSendIndex = Int(0)
-    var toSend: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    var numberSent = Int(0)
+    var dataToSend: Double? //used in sendData()
+    var sendDataIndex = Int(0) //testing var.
+    var toSendIndex = Int(0) //testing var.
+    var toSend: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0] //testing var.
     
+    //end of message
+    var sendingEOM = false
 
+    //called when app is open on the screen
     override func viewDidLoad()
     {
         super.viewDidLoad()
         toSendIndex = 0
-        numberSent = 0
         
+        //starts the collection of motion data
         getMotionManagerUpdates()
         
+        //init BT manager object
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         
     }
@@ -39,45 +44,50 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     override func viewDidDisappear(_ animated: Bool)
     {
         super.viewDidDisappear(animated)
-        //if the app is not on the screen, don't put yourself out there Apple watch
+        
+        //if the app is not on the screen, don't advertise data over BT
         peripheralManager?.stopAdvertising()
     }
     
+    //we don't know what this does
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager)
     {
         print("state: \(peripheral.state)")
-        //if the peripheral isn't on, this just won't work
+        //if the peripheral isn't on, we can't transfer data over BT
         if(peripheral.state != .poweredOn)
         {
             return
         }
-        
         print("we are powered on!")
-        //create the service
+        
+        //create the characteristic
         transferCharacteristic = CBMutableCharacteristic(
             type: transferCharacteristicUUID,
             properties: CBCharacteristicProperties.notify,
             value: nil,
             permissions: CBAttributePermissions.readable
         )
-        // Then the service
+        //then the service
         let transferService = CBMutableService(
             type: transferServiceUUID,
             primary: true
         )
         transferService.characteristics = [transferCharacteristic!]
         
+        //add the service to the list of services that the device advertises
         peripheralManager?.add(transferService)
         
+        //start advertising your service to the world
         peripheralManager!.startAdvertising([
             CBAdvertisementDataServiceUUIDsKey : [transferServiceUUID]
             ])
     }
     
+    //called when the manager succesfully advertises the service
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?)
     {
         if let error = error {
@@ -88,7 +98,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         print("Succeeded!")
     }
     
-    //when someone subs to our char., start sending the data
+    //unction runs when a central device subscribes to our characteristic
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
         print("central subbed to the char.")
@@ -106,15 +116,15 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         */
     }
  
+    //function runs when central device unsubscribes from our characteristic
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic)
     {
         print("Central unsubbed from char.")
     }
     
+    //currently unused, but if a packet fails to send, this function will get called
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
     {
-        let coreMotion = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        
         /*
         // Get data
         print(toSend[toSendIndex])
@@ -125,17 +135,20 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         sendData()
          */
     }
-    
-    var sendingEOM = false
-    
-    
+ 
+    //does the actually work of sending the data over BT
     func sendData(input: Double = -1)
     {
+        //if user provided an input, sent dataToSend equal to that input
         if (input != -1) {
             dataToSend = input
         }
+        
+        //currently this does not execute
+        ///end of message functionality should be implemented in the future
         if sendingEOM {
-            // send it
+            
+            //send end of message string
             let didSend = peripheralManager?.updateValue(
                 "EOM".data(using: String.Encoding.utf8)!,
                 for: transferCharacteristic!,
@@ -152,6 +165,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             }
             
             // It didn't send, so we'll exit and wait for peripheralManagerIsReadyToUpdateSubscribers to call sendData again
+            //^^currently does not happen
             return
         }
         
@@ -180,8 +194,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             */
             let amountToSend = 8
             
-            
-            // Copy the chunk we want
+            //create a data object using the input
             let chunk = Data(from: dataToSend)
                 
             /*
@@ -193,12 +206,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             }
             */
             
-            
-            
-            
             print("printing chunk")
             print(chunk)
-            // send it
+            //send our data chunk
             didSend = peripheralManager!.updateValue(chunk,
                         for: transferCharacteristic!, onSubscribedCentrals: nil)
             
@@ -207,8 +217,12 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                 return
             }
             
+            //turn our data chunk back into a double so we can print it out
+            //a testing check
             let doubleOut = chunk.to(type: Double.self)
             print("Sent: \(doubleOut)")
+            
+            //currently unused
             toSendIndex += 1
             
             /*
@@ -243,12 +257,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         }
     }
     
-    // MARK: - Get Accelerometer Data
     func getMotionManagerUpdates() {
         
         // operation main queue
         //let accelQueue: OperationQueue = OperationQueue.main
-        let gyroQueue: OperationQueue = OperationQueue.main
+        let motionQueue: OperationQueue = OperationQueue.main
         
         // init interval for update (NSTimeInterval)
         self.motionManager.deviceMotionUpdateInterval = 1/60
@@ -256,37 +269,38 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         // get current gyro data
         if (self.motionManager.isDeviceMotionAvailable) {
             
-            let gyroHandler: CMDeviceMotionHandler = { (gyroData:CMDeviceMotion?, error:Error?) -> Void in
+            let motionHandler: CMDeviceMotionHandler = { (motionData:CMDeviceMotion?, error:Error?) -> Void in
                 // errors
                 if (error != nil) {
                     print("error: \(String(describing: error?.localizedDescription))")
                 }else{
                     // success
-                    if ((gyroData) != nil) {
-                        
+                    if ((motionData) != nil) {
                         
                         // get gyroscopes values
-                        let gyroX:String = String(format: "%.2f", (gyroData?.rotationRate.x)!) as String
-                        let gyroY:String = String(format: "%.2f", (gyroData?.rotationRate.y)!) as String
-                        let gyroZ:String = String(format: "%.2f", (gyroData?.rotationRate.z)!) as String
+                        let gyroX = motionData?.rotationRate.x
+                        let gyroY = motionData?.rotationRate.y
+                        let gyroZ = motionData?.rotationRate.z
                         
-                        print("gyro x: \(gyroX)")
-                        print("gyro y: \(gyroY)")
-                        print("gyro z: \(gyroZ)")
-                        
+                        //send gyro values
+                        self.sendData(input: gyroX!)
+                        self.sendData(input: gyroY!)
+                        self.sendData(input: gyroZ!)
+
                         // get accelerations values
-                        let x:String = String(format: "%.2f", (gyroData?.userAcceleration.x)!) as String
-                        let y:String = String(format: "%.2f", (gyroData?.userAcceleration.y)!) as String
-                        let z:String = String(format: "%.2f", (gyroData?.userAcceleration.z)!) as String
+                        let accelX = motionData?.userAcceleration.x
+                        let accelY = motionData?.userAcceleration.y
+                        let accelZ = motionData?.userAcceleration.z
                         
-                        print("accel x: \(x)")
-                        print("accel y: \(y)")
-                        print("accel z: \(z)")
-                        
+                        //send acceleration values
+                        self.sendData(input: accelX!)
+                        self.sendData(input: accelY!)
+                        self.sendData(input: accelZ!)
+                    
                         // get gyroscopes values
-                        let pitch = gyroData?.attitude.pitch
-                        let yaw = gyroData?.attitude.yaw
-                        let roll = gyroData?.attitude.roll
+                        let pitch = motionData?.attitude.pitch
+                        let yaw = motionData?.attitude.yaw
+                        let roll = motionData?.attitude.roll
                         
                         print("pitch: \(pitch)")
                         self.sendData(input: pitch!)
@@ -297,7 +311,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                     }
                 }
             }
-            self.motionManager.startDeviceMotionUpdates(to: gyroQueue, withHandler: gyroHandler)
+            self.motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: motionHandler)
         } else {
             print("not available")
         }
@@ -306,6 +320,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
 
 }
 
+//nifty functions to turn doubles into data objects and back
 extension Data {
     
     init<T>(from value: T) {

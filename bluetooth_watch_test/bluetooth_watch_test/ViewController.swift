@@ -98,7 +98,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         print("Succeeded!")
     }
     
-    //unction runs when a central device subscribes to our characteristic
+    //function runs when a central device subscribes to our characteristic
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
         print("central subbed to the char.")
@@ -317,7 +317,13 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         }
         
     }
-
+    
+    //"Stop Data Collection" button -- stops data collection and data from sending
+    @IBAction func stop(_ sender: UIButton)
+    {
+        motionManager.stopDeviceMotionUpdates()
+        peripheralManager?.stopAdvertising()
+    }
 }
 
 //nifty functions to turn doubles into data objects and back

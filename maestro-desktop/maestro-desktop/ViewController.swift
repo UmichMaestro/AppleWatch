@@ -30,6 +30,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBOutlet var attitudeRoll: NSTextField!
     
     var whichLabel = 0
+    var timeSet = false
+    var start = Date()
     
     
     var centralManager:CBCentralManager!
@@ -116,11 +118,21 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         if characteristic.uuid == transferCharacteristicUUID {
             
             if let data = characteristic.value {
+                if (!timeSet) {
+                    start = Date()
+                    timeSet = true
+                }
                 let content = data.to(type: Double.self)
                 // display
                 print("before print")
                 print(content)
                 print("after print")
+                
+                if (timeSet){
+                    let end = Date()
+                    print("time elapsed")
+                    print(end.timeIntervalSinceDate(start))
+                }
             
                 switch whichLabel {
                 case 0:
@@ -175,8 +187,6 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
             } else {
                 print("characteristic was nil")
             }
-            
-            
         }
     }
     

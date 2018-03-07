@@ -124,39 +124,48 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
             
                 switch whichLabel {
                 case 0:
-                    gyroX.stringValue = String(content)
+                    print(whichLabel)
+                    attitudePitch.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 1:
-                    gyroY.stringValue = String(content)
+                    print(whichLabel)
+                    attitudeYaw.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 2:
-                    gyroZ.stringValue = String(content)
+                    print(whichLabel)
+                    attitudeRoll.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 3:
+                    print(whichLabel)
                     accelX.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 4:
+                    print(whichLabel)
                     accelY.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 5:
+                    print(whichLabel)
                     accelZ.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 6:
-                    attitudePitch.stringValue = String(content)
+                    print(whichLabel)
+                    gyroX.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 7:
-                    attitudeYaw.stringValue = String(content)
+                    print(whichLabel)
+                    gyroY.stringValue = String(content)
                     whichLabel += 1
                     break
                 case 8:
-                    attitudeRoll.stringValue = String(content)
+                    print(whichLabel)
+                    gyroZ.stringValue = String(content)
                     whichLabel = 0
                     break
                 default:

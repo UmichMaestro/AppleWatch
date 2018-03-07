@@ -20,9 +20,10 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     //variables to package up data and send it via Bluetooth
     var transferCharacteristic: CBMutableCharacteristic?
     var dataToSend: Double? //used in sendData()
-    var sendDataIndex = Int(0) //testing var.
-    var toSendIndex = Int(0) //testing var.
-    var toSend: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0] //testing var.
+    var toSendIndex = 0 //shows where we are in the motion array
+    var toSend: [(Double, String) ] = [(0, "pitch"), (0, "yaw"), (0, "roll"), (0, 0, 0, 0, 0, 0] // holds motion data
+    var readyForUpdate = true
+    
     
     //end of message
     var sendingEOM = false
@@ -99,53 +100,25 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
         print("central subbed to the char.")
-        
         getMotionManagerUpdates()
-        
-        /*
-        // Get data
-        dataToSend = toSend[toSendIndex]
-            //.data(using: String.Encoding.utf8)
-        
-        // Reset index
-        sendDataIndex = 0
-        
-        // send it
-        sendData()
-        */
     }
  
     //function runs when central device unsubscribes from our characteristic
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic)
     {
         print("Central unsubbed from char.")
+        motionManager.stopDeviceMotionUpdates()
     }
     
     //currently unused, but if a packet fails to send, this function will get called
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
     {
-<<<<<<< HEAD
-        
-=======
->>>>>>> 9ba1e08c059ecbcd4395a3dbe50d869c1c259a68
-        /*
-        // Get data
-        print(toSend[toSendIndex])
-        dataToSend = toSend[toSendIndex]
-            //.data(using: String.Encoding.utf8)
-        sendDataIndex = 0
- 
         sendData()
-         */
     }
  
     //does the actually work of sending the data over BT
-    func sendData(input: Double = -1)
+    func sendData()
     {
-        //if user provided an input, sent dataToSend equal to that input
-        if (input != -1) {
-            dataToSend = input
-        }
         
         //currently this does not execute
         ///end of message functionality should be implemented in the future
@@ -174,32 +147,28 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         
         // If we're not at the end of the message, we're still sending data
         
-        /*
+        
         // Are there any more data to send? If index is bigger, go into the body of this
-        guard sendDataIndex! < toSend.count else {
-            // we're done, no more stuff
+        guard self.toSendIndex < self.toSend.count else {
+            // we're done, no more stuff, get more motion data
+            print("yikes, we're doing something wrong, ended up in the guard")
+            self.readyForUpdate = true
             return
         }
-        */
         
         var didSend = true
         
         while didSend {
-            // make the next chunk of data to be sent
-            /*
-            // figure out how big the chunk is
-            var amountToSend = dataToSend!.count - sendDataIndex!
             
-            // Check if it's too long
-            if (amountToSend > NOTIFY_MTU) {
-                amountToSend = NOTIFY_MTU
-            }
-            */
+            // make the next chunk of data to be sent
             let amountToSend = 8
             
             //create a data object using the input
-            let chunk = Data(from: dataToSend)
-                
+            let chunk = Data(from: toSend[toSendIndex])
+            
+            
+            // keeping for posterity, possible use in the future, possible edit
+            // data to adjust count
             /*
                 dataToSend!.withUnsafeBytes{(body: UnsafePointer<UInt8>) in
                 return Data(
@@ -220,42 +189,22 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                 return
             }
             
+            toSendIndex += 1
+            
             //turn our data chunk back into a double so we can print it out
             //a testing check
             let doubleOut = chunk.to(type: Double.self)
+            print(toSendIndex)
             print("Sent: \(doubleOut)")
             
-            //currently unused
-            toSendIndex += 1
             
-            /*
-            // It sent! Update index
-            sendDataIndex += amountToSend
-            */
-            /*
             // Was it the last one?
-            if (sendDataIndex! >= dataToSend!.count) {
-                
-                // It was, so send a EOM
-                
-                // Set this so if it fails we'll send it next time
-                
-                // Send it
-                let eomSent = peripheralManager!.updateValue(
-                    "EOM".data(using: String.Encoding.utf8)!,
-                    for: transferCharacteristic!,
-                    onSubscribedCentrals: nil
-                )
-                
-                if (eomSent) {
-                    // It sent, we're all done
-                    sendingEOM = false
-                    print("Sent: EOM")
-                }
-                
+            if (toSendIndex >= toSend.count) {
+                print("nice, made it through another set of values")
+                // we need to get new motion values
+                self.readyForUpdate = true
                 return
             }
-            */
         }
     }
     
@@ -277,17 +226,17 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                     print("error: \(String(describing: error?.localizedDescription))")
                 }else{
                     // success
-                    if ((motionData) != nil) {
+                    if ((motionData) != nil && self.readyForUpdate) {
                         
                         // get gyroscopes values
-                        let gyroX = motionData?.rotationRate.x
-                        let gyroY = motionData?.rotationRate.y
-                        let gyroZ = motionData?.rotationRate.z
+                        let pitch = motionData?.attitude.pitch
+                        let yaw = motionData?.attitude.yaw
+                        let roll = motionData?.attitude.roll
                         
-                        //send gyro values
-                        self.sendData(input: gyroX!)
-                        self.sendData(input: gyroY!)
-                        self.sendData(input: gyroZ!)
+                        self.toSend[0] = pitch!
+                        self.toSend[1] = yaw!
+                        self.toSend[2] = roll!
+    
 
                         // get accelerations values
                         let accelX = motionData?.userAcceleration.x
@@ -295,21 +244,26 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let accelZ = motionData?.userAcceleration.z
                         
                         //send acceleration values
-                        self.sendData(input: accelX!)
-                        self.sendData(input: accelY!)
-                        self.sendData(input: accelZ!)
-                    
-                        // get gyroscopes values
-                        let pitch = motionData?.attitude.pitch
-                        let yaw = motionData?.attitude.yaw
-                        let roll = motionData?.attitude.roll
+                        self.toSend[3] = accelX!
+                        self.toSend[4] = accelY!
+                        self.toSend[5] = accelZ!
                         
-                        print("pitch: \(pitch)")
-                        self.sendData(input: pitch!)
-                        print("yaw: \(yaw)")
-                        self.sendData(input: yaw!)
-                        print("roll: \(roll)")
-                        self.sendData(input: roll!)
+                        
+                        // get gyroscopes values
+                        let gyroX = motionData?.rotationRate.x
+                        let gyroY = motionData?.rotationRate.y
+                        let gyroZ = motionData?.rotationRate.z
+                        
+                        //send gyro values
+                        self.toSend[6] = gyroX!
+                        self.toSend[7] = gyroY!
+                        self.toSend[8] = gyroZ!
+                        
+                        // we have one dataset, we don't need another until we
+                        // send it
+                        self.readyForUpdate = false
+                        self.toSendIndex = 0
+                        self.sendData()
                     }
                 }
             }
@@ -321,11 +275,12 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     }
     
     //"Stop Data Collection" button -- stops data collection and data from sending
-    @IBAction func stop(_ sender: UIButton)
-    {
+    @IBAction func stopDataCollection(_ sender: UIButton) {
         motionManager.stopDeviceMotionUpdates()
         peripheralManager?.stopAdvertising()
     }
+    
+    
 }
 
 //nifty functions to turn doubles into data objects and back

@@ -26,6 +26,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     //end of message
     var sendingEOM = false
+    
+    //the last tried to send value
+    var lastTried = 0.0
 
     //called when app is open on the screen
     override func viewDidLoad()
@@ -100,6 +103,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     {
         print("central subbed to the char.")
         
+        peripheralManager?.setDesiredConnectionLatency(CBPeripheralManagerConnectionLatency.low, for: central)
+        
         getMotionManagerUpdates()
         
         /*
@@ -124,10 +129,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     //currently unused, but if a packet fails to send, this function will get called
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
     {
-<<<<<<< HEAD
-        
-=======
->>>>>>> 9ba1e08c059ecbcd4395a3dbe50d869c1c259a68
+        print("Is Ready Try")
+        sendData(input: lastTried)
+
         /*
         // Get data
         print(toSend[toSendIndex])
@@ -182,81 +186,83 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         }
         */
         
-        var didSend = true
+        var didSend = false
+        // make the next chunk of data to be sent
+        /*
+        // figure out how big the chunk is
+        var amountToSend = dataToSend!.count - sendDataIndex!
         
-        while didSend {
-            // make the next chunk of data to be sent
-            /*
-            // figure out how big the chunk is
-            var amountToSend = dataToSend!.count - sendDataIndex!
-            
-            // Check if it's too long
-            if (amountToSend > NOTIFY_MTU) {
-                amountToSend = NOTIFY_MTU
-            }
-            */
-            let amountToSend = 8
-            
-            //create a data object using the input
-            let chunk = Data(from: dataToSend)
-                
-            /*
-                dataToSend!.withUnsafeBytes{(body: UnsafePointer<UInt8>) in
-                return Data(
-                    bytes: body + sendDataIndex!,
-                    count: amountToSend
-                )
-            }
-            */
-            
-            print("printing chunk")
-            print(chunk)
-            //send our data chunk
-            didSend = peripheralManager!.updateValue(chunk,
-                        for: transferCharacteristic!, onSubscribedCentrals: nil)
-            
-            // Check if it actually sent
-            if (!didSend) {
-                return
-            }
-            
-            //turn our data chunk back into a double so we can print it out
-            //a testing check
-            let doubleOut = chunk.to(type: Double.self)
-            print("Sent: \(doubleOut)")
-            
-            //currently unused
-            toSendIndex += 1
-            
-            /*
-            // It sent! Update index
-            sendDataIndex += amountToSend
-            */
-            /*
-            // Was it the last one?
-            if (sendDataIndex! >= dataToSend!.count) {
-                
-                // It was, so send a EOM
-                
-                // Set this so if it fails we'll send it next time
-                
-                // Send it
-                let eomSent = peripheralManager!.updateValue(
-                    "EOM".data(using: String.Encoding.utf8)!,
-                    for: transferCharacteristic!,
-                    onSubscribedCentrals: nil
-                )
-                
-                if (eomSent) {
-                    // It sent, we're all done
-                    sendingEOM = false
-                    print("Sent: EOM")
-                }
-                
-                return
-            }
-            */
+        // Check if it's too long
+        if (amountToSend > NOTIFY_MTU) {
+            amountToSend = NOTIFY_MTU
         }
+        */
+        
+        //create a data object using the input
+        let chunk = Data(from: dataToSend)
+            
+        /*
+            dataToSend!.withUnsafeBytes{(body: UnsafePointer<UInt8>) in
+            return Data(
+                bytes: body + sendDataIndex!,
+                count: amountToSend
+            )
+        }
+        */
+        
+        print("printing chunk")
+        print(chunk)
+        //send our data chunk
+        didSend = peripheralManager!.updateValue(chunk,
+                    for: transferCharacteristic!, onSubscribedCentrals: nil)
+        
+        // Check if it actually sent
+        if (!didSend) {
+            print("FAILED TO SEND")
+            //peripheralManager!.updateValue(chunk, for: transferCharacteristic!, onSubscribedCentrals: nil)
+            
+            lastTried = input
+            return
+        } else {
+            print("DID SEND")
+        }
+        
+        //turn our data chunk back into a double so we can print it out
+        //a testing check
+        let doubleOut = chunk.to(type: Double.self)
+        print("Sent: \(doubleOut)")
+        
+        //currently unused
+        toSendIndex += 1
+        
+        /*
+        // It sent! Update index
+        sendDataIndex += amountToSend
+        */
+        /*
+        // Was it the last one?
+        if (sendDataIndex! >= dataToSend!.count) {
+            
+            // It was, so send a EOM
+            
+            // Set this so if it fails we'll send it next time
+            
+            // Send it
+            let eomSent = peripheralManager!.updateValue(
+                "EOM".data(using: String.Encoding.utf8)!,
+                for: transferCharacteristic!,
+                onSubscribedCentrals: nil
+            )
+            
+            if (eomSent) {
+                // It sent, we're all done
+                sendingEOM = false
+                print("Sent: EOM")
+            }
+            
+            return
+        }
+        */
     }
     
     func getMotionManagerUpdates() {
@@ -266,7 +272,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         let motionQueue: OperationQueue = OperationQueue.main
         
         // init interval for update (NSTimeInterval)
-        self.motionManager.deviceMotionUpdateInterval = 1/60
+        self.motionManager.deviceMotionUpdateInterval = 1/30
         
         // get current gyro data
         if (self.motionManager.isDeviceMotionAvailable) {
@@ -285,8 +291,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let gyroZ = motionData?.rotationRate.z
                         
                         //send gyro values
+                        print("gyroX: \(gyroX!)")
                         self.sendData(input: gyroX!)
+                        print("gyroY: \(gyroY!)")
                         self.sendData(input: gyroY!)
+                        print("gyroZ: \(gyroZ!)")
                         self.sendData(input: gyroZ!)
 
                         // get accelerations values
@@ -295,8 +304,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let accelZ = motionData?.userAcceleration.z
                         
                         //send acceleration values
+                        print("accelX: \(accelX!)")
                         self.sendData(input: accelX!)
+                        print("accelY: \(accelY!)")
                         self.sendData(input: accelY!)
+                        print("accelZ: \(accelZ!)")
                         self.sendData(input: accelZ!)
                     
                         // get gyroscopes values
@@ -304,11 +316,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let yaw = motionData?.attitude.yaw
                         let roll = motionData?.attitude.roll
                         
-                        print("pitch: \(pitch)")
+                        print("pitch: \(pitch!)")
                         self.sendData(input: pitch!)
-                        print("yaw: \(yaw)")
+                        print("yaw: \(yaw!)")
                         self.sendData(input: yaw!)
-                        print("roll: \(roll)")
+                        print("roll: \(roll!)")
                         self.sendData(input: roll!)
                     }
                 }

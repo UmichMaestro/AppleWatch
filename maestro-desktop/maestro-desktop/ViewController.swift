@@ -131,7 +131,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 if (timeSet){
                     let end = Date()
                     print("time elapsed")
-                    print(end.timeIntervalSinceDate(start))
+                    print(end.timeIntervalSince(start))
                 }
             
                 switch whichLabel {

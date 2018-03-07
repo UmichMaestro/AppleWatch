@@ -34,7 +34,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     let fileName = "phoneData.csv"
     var csvText = "time,pitch,yaw,roll,accelX,accelY,accelZ,gyroX,gyroY,gyroZ\n"
     var newLine = "nothing"
-
+    var timeValue = 0
+    
     var timeSet = false
     var start = Date()
     
@@ -144,7 +145,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 case 0:
                     print(whichLabel)
                     attitudePitch.stringValue = String(content)
-                    newLine = "\(content),"
+                    newLine = "\(timeValue),"
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 1:
@@ -196,8 +198,10 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                     
                     //add line to csv file
                     csvText.append(newLine)
+                    print(newLine)
                     //zero out newline
                     newLine = ""
+                    timeValue += 1
                     
                     whichLabel = 0
                     break
@@ -241,7 +245,9 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
 
         do {
+            print("trying to write file")
             try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+            print(path!)
         } catch {
             print("Failed to create file")
             print("\(error)")

@@ -30,9 +30,13 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBOutlet var attitudeRoll: NSTextField!
     
     var whichLabel = 0
+
+    let fileName = "phoneData.csv"
+    var path = NSURL()
+    var csvText = "time,pitch,yaw,roll,accelX,accelY,accelZ,gyroX,gyroY,gyroZ\n"
+
     var timeSet = false
     var start = Date()
-    
     
     var centralManager:CBCentralManager!
     
@@ -134,6 +138,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                     print(end.timeIntervalSince(start))
                 }
             
+                //add data point to csv file
+                
                 switch whichLabel {
                 case 0:
                     print(whichLabel)
@@ -205,6 +211,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName) as! NSURL
+    
     }
 
     override var representedObject: Any? {

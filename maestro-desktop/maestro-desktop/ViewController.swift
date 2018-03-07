@@ -34,6 +34,9 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     let fileName = "phoneData.csv"
     var path = NSURL()
     var csvText = "time,pitch,yaw,roll,accelX,accelY,accelZ,gyroX,gyroY,gyroZ\n"
+
+    var timeSet = false
+    var start = Date()
     
     var centralManager:CBCentralManager!
     
@@ -119,11 +122,21 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         if characteristic.uuid == transferCharacteristicUUID {
             
             if let data = characteristic.value {
+                if (!timeSet) {
+                    start = Date()
+                    timeSet = true
+                }
                 let content = data.to(type: Double.self)
                 // display
                 print("before print")
                 print(content)
                 print("after print")
+                
+                if (timeSet){
+                    let end = Date()
+                    print("time elapsed")
+                    print(end.timeIntervalSinceDate(start))
+                }
             
                 //add data point to csv file
                 
@@ -180,8 +193,6 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
             } else {
                 print("characteristic was nil")
             }
-            
-            
         }
     }
     

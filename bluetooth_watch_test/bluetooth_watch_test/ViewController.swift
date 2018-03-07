@@ -21,7 +21,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     var transferCharacteristic: CBMutableCharacteristic?
     var dataToSend: Double? //used in sendData()
     var toSendIndex = 0 //shows where we are in the motion array
-    var toSend: [(Double, String) ] = [(0, "pitch"), (0, "yaw"), (0, "roll"), (0, 0, 0, 0, 0, 0] // holds motion data
+    var toSend: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0] // holds motion data
     var readyForUpdate = true
     
     
@@ -189,12 +189,12 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                 return
             }
             
+            print(toSendIndex)
             toSendIndex += 1
             
             //turn our data chunk back into a double so we can print it out
             //a testing check
             let doubleOut = chunk.to(type: Double.self)
-            print(toSendIndex)
             print("Sent: \(doubleOut)")
             
             

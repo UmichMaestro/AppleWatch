@@ -32,8 +32,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     var whichLabel = 0
 
     let fileName = "phoneData.csv"
-    var path = NSURL()
     var csvText = "time,pitch,yaw,roll,accelX,accelY,accelZ,gyroX,gyroY,gyroZ\n"
+    var newLine = "nothing"
 
     var timeSet = false
     var start = Date()
@@ -144,46 +144,61 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 case 0:
                     print(whichLabel)
                     attitudePitch.stringValue = String(content)
+                    newLine = "\(content),"
                     whichLabel += 1
                     break
                 case 1:
                     print(whichLabel)
                     attitudeYaw.stringValue = String(content)
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 2:
                     print(whichLabel)
                     attitudeRoll.stringValue = String(content)
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 3:
                     print(whichLabel)
                     accelX.stringValue = String(content)
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 4:
                     print(whichLabel)
                     accelY.stringValue = String(content)
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 5:
                     print(whichLabel)
                     accelZ.stringValue = String(content)
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 6:
                     print(whichLabel)
                     gyroX.stringValue = String(content)
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 7:
                     print(whichLabel)
                     gyroY.stringValue = String(content)
+                    newLine += "\(content),"
                     whichLabel += 1
                     break
                 case 8:
                     print(whichLabel)
                     gyroZ.stringValue = String(content)
+                    newLine += "\(content)\n"
+                    
+                    //add line to csv file
+                    csvText.append(newLine)
+                    //zero out newline
+                    newLine = ""
+                    
                     whichLabel = 0
                     break
                 default:
@@ -211,8 +226,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName) as! NSURL
-    
+
     }
 
     override var representedObject: Any? {
@@ -220,6 +234,20 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         // Update the view, if already loaded.
         }
     }
+    
+    
+    @IBAction func stopCollection(_ sender: NSButtonCell) {
+        
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+
+        do {
+            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("Failed to create file")
+            print("\(error)")
+        }
+    }
+    
 }
 
 extension Data {

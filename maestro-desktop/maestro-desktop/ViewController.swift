@@ -242,12 +242,12 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     @IBAction func stopCollection(_ sender: NSButtonCell) {
         
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-
+        //let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
         do {
             print("trying to write file")
-            try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
-            print(path!)
+            try csvText.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+            print(path)
         } catch {
             print("Failed to create file")
             print("\(error)")

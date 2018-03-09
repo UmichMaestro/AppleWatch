@@ -818,7 +818,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50f-be-ImO">
-                                <rect key="frame" x="97" y="34" width="288" height="32"/>
+                                <rect key="frame" x="96" y="13" width="288" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Send my wonderful IMU data to a csv file" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TU0-Ce-9TC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -828,6 +828,15 @@
                                     </connections>
                                 </buttonCell>
                             </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gA1-6N-YBA">
+                                <rect key="frame" x="192" y="49" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name of File" drawsBackground="YES" id="wZC-Ir-O1i">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -837,6 +846,7 @@
                         <outlet property="attitudePitch" destination="gkA-SA-u58" id="MYD-ej-6ld"/>
                         <outlet property="attitudeRoll" destination="pxY-pg-cDV" id="cdB-Mj-dPC"/>
                         <outlet property="attitudeYaw" destination="Eec-T7-lEN" id="hzs-T1-DAy"/>
+                        <outlet property="fieldFileName" destination="gA1-6N-YBA" id="Ca9-tD-efY"/>
                         <outlet property="gyroX" destination="ay4-SX-yG8" id="zSj-Zx-2Oe"/>
                         <outlet property="gyroY" destination="agC-74-7vY" id="JQ5-KK-osk"/>
                         <outlet property="gyroZ" destination="joQ-JA-RQW" id="nOI-iO-bVe"/>

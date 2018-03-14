@@ -9,13 +9,11 @@
 import Cocoa
 import CoreBluetooth
 
-
-
 var our_periph : CBPeripheral?
-
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    @IBOutlet weak var fieldFileName: NSTextField!
     
     @IBOutlet var accelX: NSTextField!
     @IBOutlet var accelY: NSTextField!
@@ -31,7 +29,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     var whichLabel = 0
 
-    let fileName = "phoneData.csv"
+    var fileName = "phoneData.csv"
     var csvText = "time,pitch,yaw,roll,accelX,accelY,accelZ,gyroX,gyroY,gyroZ\n"
     var newLine = "nothing"
     var timeValue = 0
@@ -44,6 +42,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("state updated")
         print(central.state)
+        
         scanForPeriph()
     }
     
@@ -211,7 +210,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 case 8:
                     print(whichLabel)
                     gyroZ.stringValue = String(content)
-                    newLine += "\(content)\n"
+                    newLine += "\(content) funfunfun\n"
                     
                     //add line to csv file
                     csvText.append(newLine)
@@ -236,10 +235,6 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
         print("I don't know what this should be doing")
     }
-        
-    
-    @IBOutlet var connectedLabel: NSTextField!
-    @IBOutlet var inputValue: NSTextField!
     
     let ourUUID = NSUUID()
     
@@ -261,6 +256,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBAction func stopCollection(_ sender: NSButtonCell) {
         
         //let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        
+        fileName = fieldFileName.stringValue
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
         do {
             print("trying to write file")

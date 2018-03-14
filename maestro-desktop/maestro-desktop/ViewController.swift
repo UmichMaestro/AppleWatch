@@ -258,6 +258,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         //let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         
         fileName = fieldFileName.stringValue
+        fileName += ".csv"
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
         do {
             print("trying to write file")

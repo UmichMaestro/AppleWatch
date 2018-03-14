@@ -23,6 +23,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     var toSendIndex = 0 //shows where we are in the motion array
     var toSend: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0] // holds motion data
     var readyForUpdate = true
+    var numberSent = 0 // testing, counts how many points we send
     
     
     //end of message
@@ -164,7 +165,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             let amountToSend = 8
             
             //create a data object using the input
-            let chunk = Data(from: toSend[toSendIndex])
+            var chunk = Data(from: toSend[3]) // this is accelX
+            let chunkToo = Data(from: toSend[4]) // this is accelY
+            chunk.append(chunkToo)
             
             
             // keeping for posterity, possible use in the future, possible edit
@@ -178,8 +181,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             }
             */
             
-            print("printing chunk")
-            print(chunk)
+            //print("printing chunk")
+            //print(chunk)
             //send our data chunk
             didSend = peripheralManager!.updateValue(chunk,
                         for: transferCharacteristic!, onSubscribedCentrals: nil)
@@ -189,13 +192,23 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                 return
             }
             
-            print(toSendIndex)
+            //print(toSendIndex)
             toSendIndex += 1
+            numberSent += 1
+            print("number sent: \(numberSent)")
             
             //turn our data chunk back into a double so we can print it out
             //a testing check
-            let doubleOut = chunk.to(type: Double.self)
-            print("Sent: \(doubleOut)")
+            
+            // testing
+            // first need to split it into two chunks
+            //let doubleOut = chunk.prefix(upTo: 8).to(type: Double.self)
+            //print("Tried to send: \(toSend[3])")
+            //print("Sent: \(doubleOut)")
+            
+            //let secondOut = chunk.dropFirst(8).to(type: Double.self)
+            //print("Tried to send: \(toSend[4])")
+            //print("Also sent: \(secondOut)")
             
             
             // Was it the last one?
@@ -228,6 +241,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                     // success
                     if ((motionData) != nil && self.readyForUpdate) {
                         
+                        /*
                         // get gyroscopes values
                         let pitch = motionData?.attitude.pitch
                         let yaw = motionData?.attitude.yaw
@@ -236,7 +250,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         self.toSend[0] = pitch!
                         self.toSend[1] = yaw!
                         self.toSend[2] = roll!
-    
+                        */
 
                         // get accelerations values
                         let accelX = motionData?.userAcceleration.x
@@ -248,7 +262,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         self.toSend[4] = accelY!
                         self.toSend[5] = accelZ!
                         
-                        
+                        /*
                         // get gyroscopes values
                         let gyroX = motionData?.rotationRate.x
                         let gyroY = motionData?.rotationRate.y
@@ -258,6 +272,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         self.toSend[6] = gyroX!
                         self.toSend[7] = gyroY!
                         self.toSend[8] = gyroZ!
+                        */
                         
                         // we have one dataset, we don't need another until we
                         // send it

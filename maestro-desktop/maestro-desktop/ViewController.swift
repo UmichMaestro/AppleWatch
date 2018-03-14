@@ -127,20 +127,37 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                     start = Date()
                     timeSet = true
                 }
-                let content = data.to(type: Double.self)
+                
+                //Test for two doubles
+                let contentFirst = data.prefix(upTo: 8).to(type: Double.self)
+                let contentSecond = data.dropFirst(8).to(type: Double.self)
+                timeValue += 2
+                //Test for two doubles
                 // display
+                /*
                 print("before print")
-                print(content)
+                print(contentFirst)
+                print(contentSecond)
                 print("after print")
+                */
                 
                 if (timeSet){
                     let end = Date()
-                    print("time elapsed")
-                    print(end.timeIntervalSince(start))
+                    print("first value read because I'm scared: \(contentFirst)")
+                    print("time elapsed in seconds: \(end.timeIntervalSince(start))")
+                    print("number of values read: \(timeValue)")
+                    print("number of (X,Y) read: \(timeValue/2)")
                 }
             
                 //add data point to csv file
                 
+                //Test for two doubles
+                accelX.stringValue = String(contentFirst)
+                accelY.stringValue = String(contentSecond)
+                //Test for two doubles
+                
+                
+                /*
                 switch whichLabel {
                 case 0:
                     print(whichLabel)
@@ -209,6 +226,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                     print("something's gone horribly wrong")
                     assert(false, "whichLabel is bigger than 8")
                 }
+                */
             } else {
                 print("characteristic was nil")
             }

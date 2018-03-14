@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>dummy.bluetooth-watch-test</string>
+	<string>dummymaestro.bluetooth-watch-test</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

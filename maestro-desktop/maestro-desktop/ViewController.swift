@@ -128,31 +128,37 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 }
                 
                 //Test for two doubles
-                let contentFirst = data.prefix(upTo: 8).to(type: Double.self)
-                let contentSecond = data.dropFirst(8).to(type: Double.self)
+                let contentFirst = data.prefix(upTo: 4).to(type: Float.self)
+                let contentSecond = data.dropFirst(4).dropLast(8).to(type: Float.self)
+                let contentThird = data.dropFirst(8).dropLast(4).to(type: Float.self)
+                let contentFourth = data.dropFirst(12).to(type: Float.self)
                 timeValue += 2
-                //Test for two doubles
+                //Test for 4 floats
                 // display
-                /*
+                
                 print("before print")
                 print(contentFirst)
                 print(contentSecond)
+                print(contentThird)
+                print(contentFourth)
                 print("after print")
-                */
                 
                 if (timeSet){
                     let end = Date()
+                    /*
                     print("first value read because I'm scared: \(contentFirst)")
                     print("time elapsed in seconds: \(end.timeIntervalSince(start))")
                     print("number of values read: \(timeValue)")
-                    print("number of (X,Y) read: \(timeValue/2)")
+                    print("number of (X,Y) read: \(timeValue/4)")
+                    */
+                    print(Double(timeValue) / (end.timeIntervalSince(start)))
                 }
             
                 //add data point to csv file
                 
                 //Test for two doubles
-                accelX.stringValue = String(contentFirst)
-                accelY.stringValue = String(contentSecond)
+                //accelX.stringValue = String(contentFirst)
+                //accelY.stringValue = String(contentSecond)
                 //Test for two doubles
                 
                 

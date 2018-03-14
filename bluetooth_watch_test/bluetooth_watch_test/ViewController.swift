@@ -19,11 +19,12 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     //variables to package up data and send it via Bluetooth
     var transferCharacteristic: CBMutableCharacteristic?
-    var dataToSend: Double? //used in sendData()
+    var dataToSend: Float? //used in sendData()
     var toSendIndex = 0 //shows where we are in the motion array
-    var toSend: [Double] = [0, 0, 0, 0, 0, 0, 0, 0, 0] // holds motion data
+    var toSend: [Float] = [0, 0, 0, 0] // holds motion data
     var readyForUpdate = true
     var numberSent = 0 // testing, counts how many points we send
+    var haveFirst = false // used to determine which indexes to put the data in
     
     
     //end of message
@@ -149,6 +150,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         // If we're not at the end of the message, we're still sending data
         
         
+        /*
+         As we're always sending the same 4 things, and only sending when the
+         array is filled, we don't need to check if our index is out of range
+         as we don't use an index
+         
         // Are there any more data to send? If index is bigger, go into the body of this
         guard self.toSendIndex < self.toSend.count else {
             // we're done, no more stuff, get more motion data
@@ -156,18 +162,22 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             self.readyForUpdate = true
             return
         }
+        */
         
         var didSend = true
         
         while didSend {
             
             // make the next chunk of data to be sent
-            let amountToSend = 8
             
             //create a data object using the input
-            var chunk = Data(from: toSend[3]) // this is accelX
-            let chunkToo = Data(from: toSend[4]) // this is accelY
-            chunk.append(chunkToo)
+            var chunkZero = Data(from: toSend[0]) // this is accelX
+            let chunkOne = Data(from: toSend[1]) // this is accelY
+            let chunkTwo = Data(from: toSend[2]) // this is second accelX
+            let chunkThree = Data(from: toSend[3]) // this is the second accelY
+            chunkZero.append(chunkOne)
+            chunkZero.append(chunkTwo)
+            chunkZero.append(chunkThree)
             
             
             // keeping for posterity, possible use in the future, possible edit
@@ -184,18 +194,19 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             //print("printing chunk")
             //print(chunk)
             //send our data chunk
-            didSend = peripheralManager!.updateValue(chunk,
+            didSend = peripheralManager!.updateValue(chunkZero,
                         for: transferCharacteristic!, onSubscribedCentrals: nil)
             
             // Check if it actually sent
             if (!didSend) {
+                //print("We had a problem sending")
                 return
             }
             
             //print(toSendIndex)
             toSendIndex += 1
             numberSent += 1
-            print("number sent: \(numberSent)")
+            //print("number sent: \(numberSent)")
             
             //turn our data chunk back into a double so we can print it out
             //a testing check
@@ -213,9 +224,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             
             // Was it the last one?
             if (toSendIndex >= toSend.count) {
-                print("nice, made it through another set of values")
                 // we need to get new motion values
                 self.readyForUpdate = true
+                self.haveFirst = false
                 return
             }
         }
@@ -228,7 +239,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         let motionQueue: OperationQueue = OperationQueue.main
         
         // init interval for update (NSTimeInterval)
-        self.motionManager.deviceMotionUpdateInterval = 1/60
+        self.motionManager.deviceMotionUpdateInterval = 1/100
         
         // get current gyro data
         if (self.motionManager.isDeviceMotionAvailable) {
@@ -255,12 +266,20 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         // get accelerations values
                         let accelX = motionData?.userAcceleration.x
                         let accelY = motionData?.userAcceleration.y
-                        let accelZ = motionData?.userAcceleration.z
+                        // let accelZ = motionData?.userAcceleration.z
                         
-                        //send acceleration values
-                        self.toSend[3] = accelX!
-                        self.toSend[4] = accelY!
-                        self.toSend[5] = accelZ!
+                        // save acceleration values
+                        var haveSecond = false
+                        // set haveSecond to true for single sized test
+                        if self.haveFirst {
+                            self.toSend[2] = Float(accelX!)
+                            self.toSend[3] = Float(accelY!)
+                            haveSecond = true 
+                        } else {
+                            self.toSend[0] = Float(accelX!)
+                            self.toSend[1] = Float(accelY!)
+                            self.haveFirst = true
+                        }
                         
                         /*
                         // get gyroscopes values
@@ -274,11 +293,13 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         self.toSend[8] = gyroZ!
                         */
                         
-                        // we have one dataset, we don't need another until we
-                        // send it
-                        self.readyForUpdate = false
-                        self.toSendIndex = 0
-                        self.sendData()
+                        if haveSecond {// we have one dataset, we don't need another until we
+                            // send it
+                            self.readyForUpdate = false
+                            self.haveFirst = false
+                            self.toSendIndex = 0
+                            self.sendData()
+                        }
                     }
                 }
             }

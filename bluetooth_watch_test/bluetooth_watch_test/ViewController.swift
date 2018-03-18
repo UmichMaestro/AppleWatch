@@ -25,6 +25,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     var readyForUpdate = true
     var numberSent = 0 // testing, counts how many points we send
     var haveFirst = false // used to determine which indexes to put the data in
+    var thisPacketSent = false
     
     
     //end of message
@@ -166,7 +167,10 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         
         var didSend = true
         
-        while didSend {
+        //while didSend {
+        if thisPacketSent == false
+        {
+
             
             // make the next chunk of data to be sent
             
@@ -221,16 +225,21 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             //print("Tried to send: \(toSend[4])")
             //print("Also sent: \(secondOut)")
             
+            self.readyForUpdate = true
+            self.haveFirst = false
+            self.thisPacketSent = true
+            
             
             // Was it the last one?
-            if (toSendIndex >= toSend.count) {
+            /*if (toSendIndex >= toSend.count) {
                 // we need to get new motion values
                 self.readyForUpdate = true
                 self.haveFirst = false
                 return
-            }
+            }*/
         }
     }
+        
     
     func getMotionManagerUpdates() {
         
@@ -274,12 +283,15 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         if self.haveFirst {
                             self.toSend[2] = Float(accelX!)
                             self.toSend[3] = Float(accelY!)
-                            haveSecond = true 
+                            haveSecond = true
+                            
                         } else {
                             self.toSend[0] = Float(accelX!)
                             self.toSend[1] = Float(accelY!)
                             self.haveFirst = true
                         }
+                        
+                        
                         
                         /*
                         // get gyroscopes values
@@ -298,6 +310,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                             self.readyForUpdate = false
                             self.haveFirst = false
                             self.toSendIndex = 0
+                            self.thisPacketSent = false
                             self.sendData()
                         }
                     }

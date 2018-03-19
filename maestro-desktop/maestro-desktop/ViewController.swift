@@ -30,12 +30,13 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     var whichLabel = 0
 
     var fileName = "phoneData.csv"
-    var csvText = "time,pitch,yaw,roll,accelX,accelY,accelZ,gyroX,gyroY,gyroZ\n"
+    var csvText = "time,RawAccelX,RawAccelY\n"
     var newLine = "nothing"
     var timeValue = 0
     
     var timeSet = false
     var start = Date()
+    var lastTime = 0.0
     
     var centralManager:CBCentralManager!
     
@@ -143,13 +144,26 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 print(contentFourth)
                 print("after print")
                 
-                if (timeSet && (timeValue % 2 == 0)){
+                if (timeSet){
                     let end = Date()
                     //print("first value read because I'm scared: \(contentFirst)")
                     print("time elapsed in seconds: \(end.timeIntervalSince(start))")
                     print("number of values read: \(timeValue)")
                     //print("number of (X,Y) read: \(timeValue/4)")
                     print(Double(timeValue) / (end.timeIntervalSince(start)))
+                    newLine = "\(end.timeIntervalSince(start) - lastTime),"
+                    newLine += "\(contentFirst),"
+                    newLine += "\(contentSecond)\n"
+                    //add line to csv file
+                    csvText.append(newLine)
+                    print(newLine)
+                    //start next line
+                    newLine = "\(end.timeIntervalSince(start) - lastTime),"
+                    newLine += "\(contentThird),"
+                    newLine += "\(contentFourth)\n"
+                    csvText.append(newLine)
+                    print(newLine)
+                    self.lastTime = end.timeIntervalSince(start)
                 }
             
                 //add data point to csv file

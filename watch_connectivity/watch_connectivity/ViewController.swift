@@ -11,6 +11,21 @@ import WatchConnectivity
 
 class ViewController: UIViewController, WCSessionDelegate {
     
+
+    @IBOutlet var timeDelay: UILabel!
+    
+    @IBOutlet var number: UILabel!
+    
+    var number_in = Int(0)
+    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        let timeNow = CFAbsoluteTimeGetCurrent()
+        let timeIn = messageData.to(type: Double.self)
+        number_in += 1
+        number.text = String(number_in)
+        timeDelay.text = String(timeNow - timeIn)
+    }
+    
     // no idea what these are for
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         return
@@ -32,9 +47,6 @@ class ViewController: UIViewController, WCSessionDelegate {
             let session = WCSession.default
             session.delegate = self
             session.activate()
-            while true {
-                send_a_message()
-            }
         }
     }
 
@@ -49,6 +61,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         if (WCSession.default.isReachable) {
             let message = Data(from: currentTime)
             WCSession.default.sendMessageData(message, replyHandler: nil, errorHandler: nil)
+            
         }
     }
 

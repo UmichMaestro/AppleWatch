@@ -12,7 +12,16 @@ import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
-    @IBOutlet var latency: WKInterfaceLabel!
+    
+    @IBOutlet var timeStart: WKInterfaceLabel!
+    @IBAction func startSending() {
+        while true {
+            send_a_message()
+        }
+    }
+    
+    
+    var start_time = Double(0)
     
     // not really sure what this does
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -20,11 +29,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
-        let time_at_receive = CFAbsoluteTimeGetCurrent()
-        let time_in = messageData.to(type: Double.self)
-        
-        let diff = time_at_receive - time_in
-        latency.setText(String(diff))
+        return
     }
     
 
@@ -40,12 +45,24 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         let session = WCSession.default
         session.delegate = self
         session.activate()
+        start_time = CFAbsoluteTimeGetCurrent()
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    func send_a_message() {
+        let currentTime = CFAbsoluteTimeGetCurrent()
+        
+        if (WCSession.default.isReachable) {
+            let message = Data(from: currentTime)
+            WCSession.default.sendMessageData(message, replyHandler: nil, errorHandler: nil)
+            timeStart.setText(String(currentTime - start_time))
+        }
+    }
+
 
 }
 

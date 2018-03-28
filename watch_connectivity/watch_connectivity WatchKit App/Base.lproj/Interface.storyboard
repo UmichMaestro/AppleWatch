@@ -14,11 +14,17 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watch_connectivity_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Time delay:" numberOfLines="0" id="XZz-10-Yyj"/>
-                        <label width="133" alignment="left" text="init value" numberOfLines="0" id="0aJ-Eg-ayh"/>
+                        <label alignment="left" text="Start time" numberOfLines="0" id="XZz-10-Yyj"/>
+                        <label alignment="left" text="time" id="NzP-aF-mw5"/>
+                        <button width="1" height="100" alignment="left" title="Start Sending" id="3zm-aq-604">
+                            <connections>
+                                <action selector="startSending" destination="AgC-eL-Hgc" id="iKg-eE-pA8"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
-                        <outlet property="latency" destination="0aJ-Eg-ayh" id="dsc-IA-o1g"/>
+                        <outlet property="startSending" destination="3zm-aq-604" id="ZSm-on-wNF"/>
+                        <outlet property="timeStart" destination="NzP-aF-mw5" id="SUV-kc-uEC"/>
                     </connections>
                 </controller>
             </objects>

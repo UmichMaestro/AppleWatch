@@ -117,7 +117,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     //currently unused, but if a packet fails to send, this function will get called
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
     {
-        sendData()
+        //sendData()
+        sendLatency()
     }
     
     //does the actually work of sending the data over BT
@@ -312,6 +313,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                          self.toSend[8] = gyroZ!
                          */
                         
+                        /*
                         if haveSecond {// we have one dataset, we don't need another until we
                             // send it
                             self.readyForUpdate = false
@@ -320,6 +322,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                             self.thisPacketSent = false
                             self.sendData()
                         }
+                        */
+                        self.sendLatency()
                     }
                 }
             }
@@ -333,7 +337,21 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     //"Stop Data Collection" button -- stops data collection and data from sending
     @IBAction func stopDataCollection(_ sender: UIButton) {
         motionManager.stopDeviceMotionUpdates()
-        peripheralManager?.stopAdvertising()
+        //peripheralManager?.stopAdvertising()
+    }
+    @IBAction func startDataCollection(_ sender: Any) {
+        self.getMotionManagerUpdates()
+    }
+    
+    func sendLatency() {
+        let timeNow = CFAbsoluteTimeGetCurrent()
+        let chunk = Data(from:timeNow)
+        let didSend = peripheralManager!.updateValue(chunk,
+                                                 for: transferCharacteristic!, onSubscribedCentrals: nil)
+        if !didSend {
+            return
+        }
+        
     }
     
     

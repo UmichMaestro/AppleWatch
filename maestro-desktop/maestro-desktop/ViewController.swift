@@ -125,11 +125,18 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         if characteristic.uuid == transferCharacteristicUUID {
             
             if let data = characteristic.value {
-                if (!timeSet) {
-                    start = Date()
-                    timeSet = true
-                }
+                let now = CFAbsoluteTimeGetCurrent()
+                let timeIn = data.to(type: Double.self)
+                print("Now = \(now)")
+                print("timeIn = \(timeIn)")
+                print("diff = \(now - timeIn)")
                 
+                /*
+                 
+                if (!timeSet) {
+                start = Date()
+                timeSet = true
+                }
                 //Test for two doubles
                 let contentFirst = data.prefix(upTo: 4).to(type: Float.self)
                 let contentSecond = data.dropFirst(4).dropLast(8).to(type: Float.self)
@@ -248,6 +255,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                     print("something's gone horribly wrong")
                     assert(false, "whichLabel is bigger than 8")
                 }
+                */
                 */
             } else {
                 print("characteristic was nil")

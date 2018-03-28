@@ -13,19 +13,13 @@ var our_periph : CBPeripheral?
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    
+    
+    
     @IBOutlet weak var fieldFileName: NSTextField!
     
     @IBOutlet var accelX: NSTextField!
     @IBOutlet var accelY: NSTextField!
-    @IBOutlet var accelZ: NSTextField!
-    
-    @IBOutlet var gyroX: NSTextField!
-    @IBOutlet var gyroY: NSTextFieldCell!
-    @IBOutlet var gyroZ: NSTextField!
-    
-    @IBOutlet var attitudePitch: NSTextField!
-    @IBOutlet var attitudeYaw: NSTextField!
-    @IBOutlet var attitudeRoll: NSTextField!
     
     var whichLabel = 0
 
@@ -43,6 +37,14 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("state updated")
         print(central.state)
+        
+        var x = MSSynth(9, secondNumber: 10)
+        let a = x?.getafromcpp()
+        print(a!)
+        let b = x?.getbfromcpp()
+        print(b!)
+        let result = x?.addfromcpp()
+        print(result!)
         
         scanForPeriph()
     }
@@ -143,6 +145,9 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 print(contentThird)
                 print(contentFourth)
                 print("after print")
+                
+                accelX.stringValue = String(contentFirst)
+                accelY.stringValue = String(contentSecond)
                 
                 if (timeSet){
                     let end = Date()

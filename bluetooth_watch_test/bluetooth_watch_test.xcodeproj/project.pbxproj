@@ -12,16 +12,7 @@
 		3BC10103202E350D0064BC62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC10101202E350D0064BC62 /* Main.storyboard */; };
 		3BC10105202E350D0064BC62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC10104202E350D0064BC62 /* Assets.xcassets */; };
 		3BC10108202E350D0064BC62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC10106202E350D0064BC62 /* LaunchScreen.storyboard */; };
-		3BC10113202E350D0064BC62 /* bluetooth_watch_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC10112202E350D0064BC62 /* bluetooth_watch_testTests.swift */; };
-		3BC1011E202E350D0064BC62 /* bluetooth_watch_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1011D202E350D0064BC62 /* bluetooth_watch_testUITests.swift */; };
-		3BC10129202E350D0064BC62 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC10127202E350D0064BC62 /* Interface.storyboard */; };
-		3BC1012B202E350D0064BC62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC1012A202E350D0064BC62 /* Assets.xcassets */; };
 		3BC10132202E350D0064BC62 /* bluetooth_watch_test WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3BC10131202E350D0064BC62 /* bluetooth_watch_test WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		3BC10137202E350D0064BC62 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC10136202E350D0064BC62 /* InterfaceController.swift */; };
-		3BC10139202E350E0064BC62 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC10138202E350D0064BC62 /* ExtensionDelegate.swift */; };
-		3BC1013B202E350E0064BC62 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC1013A202E350E0064BC62 /* NotificationController.swift */; };
-		3BC1013D202E350E0064BC62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC1013C202E350E0064BC62 /* Assets.xcassets */; };
-		44634D262038D0C6008C3EB8 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44634D252038D0C6008C3EB8 /* Definitions.swift */; };
 		44E819A2203F52A90038E03C /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E819A1203F52A80038E03C /* Definitions.swift */; };
 		A9B728972038C84500BDB6A0 /* bluetooth_watch_test WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3BC10122202E350D0064BC62 /* bluetooth_watch_test WatchKit App.app */; };
 /* End PBXBuildFile section */
@@ -91,23 +82,9 @@
 		3BC10107202E350D0064BC62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BC10109202E350D0064BC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC1010E202E350D0064BC62 /* bluetooth_watch_testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bluetooth_watch_testTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC10112202E350D0064BC62 /* bluetooth_watch_testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bluetooth_watch_testTests.swift; sourceTree = "<group>"; };
-		3BC10114202E350D0064BC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC10119202E350D0064BC62 /* bluetooth_watch_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bluetooth_watch_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC1011D202E350D0064BC62 /* bluetooth_watch_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bluetooth_watch_testUITests.swift; sourceTree = "<group>"; };
-		3BC1011F202E350D0064BC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC10122202E350D0064BC62 /* bluetooth_watch_test WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bluetooth_watch_test WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC10128202E350D0064BC62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		3BC1012A202E350D0064BC62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3BC1012C202E350D0064BC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BC10131202E350D0064BC62 /* bluetooth_watch_test WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "bluetooth_watch_test WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC10136202E350D0064BC62 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		3BC10138202E350D0064BC62 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		3BC1013A202E350E0064BC62 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		3BC1013C202E350E0064BC62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3BC1013E202E350E0064BC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BC1013F202E350E0064BC62 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		44634D252038D0C6008C3EB8 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		44C80DD12043BA4A00E65BCD /* bluetooth_watch_test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bluetooth_watch_test.entitlements; sourceTree = "<group>"; };
 		44E819A1203F52A80038E03C /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,10 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				3BC100FC202E350D0064BC62 /* bluetooth_watch_test */,
-				3BC10111202E350D0064BC62 /* bluetooth_watch_testTests */,
-				3BC1011C202E350D0064BC62 /* bluetooth_watch_testUITests */,
-				3BC10126202E350D0064BC62 /* bluetooth_watch_test WatchKit App */,
-				3BC10135202E350D0064BC62 /* bluetooth_watch_test WatchKit Extension */,
 				3BC100FB202E350D0064BC62 /* Products */,
 				44C80DCE2043BA4900E65BCD /* Frameworks */,
 			);
@@ -182,48 +155,6 @@
 				3BC10109202E350D0064BC62 /* Info.plist */,
 			);
 			path = bluetooth_watch_test;
-			sourceTree = "<group>";
-		};
-		3BC10111202E350D0064BC62 /* bluetooth_watch_testTests */ = {
-			isa = PBXGroup;
-			children = (
-				3BC10112202E350D0064BC62 /* bluetooth_watch_testTests.swift */,
-				3BC10114202E350D0064BC62 /* Info.plist */,
-			);
-			path = bluetooth_watch_testTests;
-			sourceTree = "<group>";
-		};
-		3BC1011C202E350D0064BC62 /* bluetooth_watch_testUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3BC1011D202E350D0064BC62 /* bluetooth_watch_testUITests.swift */,
-				3BC1011F202E350D0064BC62 /* Info.plist */,
-			);
-			path = bluetooth_watch_testUITests;
-			sourceTree = "<group>";
-		};
-		3BC10126202E350D0064BC62 /* bluetooth_watch_test WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				3BC10127202E350D0064BC62 /* Interface.storyboard */,
-				3BC1012A202E350D0064BC62 /* Assets.xcassets */,
-				3BC1012C202E350D0064BC62 /* Info.plist */,
-			);
-			path = "bluetooth_watch_test WatchKit App";
-			sourceTree = "<group>";
-		};
-		3BC10135202E350D0064BC62 /* bluetooth_watch_test WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				3BC10136202E350D0064BC62 /* InterfaceController.swift */,
-				44634D252038D0C6008C3EB8 /* Definitions.swift */,
-				3BC10138202E350D0064BC62 /* ExtensionDelegate.swift */,
-				3BC1013A202E350E0064BC62 /* NotificationController.swift */,
-				3BC1013C202E350E0064BC62 /* Assets.xcassets */,
-				3BC1013E202E350E0064BC62 /* Info.plist */,
-				3BC1013F202E350E0064BC62 /* PushNotificationPayload.apns */,
-			);
-			path = "bluetooth_watch_test WatchKit Extension";
 			sourceTree = "<group>";
 		};
 		44C80DCE2043BA4900E65BCD /* Frameworks */ = {
@@ -415,8 +346,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC1012B202E350D0064BC62 /* Assets.xcassets in Resources */,
-				3BC10129202E350D0064BC62 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +353,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC1013D202E350E0064BC62 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +373,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC10113202E350D0064BC62 /* bluetooth_watch_testTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC1011E202E350D0064BC62 /* bluetooth_watch_testUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,10 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44634D262038D0C6008C3EB8 /* Definitions.swift in Sources */,
-				3BC1013B202E350E0064BC62 /* NotificationController.swift in Sources */,
-				3BC10139202E350E0064BC62 /* ExtensionDelegate.swift in Sources */,
-				3BC10137202E350D0064BC62 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,14 +430,6 @@
 				3BC10107202E350D0064BC62 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		3BC10127202E350D0064BC62 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BC10128202E350D0064BC62 /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -634,10 +548,10 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = MMF9X936MZ;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dummy.bluetooth-watch-test.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "-234.bluetooth-watch-test.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -654,10 +568,10 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = MMF9X936MZ;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dummy.bluetooth-watch-test.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "-234.bluetooth-watch-test.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -671,13 +585,12 @@
 		3BC10147202E350E0064BC62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = MMF9X936MZ;
 				IBSC_MODULE = bluetooth_watch_test_WatchKit_Extension;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "dummy.bluetooth-watch-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "-234.bluetooth-watch-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -690,13 +603,12 @@
 		3BC10148202E350E0064BC62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = MMF9X936MZ;
 				IBSC_MODULE = bluetooth_watch_test_WatchKit_Extension;
 				INFOPLIST_FILE = "bluetooth_watch_test WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "dummy.bluetooth-watch-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "-234.bluetooth-watch-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -712,10 +624,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = MMF9X936MZ;
 				INFOPLIST_FILE = bluetooth_watch_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dummy.bluetooth-watch-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "-234.bluetooth-watch-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -729,10 +641,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46CKHJ3DB5;
+				DEVELOPMENT_TEAM = MMF9X936MZ;
 				INFOPLIST_FILE = bluetooth_watch_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dummy.bluetooth-watch-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "-234.bluetooth-watch-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

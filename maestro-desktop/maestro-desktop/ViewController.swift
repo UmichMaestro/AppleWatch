@@ -13,6 +13,9 @@ var our_periph : CBPeripheral?
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    
+    
+    
     @IBOutlet weak var fieldFileName: NSTextField!
     
     @IBOutlet var accelX: NSTextField!
@@ -34,6 +37,14 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("state updated")
         print(central.state)
+        
+        var x = MSSynth(9, secondNumber: 10)
+        let a = x?.getafromcpp()
+        print(a!)
+        let b = x?.getbfromcpp()
+        print(b!)
+        let result = x?.addfromcpp()
+        print(result!)
         
         scanForPeriph()
     }

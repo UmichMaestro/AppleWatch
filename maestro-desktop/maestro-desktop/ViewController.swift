@@ -9,34 +9,40 @@
 import Cocoa
 import CoreBluetooth
 
-
-
 var our_periph : CBPeripheral?
-
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    @IBOutlet weak var fieldFileName: NSTextField!
     
     @IBOutlet var accelX: NSTextField!
     @IBOutlet var accelY: NSTextField!
-    @IBOutlet var accelZ: NSTextField!
-    
-    @IBOutlet var gyroX: NSTextField!
-    @IBOutlet var gyroY: NSTextFieldCell!
-    @IBOutlet var gyroZ: NSTextField!
-    
-    @IBOutlet var attitudePitch: NSTextField!
-    @IBOutlet var attitudeYaw: NSTextField!
-    @IBOutlet var attitudeRoll: NSTextField!
     
     var whichLabel = 0
+
+    var fileName = "phoneData.csv"
+    var csvText = "time,RawAccelX,RawAccelY\n"
+    var newLine = "nothing"
+    var timeValue = 0
     
+    var timeSet = false
+    var start = Double()
+    var lastTime = 0.0
     
     var centralManager:CBCentralManager!
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("state updated")
         print(central.state)
+        
+        var x = MSSynth(9, secondNumber: 10)
+        let a = x?.getafromcpp()
+        print(a!)
+        let b = x?.getbfromcpp()
+        print(b!)
+        let result = x?.addfromcpp()
+        print(result!)
+        
         scanForPeriph()
     }
     
@@ -116,68 +122,60 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         if characteristic.uuid == transferCharacteristicUUID {
             
             if let data = characteristic.value {
-                let content = data.to(type: Double.self)
+                /*
+                let now = CFAbsoluteTimeGetCurrent()
+                let timeIn = data.to(type: Double.self)
+                print("Now = \(now)")
+                print("timeIn = \(timeIn)")
+                print("diff = \(now - timeIn)")
+                */
+                if (!timeSet) {
+                start = Date().timeIntervalSince1970
+                timeSet = true
+                }
+                //Test for two doubles
+                let contentFirst = data.prefix(upTo: 4).to(type: Float.self)
+                let contentSecond = data.dropFirst(4).dropLast(8).to(type: Float.self)
+                let contentThird = data.dropFirst(8).dropLast(4).to(type: Float.self)
+                let contentFourth = data.dropFirst(12).to(type: Float.self)
+                timeValue += 1
+                //Test for 4 floats
                 // display
-                print("before print")
-                print(content)
-                print("after print")
-            
-                switch whichLabel {
-                case 0:
-                    gyroX.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 1:
-                    gyroY.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 2:
-                    gyroZ.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 3:
-                    accelX.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 4:
-                    accelY.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 5:
-                    accelZ.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 6:
-                    attitudePitch.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 7:
-                    attitudeYaw.stringValue = String(content)
-                    whichLabel += 1
-                    break
-                case 8:
-                    attitudeRoll.stringValue = String(content)
-                    whichLabel = 0
-                    break
-                default:
-                    print("something's gone horribly wrong")
-                    assert(false, "whichLabel is bigger than 8")
+                
+                accelX.stringValue = String(contentFirst)
+                accelY.stringValue = String(contentSecond)
+                
+                if (timeSet){
+                    var end = Date().timeIntervalSince1970
+                    
+                    //print("first value read because I'm scared: \(contentFirst)")
+                    print("time elapsed in seconds: \(end - start)")
+                    print("number of values read: \(timeValue)")
+                    //print("number of (X,Y) read: \(timeValue/4)")
+                    print(Double(timeValue) / (end - start))
+                    newLine = "\(end - start),"
+                    newLine += "\(contentFirst),"
+                    newLine += "\(contentSecond)\n"
+                    //add line to csv file
+                    csvText.append(newLine)
+                    end = Date().timeIntervalSince1970
+                    //start next line
+                    newLine = "\(end - start),"
+                    newLine += "\(contentThird),"
+                    newLine += "\(contentFourth)\n"
+                    csvText.append(newLine)
+                    print(newLine)
+                    self.lastTime = end
                 }
             } else {
                 print("characteristic was nil")
             }
-            
-            
         }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
         print("I don't know what this should be doing")
     }
-        
-    
-    @IBOutlet var connectedLabel: NSTextField!
-    @IBOutlet var inputValue: NSTextField!
     
     let ourUUID = NSUUID()
     
@@ -186,6 +184,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         centralManager = CBCentralManager(delegate: self, queue: nil)
+
     }
 
     override var representedObject: Any? {
@@ -193,6 +192,25 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         // Update the view, if already loaded.
         }
     }
+    
+    
+    @IBAction func stopCollection(_ sender: NSButtonCell) {
+        
+        //let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        
+        fileName = fieldFileName.stringValue
+        fileName += ".csv"
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
+        do {
+            print("trying to write file")
+            try csvText.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+            print(path)
+        } catch {
+            print("Failed to create file")
+            print("\(error)")
+        }
+    }
+    
 }
 
 extension Data {

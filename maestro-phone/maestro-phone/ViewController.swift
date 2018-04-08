@@ -285,13 +285,10 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let accelY = motionData?.userAcceleration.y
                         // let accelZ = motionData?.userAcceleration.z
                         
-                        // save acceleration values
-                        var haveSecond = false
                         // set haveSecond to true for single sized test
                         if self.haveFirst {
                             self.toSend[2] = Float(accelX!)
                             self.toSend[3] = Float(accelY!)
-                            haveSecond = true
                             
                         } else {
                             self.toSend[0] = Float(accelX!)

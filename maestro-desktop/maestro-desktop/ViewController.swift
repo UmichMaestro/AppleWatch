@@ -13,9 +13,6 @@ var our_periph : CBPeripheral?
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
-    
-    
-    
     @IBOutlet weak var fieldFileName: NSTextField!
     
     @IBOutlet var accelX: NSTextField!
@@ -29,7 +26,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     var timeValue = 0
     
     var timeSet = false
-    var start = Date()
+    var start = Double()
     var lastTime = 0.0
     
     var centralManager:CBCentralManager!
@@ -125,16 +122,15 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         if characteristic.uuid == transferCharacteristicUUID {
             
             if let data = characteristic.value {
+                /*
                 let now = CFAbsoluteTimeGetCurrent()
                 let timeIn = data.to(type: Double.self)
                 print("Now = \(now)")
                 print("timeIn = \(timeIn)")
                 print("diff = \(now - timeIn)")
-                
-                /*
-                 
+                */
                 if (!timeSet) {
-                start = Date()
+                start = Date().timeIntervalSince1970
                 timeSet = true
                 }
                 //Test for two doubles
@@ -146,117 +142,31 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 //Test for 4 floats
                 // display
                 
-                print("before print")
-                print(contentFirst)
-                print(contentSecond)
-                print(contentThird)
-                print(contentFourth)
-                print("after print")
-                
                 accelX.stringValue = String(contentFirst)
                 accelY.stringValue = String(contentSecond)
                 
                 if (timeSet){
-                    let end = Date()
+                    var end = Date().timeIntervalSince1970
+                    
                     //print("first value read because I'm scared: \(contentFirst)")
-                    print("time elapsed in seconds: \(end.timeIntervalSince(start))")
+                    print("time elapsed in seconds: \(end - start)")
                     print("number of values read: \(timeValue)")
                     //print("number of (X,Y) read: \(timeValue/4)")
-                    print(Double(timeValue) / (end.timeIntervalSince(start)))
-                    newLine = "\(end.timeIntervalSince(start) - lastTime),"
+                    print(Double(timeValue) / (end - start))
+                    newLine = "\(end - start),"
                     newLine += "\(contentFirst),"
                     newLine += "\(contentSecond)\n"
                     //add line to csv file
                     csvText.append(newLine)
-                    print(newLine)
+                    end = Date().timeIntervalSince1970
                     //start next line
-                    newLine = "\(end.timeIntervalSince(start) - lastTime),"
+                    newLine = "\(end - start),"
                     newLine += "\(contentThird),"
                     newLine += "\(contentFourth)\n"
                     csvText.append(newLine)
                     print(newLine)
-                    self.lastTime = end.timeIntervalSince(start)
+                    self.lastTime = end
                 }
-            
-                //add data point to csv file
-                
-                //Test for two doubles
-                //accelX.stringValue = String(contentFirst)
-                //accelY.stringValue = String(contentSecond)
-                //Test for two doubles
-                
-                
-                /*
-                switch whichLabel {
-                case 0:
-                    print(whichLabel)
-                    attitudePitch.stringValue = String(content)
-                    newLine = "\(timeValue),"
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 1:
-                    print(whichLabel)
-                    attitudeYaw.stringValue = String(content)
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 2:
-                    print(whichLabel)
-                    attitudeRoll.stringValue = String(content)
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 3:
-                    print(whichLabel)
-                    accelX.stringValue = String(content)
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 4:
-                    print(whichLabel)
-                    accelY.stringValue = String(content)
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 5:
-                    print(whichLabel)
-                    accelZ.stringValue = String(content)
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 6:
-                    print(whichLabel)
-                    gyroX.stringValue = String(content)
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 7:
-                    print(whichLabel)
-                    gyroY.stringValue = String(content)
-                    newLine += "\(content),"
-                    whichLabel += 1
-                    break
-                case 8:
-                    print(whichLabel)
-                    gyroZ.stringValue = String(content)
-                    newLine += "\(content) funfunfun\n"
-                    
-                    //add line to csv file
-                    csvText.append(newLine)
-                    print(newLine)
-                    //zero out newline
-                    newLine = ""
-                    timeValue += 1
-                    
-                    whichLabel = 0
-                    break
-                default:
-                    print("something's gone horribly wrong")
-                    assert(false, "whichLabel is bigger than 8")
-                }
-                */
-                */
             } else {
                 print("characteristic was nil")
             }

@@ -104,7 +104,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
         print("central subbed to the char.")
-        getMotionManagerUpdates()
+        //getMotionManagerUpdates()
     }
     
     //function runs when central device unsubscribes from our characteristic
@@ -117,8 +117,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     //currently unused, but if a packet fails to send, this function will get called
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager)
     {
-        //sendData()
-        sendLatency()
+        sendData()
     }
     
     //does the actually work of sending the data over BT
@@ -169,8 +168,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         
         var didSend = true
         
-        //while didSend {
-        if thisPacketSent == false
+        /*
+        while didSend
+        {
+        */
+        if !thisPacketSent
         {
             
             
@@ -179,8 +181,8 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             //create a data object using the input
             var chunkZero = Data(from: toSend[0]) // this is accelX
             let chunkOne = Data(from: toSend[1]) // this is accelY
-            let chunkTwo = Data(from: toSend[2]) // this is second accelX
-            let chunkThree = Data(from: toSend[3]) // this is the second accelY
+            let chunkTwo = Data(from: toSend[2]) // this is 2nd accelX
+            let chunkThree = Data(from: toSend[3]) // this is 2nd accelY
             chunkZero.append(chunkOne)
             chunkZero.append(chunkTwo)
             chunkZero.append(chunkThree)
@@ -269,27 +271,21 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                     // success
                     if ((motionData) != nil && self.readyForUpdate) {
                         
-                        /*
-                         // get gyroscopes values
-                         let pitch = motionData?.attitude.pitch
-                         let yaw = motionData?.attitude.yaw
-                         let roll = motionData?.attitude.roll
-                         
-                         self.toSend[0] = pitch!
-                         self.toSend[1] = yaw!
-                         self.toSend[2] = roll!
-                         */
-                        
                         // get accelerations values
                         let accelX = motionData?.userAcceleration.x
                         let accelY = motionData?.userAcceleration.y
                         // let accelZ = motionData?.userAcceleration.z
                         
                         // set haveSecond to true for single sized test
+                        self.toSend[0] = Float(accelX!)
+                        self.toSend[1] = Float(accelY!)
+                        
+                        var haveSecond = false
+                        // set have Second to true for single sized test
                         if self.haveFirst {
                             self.toSend[2] = Float(accelX!)
                             self.toSend[3] = Float(accelY!)
-                            
+                            haveSecond = true
                         } else {
                             self.toSend[0] = Float(accelX!)
                             self.toSend[1] = Float(accelY!)
@@ -297,30 +293,15 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         }
                         
                         
-                        
-                        /*
-                         // get gyroscopes values
-                         let gyroX = motionData?.rotationRate.x
-                         let gyroY = motionData?.rotationRate.y
-                         let gyroZ = motionData?.rotationRate.z
-                         
-                         //send gyro values
-                         self.toSend[6] = gyroX!
-                         self.toSend[7] = gyroY!
-                         self.toSend[8] = gyroZ!
-                         */
-                        
-                        /*
-                        if haveSecond {// we have one dataset, we don't need another until we
-                            // send it
+                        // we have one dataset, we don't need another until we
+                        // send it
+                        if haveSecond {
                             self.readyForUpdate = false
                             self.haveFirst = false
                             self.toSendIndex = 0
                             self.thisPacketSent = false
                             self.sendData()
                         }
-                        */
-                        self.sendLatency()
                     }
                 }
             }

@@ -19,11 +19,14 @@ class ViewController: UIViewController, WCSessionDelegate {
     var number_in = Int(0)
     
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        print("received message")
         let timeNow = CFAbsoluteTimeGetCurrent()
         let timeIn = messageData.to(type: Double.self)
         number_in += 1
-        number.text = String(number_in)
-        timeDelay.text = String(timeNow - timeIn)
+        DispatchQueue.main.async { // Correct
+            self.number.text = String(self.number_in)
+            self.timeDelay.text = String(timeNow - timeIn)
+        }
     }
     
     // no idea what these are for
@@ -44,6 +47,7 @@ class ViewController: UIViewController, WCSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (WCSession.isSupported()) {
+            print("session made")
             let session = WCSession.default
             session.delegate = self
             session.activate()

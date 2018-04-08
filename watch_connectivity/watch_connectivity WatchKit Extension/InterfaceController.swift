@@ -15,9 +15,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet var timeStart: WKInterfaceLabel!
     @IBAction func startSending() {
-        while true {
-            send_a_message()
-        }
+        send_a_message()
     }
     
     

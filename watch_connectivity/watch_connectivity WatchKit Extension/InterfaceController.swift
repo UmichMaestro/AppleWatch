@@ -15,10 +15,22 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet var timeStart: WKInterfaceLabel!
     @IBAction func startSending() {
-        send_a_message()
+        print("start pushed")
+        sending_status = true
+        var start_time = Date().timeIntervalSince1970
+        while sending_status {
+            if ((Date().timeIntervalSince1970 - start_time) > 0.05) {
+                send_a_message()
+                start_time = Date().timeIntervalSince1970
+            }
+        }
+    }
+    @IBAction func stopSending() {
+        print("stop pushed")
+        sending_status = false
     }
     
-    
+    var sending_status = false
     var start_time = Double(0)
     
     // not really sure what this does
@@ -57,7 +69,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         if (WCSession.default.isReachable) {
             let message = Data(from: currentTime)
             WCSession.default.sendMessageData(message, replyHandler: nil, errorHandler: nil)
-            timeStart.setText(String(currentTime - start_time))
+            timeStart.setText(String(currentTime))
         }
     }
 

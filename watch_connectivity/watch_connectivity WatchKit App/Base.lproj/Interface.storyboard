@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -16,9 +16,16 @@
                     <items>
                         <label alignment="left" text="Start time" numberOfLines="0" id="XZz-10-Yyj"/>
                         <label alignment="left" text="time" id="NzP-aF-mw5"/>
-                        <button width="1" height="100" alignment="left" title="Start Sending" id="3zm-aq-604">
+                        <button width="1" height="41" alignment="left" title="Start Sending" id="3zm-aq-604">
+                            <color key="backgroundColor" red="0.069817628614448568" green="0.53639086787564771" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="startSending" destination="AgC-eL-Hgc" id="iKg-eE-pA8"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Stop Sending" id="6L7-eY-iR3">
+                            <color key="backgroundColor" red="0.69407788212435229" green="0.0" blue="0.024237807709495435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="stopSending" destination="AgC-eL-Hgc" id="aES-F7-z2P"/>
                             </connections>
                         </button>
                     </items>

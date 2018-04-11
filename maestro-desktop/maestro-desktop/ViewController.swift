@@ -13,15 +13,14 @@ var our_periph : CBPeripheral?
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    //box for user to type in
     @IBOutlet weak var fieldFileName: NSTextField!
     
     @IBOutlet var accelX: NSTextField!
-    @IBOutlet var accelY: NSTextField!
-    
-    var whichLabel = 0
+    @IBOutlet var accelZ: NSTextField!
 
     var fileName = "phoneData.csv"
-    var csvText = "time,RawAccelX,RawAccelY\n"
+    var csvText = "time,RawAccelX,RawAccelZ\n"
     var newLine = "nothing"
     var timeValue = 0
     
@@ -56,10 +55,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         print("after scan")
     }
     
-    func centralManager(_ central: CBCentralManager,
-                        didDiscover peripheral: CBPeripheral,
-                        advertisementData: [String : Any],
-                        rssi RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager,didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("found a peripheral")
         
         if advertisementData[CBAdvertisementDataIsConnectable] != nil {
@@ -81,14 +77,18 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
     
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    //called when a peripheral connects to the central
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral)
+    {
+        //look and see what kind of data the peripheral has
         peripheral.discoverServices([transferServiceUUID])
-        
     }
     
+    //called when peripheral disconnects from the central device
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("disconnected")
         
+        //look for another connection
         central.scanForPeripherals(withServices: [transferServiceUUID], options: nil)
     }
     
@@ -118,7 +118,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?)
+    {
         if characteristic.uuid == transferCharacteristicUUID {
             
             if let data = characteristic.value {
@@ -130,8 +131,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 print("diff = \(now - timeIn)")
                 */
                 if (!timeSet) {
-                start = Date().timeIntervalSince1970
-                timeSet = true
+                    start = Date().timeIntervalSince1970
+                    timeSet = true
                 }
                 //Test for two doubles
                 let contentFirst = data.prefix(upTo: 4).to(type: Float.self)
@@ -142,8 +143,14 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 //Test for 4 floats
                 // display
                 
-                accelX.stringValue = String(contentFirst)
-                accelY.stringValue = String(contentSecond)
+                if contentFirst != nil
+                {
+                    accelX.stringValue = String(contentFirst)
+                }
+                
+                if contentSecond != nil {
+                    accelZ.stringValue = String(contentSecond)
+                }
                 
                 if (timeSet){
                     var end = Date().timeIntervalSince1970
@@ -173,20 +180,21 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
+    //don't know when this gets called
+    func peripheral(_ peripheral: CBPeripheral,didModifyServices invalidatedServices: [CBService])
+    {
         print("I don't know what this should be doing")
     }
     
-    let ourUUID = NSUUID()
-    
-    
+    //called when app appears on screen
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        //creating the manager object for this device
         centralManager = CBCentralManager(delegate: self, queue: nil)
-
     }
 
+    //don't know what this does
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -196,23 +204,35 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     @IBAction func stopCollection(_ sender: NSButtonCell) {
         
-        //let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        
+        //create file name based on user input
         fileName = fieldFileName.stringValue
         fileName += ".csv"
+        
+        //determine file path
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
-        do {
+
+        //attempt to write data to file
+        do
+        {
+            //debugging code
             print("trying to write file")
-            try csvText.write(to: path, atomically: true, encoding: String.Encoding.utf8)
             print(path)
+
+            //write the data!
+            try csvText.write(to: path, atomically: true, encoding: String.Encoding.utf8)
         } catch {
             print("Failed to create file")
             print("\(error)")
         }
+        
+        //reset these variables so we can write to another file if we wanted
+        csvText = "time,RawAccelX,RawAccelZ\n"
+        timeSet = false
     }
     
 }
 
+//nifty function to turn numbers into data objects and back
 extension Data {
     
     init<T>(from value: T) {

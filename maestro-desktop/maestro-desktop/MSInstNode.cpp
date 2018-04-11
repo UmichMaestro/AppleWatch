@@ -5,8 +5,6 @@ MSInstNode::MSInstNode(int x, int y)
 {
     a = x;
     b = y;
-    
-    
 }
 
 int MSInstNode::add()

@@ -276,19 +276,22 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let accelY = motionData?.userAcceleration.y
                         // let accelZ = motionData?.userAcceleration.z
                         
+                        let pitch = motionData?.attitude.pitch;
+                        let yaw = motionData?.attitude.yaw;
+                        
                         // set haveSecond to true for single sized test
-                        self.toSend[0] = Float(accelX!)
-                        self.toSend[1] = Float(accelY!)
+                        self.toSend[0] = Float(pitch!)
+                        self.toSend[1] = Float(yaw!)
                         
                         var haveSecond = false
                         // set have Second to true for single sized test
                         if self.haveFirst {
-                            self.toSend[2] = Float(accelX!)
-                            self.toSend[3] = Float(accelY!)
+                            self.toSend[2] = Float(pitch!)
+                            self.toSend[3] = Float(yaw!)
                             haveSecond = true
                         } else {
-                            self.toSend[0] = Float(accelX!)
-                            self.toSend[1] = Float(accelY!)
+                            self.toSend[0] = Float(pitch!)
+                            self.toSend[1] = Float(yaw!)
                             self.haveFirst = true
                         }
                         

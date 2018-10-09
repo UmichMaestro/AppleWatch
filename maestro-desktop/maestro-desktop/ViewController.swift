@@ -18,6 +18,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     @IBOutlet var accelX: NSTextField!
     @IBOutlet var accelY: NSTextField!
     
+    var alg_manager:AlgorithmManager = AlgorithmManager()
+    
     var whichLabel = 0
 
     var fileName = "phoneData.csv"
@@ -145,14 +147,20 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 accelX.stringValue = String(contentFirst)
                 accelY.stringValue = String(contentSecond)
                 
+                let pitch = contentFirst;
+                let yaw = contentSecond;
+                
+                
                 if (timeSet){
+                    alg_manager.update(pitch:pitch, yaw:yaw);
+                    
                     var end = Date().timeIntervalSince1970
                     
                     //print("first value read because I'm scared: \(contentFirst)")
-                    print("time elapsed in seconds: \(end - start)")
-                    print("number of values read: \(timeValue)")
+                    //print("time elapsed in seconds: \(end - start)")
+                    //print("number of values read: \(timeValue)")
                     //print("number of (X,Y) read: \(timeValue/4)")
-                    print(Double(timeValue) / (end - start))
+                    //print(Double(timeValue) / (end - start))
                     newLine = "\(end - start),"
                     newLine += "\(contentFirst),"
                     newLine += "\(contentSecond)\n"
@@ -164,11 +172,11 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                     newLine += "\(contentThird),"
                     newLine += "\(contentFourth)\n"
                     csvText.append(newLine)
-                    print(newLine)
+                    //print(newLine)
                     self.lastTime = end
                 }
             } else {
-                print("characteristic was nil")
+                //print("characteristic was nil")
             }
         }
     }

@@ -12,8 +12,10 @@
 		44EA7EF1202CDC3800CBDFE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA7EF0202CDC3800CBDFE9 /* ViewController.swift */; };
 		44EA7EF3202CDC3800CBDFE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44EA7EF2202CDC3800CBDFE9 /* Assets.xcassets */; };
 		44EA7EF6202CDC3800CBDFE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EA7EF4202CDC3800CBDFE9 /* Main.storyboard */; };
-		851A07B72069EA5E00DB4114 /* MSInstNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 851A07B32069EA5D00DB4114 /* MSInstNode.cpp */; };
-		851A07B92069EA5E00DB4114 /* MSSynth.mm in Sources */ = {isa = PBXBuildFile; fileRef = 851A07B62069EA5E00DB4114 /* MSSynth.mm */; };
+		854C8FAE216E7BAB0007A390 /* MSInstNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 854C8FA7216E7BAB0007A390 /* MSInstNode.cpp */; };
+		854C8FB0216E7BAB0007A390 /* MSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 854C8FAC216E7BAB0007A390 /* MSEngine.cpp */; };
+		854C8FB1216E7BAB0007A390 /* wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 854C8FAD216E7BAB0007A390 /* wrapper.cpp */; };
+		854C8FB5216E7C710007A390 /* librtaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 854C8FB4216E7C710007A390 /* librtaudio.dylib */; };
 		CD2E8899216787B200C6B3BC /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E8898216787B200C6B3BC /* AlgorithmManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,10 +29,13 @@
 		44EA7EF5202CDC3800CBDFE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44EA7EF7202CDC3800CBDFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44EA7EF8202CDC3800CBDFE9 /* maestro_desktop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = maestro_desktop.entitlements; sourceTree = "<group>"; };
-		851A07B22069EA5D00DB4114 /* MSInstNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MSInstNode.hpp; sourceTree = "<group>"; };
-		851A07B32069EA5D00DB4114 /* MSInstNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSInstNode.cpp; sourceTree = "<group>"; };
-		851A07B52069EA5D00DB4114 /* MSSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSSynth.h; sourceTree = "<group>"; };
-		851A07B62069EA5E00DB4114 /* MSSynth.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MSSynth.mm; sourceTree = "<group>"; };
+		854C8FA7216E7BAB0007A390 /* MSInstNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSInstNode.cpp; sourceTree = "<group>"; };
+		854C8FA9216E7BAB0007A390 /* MSInstNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSInstNode.h; sourceTree = "<group>"; };
+		854C8FAA216E7BAB0007A390 /* MSEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEngine.h; sourceTree = "<group>"; };
+		854C8FAC216E7BAB0007A390 /* MSEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSEngine.cpp; sourceTree = "<group>"; };
+		854C8FAD216E7BAB0007A390 /* wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrapper.cpp; sourceTree = "<group>"; };
+		854C8FB2216E7BDB0007A390 /* RtAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtAudio.h; sourceTree = "<group>"; };
+		854C8FB4216E7C710007A390 /* librtaudio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = librtaudio.dylib; path = "maestro-desktop/librtaudio.dylib"; sourceTree = "<group>"; };
 		85C9502D2069A64500D171D9 /* maestro-desktop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "maestro-desktop-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD2E8898216787B200C6B3BC /* AlgorithmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				854C8FB5216E7C710007A390 /* librtaudio.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +57,7 @@
 			children = (
 				44EA7EED202CDC3800CBDFE9 /* maestro-desktop */,
 				44EA7EEC202CDC3800CBDFE9 /* Products */,
+				854C8FB3216E7C700007A390 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,10 +72,12 @@
 		44EA7EED202CDC3800CBDFE9 /* maestro-desktop */ = {
 			isa = PBXGroup;
 			children = (
-				851A07B32069EA5D00DB4114 /* MSInstNode.cpp */,
-				851A07B22069EA5D00DB4114 /* MSInstNode.hpp */,
-				851A07B52069EA5D00DB4114 /* MSSynth.h */,
-				851A07B62069EA5E00DB4114 /* MSSynth.mm */,
+				854C8FB2216E7BDB0007A390 /* RtAudio.h */,
+				854C8FAC216E7BAB0007A390 /* MSEngine.cpp */,
+				854C8FAA216E7BAB0007A390 /* MSEngine.h */,
+				854C8FA7216E7BAB0007A390 /* MSInstNode.cpp */,
+				854C8FA9216E7BAB0007A390 /* MSInstNode.h */,
+				854C8FAD216E7BAB0007A390 /* wrapper.cpp */,
 				44558E5A2030D88F0017BE10 /* maestro-desktop.entitlements */,
 				44EA7EEE202CDC3800CBDFE9 /* AppDelegate.swift */,
 				44634CDD203765CD008C3EB8 /* Definitions.swift */,
@@ -81,6 +90,14 @@
 				CD2E8898216787B200C6B3BC /* AlgorithmManager.swift */,
 			);
 			path = "maestro-desktop";
+			sourceTree = "<group>";
+		};
+		854C8FB3216E7C700007A390 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				854C8FB4216E7C710007A390 /* librtaudio.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,12 +183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				851A07B92069EA5E00DB4114 /* MSSynth.mm in Sources */,
 				CD2E8899216787B200C6B3BC /* AlgorithmManager.swift in Sources */,
 				44EA7EF1202CDC3800CBDFE9 /* ViewController.swift in Sources */,
 				44634CDE203765CD008C3EB8 /* Definitions.swift in Sources */,
+				854C8FAE216E7BAB0007A390 /* MSInstNode.cpp in Sources */,
+				854C8FB1216E7BAB0007A390 /* wrapper.cpp in Sources */,
 				44EA7EEF202CDC3800CBDFE9 /* AppDelegate.swift in Sources */,
-				851A07B72069EA5E00DB4114 /* MSInstNode.cpp in Sources */,
+				854C8FB0216E7BAB0007A390 /* MSEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,9 +325,13 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
+				DEVELOPMENT_TEAM = GB2P972P46;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/maestro-desktop",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.maestro-desktop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "maestro-desktop/maestro-desktop-Bridging-Header.h";
@@ -326,9 +348,13 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
+				DEVELOPMENT_TEAM = GB2P972P46;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/maestro-desktop",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.maestro-desktop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "maestro-desktop/maestro-desktop-Bridging-Header.h";

@@ -18,7 +18,7 @@ class AlgorithmManager{
         case p, mp, mf, f, ff
     }
     
-    private enum State{
+    enum State{
         case hold
         case prep
         case down_beat
@@ -52,7 +52,7 @@ class AlgorithmManager{
     var prevPitch:Float
     var prevYaw:Float
     var change_count:Int
-    private var cutoffState:State
+    var cutoffState:State
     
     //constant algorithms
     let slope_p:Float = 0.0005
@@ -233,7 +233,7 @@ class AlgorithmManager{
                 }
                 
                 //if(change_count >= change_threshold){
-                if(change_count >= 3){
+                if(change_count >= 7){
                     nextState = .cutoff
                     //TODO: push state
                     stopGesture();

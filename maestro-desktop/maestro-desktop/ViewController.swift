@@ -31,19 +31,14 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     var start = Double()
     var lastTime = 0.0
     
+    var sound_produced = false
+    var cut_off_sound = false
+    
     var centralManager:CBCentralManager!
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("state updated")
         print(central.state)
-        
-        var x = MSSynth(9, secondNumber: 10)
-        let a = x?.getafromcpp()
-        print(a!)
-        let b = x?.getbfromcpp()
-        print(b!)
-        let result = x?.addfromcpp()
-        print(result!)
         
         scanForPeriph()
     }
@@ -120,6 +115,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
     
+
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if characteristic.uuid == transferCharacteristicUUID {
             
@@ -149,7 +145,27 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 
                 let pitch = contentFirst;
                 let yaw = contentSecond;
-                
+
+                if(alg_manager.cutoffState == AlgorithmManager.State.action_point){
+                    if(!sound_produced)
+                    {
+                        print("we should hear sound right here")
+                        sound_produced = true
+                        startSound()
+                    }
+                    
+                    
+                }
+                if(alg_manager.cutoffState == AlgorithmManager.State.cutoff){
+                    if(!cut_off_sound)
+                    {
+                        print("DONT make another sound")
+                        cut_off_sound = true
+                        cutoff()
+
+                    }
+                    
+                }
                 
                 if (timeSet){
                     alg_manager.update(pitch:pitch, yaw:yaw);
@@ -192,6 +208,9 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        
+        //setup for synth engine
+        setup()
 
     }
 
@@ -219,9 +238,26 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
 
-    
+
     @IBAction func startGesture(_ sender: NSButton){
+        sound_produced = false
+        cut_off_sound = false
         alg_manager.startGesture();
+    }
+    
+    @IBAction func start_sound(_ sender: Any) {
+
+        
+        print("start button works")
+        startSound()
+    }
+    
+    
+    @IBAction func end_sound(_ sender: Any)
+    {
+        print("end button works")
+
+        cutoff()
     }
     
     

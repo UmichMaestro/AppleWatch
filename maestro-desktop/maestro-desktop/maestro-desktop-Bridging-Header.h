@@ -1,5 +1,7 @@
-//
-//  Use this file to import your target's public headers that you would like to expose to Swift.
-//
+//Ellie Epskamp-Hunt
+//eepskamp@umich.edu
 
-#include "MSSynth.h"
+void setup();
+int startSound();
+void cutoff();
+void changeVolume(double gain);

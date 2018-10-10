@@ -218,6 +218,12 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
             print("\(error)")
         }
     }
+
+    
+    @IBAction func startGesture(_ sender: NSButton){
+        alg_manager.startGesture();
+    }
+    
     
 }
 

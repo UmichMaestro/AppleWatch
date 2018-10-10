@@ -29,14 +29,15 @@ class AlgorithmManager{
         case cutoff
     }
     
-    private enum AlgorithmState{
+    enum AlgorithmState{
         case startedLargest
         case endedLargest
         case begun
         case end
     }
     
-    private var progState:AlgorithmState
+    
+    var progState:AlgorithmState
     
     //dynamic detection
     var maxPitchRange:Float
@@ -45,6 +46,7 @@ class AlgorithmManager{
     var maxYawRange:Float
     var maxYawLargest:Float
     var minYawLargest:Float
+    var currentPitchRange:Float
     
     //cutoff detection
     var prevPitch:Float
@@ -54,19 +56,22 @@ class AlgorithmManager{
     
     //constant algorithms
     let slope_p:Float = 0.0005
-    let slope_y:Float = 0.00025
-    let change_threshold:Int = 10
+    let slope_y:Float = 0.000125
     
+    let change_threshold:Int = 10
+    let downbeat_threshold:Int = 5
     
     init(){
         progState = .startedLargest
         
         maxPitchRange = 0
-        maxPitchLargest = 0 //TODO: initialize with min/max values of floats.
+        maxPitchLargest = 0
         minPitchLargest = 0
         maxYawRange = 0
-        maxYawLargest = 0 //TODO: initialize with min/max values of floats.
+        maxYawLargest = 0
         minYawLargest = 0
+        currentPitchRange = 0
+        
         
         prevPitch = 0
         prevYaw = 0
@@ -75,13 +80,22 @@ class AlgorithmManager{
     }
     
     func stopLargestGesture(){progState = .endedLargest}
-    func startGesture(){ if(progState == .endedLargest){progState = .begun} }
+    func startGesture(){
+        if(progState == .endedLargest || progState == .end){
+            progState = .begun
+            cutoffState = .hold
+            maxPitchLargest = 0
+            maxYawLargest = 0
+            minPitchLargest = 0
+            minYawLargest = 0
+        }
+    }
     func stopGesture(){progState = .end} //TODO: see if this is what we want.
     
     func update(pitch:Float, yaw:Float){
         
-        print("current state: ")
-        print(progState)
+        //print("current state: ")
+        //print(progState)
         if(progState == .startedLargest){
             //we want to determine the largest PITCH range we can discern.
             if(pitch > maxPitchLargest){
@@ -92,31 +106,27 @@ class AlgorithmManager{
             }
             maxPitchRange = maxPitchLargest - minPitchLargest
             cutoffState = cutoffDetection(currentState: cutoffState, pitch:pitch, yaw:yaw)
-            
+            let dynamic:Dynamics = handleDynamic(current_range:maxPitchRange)
             if(cutoffState == .cutoff){
                 //we want to update the progState.
                 progState = .endedLargest
-                let dynamic:Dynamics = handleDynamic(current_range:maxPitchRange)
-                
-                if(dynamic == .p){
-                    print("piano")
-                }
-                if(dynamic == .mp){
-                    print("mp")
-                }
-                if(dynamic == .mf){
-                    print("mf")
-                }
-                if(dynamic == .f){
-                    print("f")
-                }
-                if(dynamic == .ff){
-                    print("ff")
-                }
-                
+                print(dynamic)
             }
         }else if(progState == .endedLargest){
             //so on so forth...
+            //do nothing. the button will update this state on it's own.
+        }else if (progState == .begun){
+            //we want to determine the largest PITCH range we can discern.
+            if(pitch > maxPitchLargest){
+                maxPitchLargest = pitch
+            }
+            if(pitch < minPitchLargest){
+                minPitchLargest = pitch
+            }
+            currentPitchRange = maxPitchLargest - minPitchLargest
+            cutoffState = cutoffDetection(currentState: cutoffState, pitch:pitch, yaw:yaw)
+            let dynamic:Dynamics = handleDynamic(current_range:currentPitchRange)
+            print(dynamic)
         }
     }
     
@@ -145,8 +155,6 @@ class AlgorithmManager{
         
         var nextState:State = currentState
         
-        var cutoff_detected:Bool = false
-        
         var cutoff_type:String = ""
         
         if(currentState == .hold){
@@ -155,7 +163,6 @@ class AlgorithmManager{
             }else{
                 change_count = 0
             }
-            
             
             if(change_count >= change_threshold){
                 nextState = .prep
@@ -182,7 +189,7 @@ class AlgorithmManager{
                 change_count = 0
             }
             
-            if(change_count >= change_threshold){
+            if(change_count >= downbeat_threshold){
                 nextState = .action_point
                 //TODO: push state
                 change_count = 0
@@ -201,7 +208,6 @@ class AlgorithmManager{
                 change_count = 0
             }
         }else if (currentState == .sustain){
-            if(!cutoff_detected){
                 if(pitch_change < -slope_p){
                     change_count = change_count + 1
                 }else{
@@ -226,14 +232,12 @@ class AlgorithmManager{
                     change_count = change_count + 1
                 }
                 
-                if(change_count >= change_threshold){
+                //if(change_count >= change_threshold){
+                if(change_count >= 3){
                     nextState = .cutoff
                     //TODO: push state
-                    cutoff_detected = true
                     stopGesture();
                 }
-                
-            }
         }else if (currentState == .cutoff){
             nextState = .cutoff
         }

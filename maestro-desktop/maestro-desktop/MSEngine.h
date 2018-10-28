@@ -40,10 +40,11 @@ private:
     }
     
 public:
-    void attachInstrument(MSInstNode *inst);
+    void attachInstrument(string path);
     void clearInstruments();
     vector<MSInstNode*>& getInstruments();
-
+    void cleanUp();
+    
 };
 
 #endif

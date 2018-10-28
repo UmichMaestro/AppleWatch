@@ -28,8 +28,11 @@ class MSInstNode {
     double* amplitudeForTime(int t);
     void synthesize(float *outbuf, unsigned int nFrames);
     
+    int cells = 0; //number of cells, meta.partials * meta.duration;
+    
 public:
     MSInstNode(std::string path);
+    ~MSInstNode();
     
     void start(double initialGain = 1.0);
     void setGain(double gain);

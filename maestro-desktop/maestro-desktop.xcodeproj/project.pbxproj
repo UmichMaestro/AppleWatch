@@ -15,7 +15,7 @@
 		854C8FAE216E7BAB0007A390 /* MSInstNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 854C8FA7216E7BAB0007A390 /* MSInstNode.cpp */; };
 		854C8FB0216E7BAB0007A390 /* MSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 854C8FAC216E7BAB0007A390 /* MSEngine.cpp */; };
 		854C8FB1216E7BAB0007A390 /* wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 854C8FAD216E7BAB0007A390 /* wrapper.cpp */; };
-		854C8FB5216E7C710007A390 /* librtaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 854C8FB4216E7C710007A390 /* librtaudio.dylib */; };
+		CD2E1AF2216E90B900BB576C /* librtaudio.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2E1AF1216E90B900BB576C /* librtaudio.dylib */; };
 		CD2E8899216787B200C6B3BC /* AlgorithmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2E8898216787B200C6B3BC /* AlgorithmManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +35,8 @@
 		854C8FAC216E7BAB0007A390 /* MSEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSEngine.cpp; sourceTree = "<group>"; };
 		854C8FAD216E7BAB0007A390 /* wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrapper.cpp; sourceTree = "<group>"; };
 		854C8FB2216E7BDB0007A390 /* RtAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtAudio.h; sourceTree = "<group>"; };
-		854C8FB4216E7C710007A390 /* librtaudio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = librtaudio.dylib; path = "maestro-desktop/librtaudio.dylib"; sourceTree = "<group>"; };
 		85C9502D2069A64500D171D9 /* maestro-desktop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "maestro-desktop-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD2E1AF1216E90B900BB576C /* librtaudio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = librtaudio.dylib; path = "maestro-desktop/librtaudio.dylib"; sourceTree = "<group>"; };
 		CD2E8898216787B200C6B3BC /* AlgorithmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				854C8FB5216E7C710007A390 /* librtaudio.dylib in Frameworks */,
+				CD2E1AF2216E90B900BB576C /* librtaudio.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 		854C8FB3216E7C700007A390 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				854C8FB4216E7C710007A390 /* librtaudio.dylib */,
+				CD2E1AF1216E90B900BB576C /* librtaudio.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = GB2P972P46;
+				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -348,7 +348,7 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = GB2P972P46;
+				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (

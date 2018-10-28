@@ -17,11 +17,11 @@ MSEngine::MSEngine() {
     try {
         audio = new RtAudio(RtAudio::MACOSX_CORE);
     }catch  (RtAudioError e){
-        fprintf(stderr, "fail to create RtAudio: %s¥n", e.what());
+        fprintf(stderr, "fail to create RtAudio: %s\n", e.what());
         return ;
     }
     if (!audio){
-        fprintf(stderr, "fail to allocate RtAudio¥n");
+        fprintf(stderr, "fail to allocate RtAudio\n");
         return ;
     }
     
@@ -41,10 +41,23 @@ vector<MSInstNode*>& MSEngine::getInstruments() {
     return *instruments;
 }
 
-void MSEngine::attachInstrument(MSInstNode *inst) {
+void MSEngine::attachInstrument(string path) {
+    MSInstNode *inst = new MSInstNode(path);
     instruments->push_back(inst);
 }
 
 void MSEngine::clearInstruments() {
     instruments->clear();
+    //see if the destructor is called!"
+}
+
+void MSEngine::cleanUp(){
+    for(int i = 0; i < instruments->size(); i++)
+    {
+        delete instruments->at(i);
+    }
+    clearInstruments();
+    delete instruments;
+    delete audio;
+    delete outParam;
 }

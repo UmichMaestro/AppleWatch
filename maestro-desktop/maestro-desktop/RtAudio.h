@@ -744,7 +744,7 @@ protected:
     bool deviceInterleaved[2]; // Playback and record, respectively.
     bool doByteSwap[2];        // Playback and record, respectively.
     unsigned int sampleRate;
-    unsigned int bufferSize;
+    unsigned int bufferSize;  //changed this.... maybe back?
     unsigned int nBuffers;
     unsigned int nUserChannels[2];    // Playback and record, respectively.
     unsigned int nDeviceChannels[2];  // Playback and record channels, respectively.

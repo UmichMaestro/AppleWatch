@@ -78,6 +78,12 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         }
     }
     
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+        print("dissapear")
+        cleanUp()
+    }
+    
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         peripheral.discoverServices([transferServiceUUID])
         
@@ -151,7 +157,12 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                     {
                         print("we should hear sound right here")
                         sound_produced = true
+                        let dynamic = alg_manager.handleDynamic(current_range: alg_manager.currentPitchRange);
+                        
+                        let dynLevel:Double = dynamic.rawValue;
+                        
                         startSound()
+                        changeVolume(dynLevel)
                     }
                     
                     
@@ -210,7 +221,10 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         centralManager = CBCentralManager(delegate: self, queue: nil)
         
         //setup for synth engine
+        
         setup()
+        print(" I setup")
+        //setup()
 
     }
 
@@ -246,10 +260,15 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     @IBAction func start_sound(_ sender: Any) {
-
-        
         print("start button works")
+        //startSound()
+        
         startSound()
+        
+        //sleep(1)
+        
+        //cutoff()
+        
     }
     
     
@@ -258,6 +277,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         print("end button works")
 
         cutoff()
+        //cleanUp()
     }
     
     

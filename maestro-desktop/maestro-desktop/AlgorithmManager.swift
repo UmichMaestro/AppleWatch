@@ -46,6 +46,10 @@ class AlgorithmManager{
     var maxYawRange:Float
     var maxYawLargest:Float
     var minYawLargest:Float
+    var maxAccelYRange:Float
+    var maxAccelYLargest:Float
+    var minAccelYLargest:Float
+    var currentAccelYRange:Float
     var currentPitchRange:Float
     
     //cutoff detection
@@ -71,6 +75,10 @@ class AlgorithmManager{
         maxYawLargest = 0
         minYawLargest = 0
         currentPitchRange = 0
+        maxAccelYRange = 0
+        maxAccelYLargest = 0
+        minAccelYLargest = 0
+        currentAccelYRange = 0
         
         
         prevPitch = 0
@@ -88,11 +96,13 @@ class AlgorithmManager{
             maxYawLargest = 0
             minPitchLargest = 0
             minYawLargest = 0
+            maxAccelYLargest = 0
+            minAccelYLargest = 0
         }
     }
     func stopGesture(){progState = .end} //TODO: see if this is what we want.
     
-    func update(pitch:Float, yaw:Float){
+    func update(pitch:Float, yaw:Float, accelY:Float){
         
         //print("current state: ")
         //print(progState)
@@ -208,36 +218,36 @@ class AlgorithmManager{
                 change_count = 0
             }
         }else if (currentState == .sustain){
-                if(pitch_change < -slope_p){
-                    change_count = change_count + 1
-                }else{
-                    change_count = 0
+            if(pitch_change < -slope_p){
+                change_count = change_count + 1
+            }else{
+                change_count = 0
+            }
+            
+            if(change_count >= change_threshold){
+                if(yaw_change > slope_y){
+                    cutoff_type = "loop"
+                }else if (yaw_change < -slope_y){
+                    cutoff_type = "boop"
                 }
                 
-                if(change_count >= change_threshold){
-                    if(yaw_change > slope_y){
-                        cutoff_type = "loop"
-                    }else if (yaw_change < -slope_y){
-                        cutoff_type = "boop"
-                    }
-                    
-                    change_count = 0
-                }
-                
-                if(cutoff_type == "loop"){
-                    if (yaw_change < -slope_y){
-                        change_count = change_count + 1
-                    }
-                }else if (cutoff_type == "boop"){
+                change_count = 0
+            }
+            
+            if(cutoff_type == "loop"){
+                if (yaw_change < -slope_y){
                     change_count = change_count + 1
                 }
-                
-                //if(change_count >= change_threshold){
-                if(change_count >= downbeat_threshold){
-                    nextState = .cutoff
-                    //TODO: push state
-                    stopGesture();
-                }
+            }else if (cutoff_type == "boop"){
+                change_count = change_count + 1
+            }
+            
+            //if(change_count >= change_threshold){
+            if(change_count >= downbeat_threshold){
+                nextState = .cutoff
+                //TODO: push state
+                stopGesture();
+            }
         }else if (currentState == .cutoff){
             nextState = .cutoff
         }

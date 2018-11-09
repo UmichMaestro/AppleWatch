@@ -153,13 +153,13 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 print(contentThird)
                 print(contentFourth)
                 
-                pitch_label.stringValue = ""//String(contentFirst)
-                //yaw_label.stringValue = String(contentSecond)
-                //accelX_label.stringValue = String(contentThird)
+                pitch_label.stringValue = String(contentFirst)
+                yaw_label.stringValue = String(contentSecond)
+                accelX_label.stringValue = String(contentThird)
                 
                 let pitch = contentFirst;
                 let yaw = contentSecond;
-                let accelX_value = contentThird;
+                let accelY = contentThird;
                 let pitch2 = contentFourth;
 
                 if(alg_manager.cutoffState == AlgorithmManager.State.action_point){
@@ -189,7 +189,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 }
                 
                 if (timeSet){
-                    alg_manager.update(pitch:pitch, yaw:yaw);
+                    alg_manager.update(pitch:pitch, yaw:yaw, accelY: accelY);
                     
                     var end = Date().timeIntervalSince1970
                     

@@ -295,7 +295,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         print(toggle)
                         self.buffer.addItem(item: Float(pitch!))
                         self.buffer.addItem(item: (Float(yaw!)))
-                        self.buffer.addItem(item: (Float(accelX!)))
+                        self.buffer.addItem(item: (Float(accelY!)))
                         self.buffer.addItem(item: Float(pitch!))
 
                         

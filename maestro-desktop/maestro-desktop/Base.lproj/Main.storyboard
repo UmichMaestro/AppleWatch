@@ -800,7 +800,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cff-g6-ZhV">
-                                <rect key="frame" x="335" y="148" width="11" height="17"/>
+                                <rect key="frame" x="288" y="148" width="93" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="x" id="fNq-w4-I0J">
                                     <font key="font" metaFont="system"/>

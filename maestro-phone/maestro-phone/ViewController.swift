@@ -28,6 +28,11 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     var thisPacketSent = false
     
     
+    var buffer:Buffer = Buffer()
+    
+    
+    @IBOutlet weak var accel_toggle: UISwitch!
+    
     //end of message
     var sendingEOM = false
     
@@ -36,7 +41,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     {
         super.viewDidLoad()
         toSendIndex = 0
-        
         //init BT manager object
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         
@@ -179,10 +183,16 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             // make the next chunk of data to be sent
             
             //create a data object using the input
-            var chunkZero = Data(from: toSend[0]) // this is accelX
+            /*var chunkZero = Data(from: toSend[0]) // this is accelX
             let chunkOne = Data(from: toSend[1]) // this is accelY
             let chunkTwo = Data(from: toSend[2]) // this is 2nd accelX
-            let chunkThree = Data(from: toSend[3]) // this is 2nd accelY
+            let chunkThree = Data(from: self.buffer.items[3]) // this is 2nd accelY*/
+            
+            
+            var chunkZero = Data(from: self.buffer.items[0]) // this is accelX
+            let chunkOne = Data(from: self.buffer.items[1]) // this is accelY
+            let chunkTwo = Data(from: self.buffer.items[2]) // this is 2nd accelX
+            let chunkThree = Data(from: self.buffer.items[3]) // this is 2nd accelY
             chunkZero.append(chunkOne)
             chunkZero.append(chunkTwo)
             chunkZero.append(chunkThree)
@@ -232,6 +242,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             self.readyForUpdate = true
             self.haveFirst = false
             self.thisPacketSent = true
+            self.buffer.clear()
             
             
             toSend[0] = 1000.0
@@ -280,31 +291,48 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let yaw = motionData?.attitude.yaw;
                         
                         // set haveSecond to true for single sized test
-                        self.toSend[0] = Float(pitch!)
-                        self.toSend[1] = Float(yaw!)
+                        var toggle = self.accel_toggle.isOn
+                        print(toggle)
+                        self.buffer.addItem(item: Float(pitch!))
+                        self.buffer.addItem(item: (Float(yaw!)))
+                        self.buffer.addItem(item: (Float(accelX!)))
+                        self.buffer.addItem(item: Float(pitch!))
+
+                        
+                        /*self.toSend[0] = Float(pitch!)
+                        self.toSend[1] = (toggle ? Float(pitch!) : Float(accelX!))
                         
                         var haveSecond = false
                         // set have Second to true for single sized test
                         if self.haveFirst {
                             self.toSend[2] = Float(pitch!)
-                            self.toSend[3] = Float(yaw!)
+                            self.toSend[3] = (toggle ? Float(pitch!) : Float(accelX!))
                             haveSecond = true
                         } else {
                             self.toSend[0] = Float(pitch!)
-                            self.toSend[1] = Float(yaw!)
+                            self.toSend[1] = (toggle ? Float(pitch!) : Float(accelX!))
                             self.haveFirst = true
                         }
                         
+                        */
                         
-                        // we have one dataset, we don't need another until we
-                        // send it
-                        if haveSecond {
+                        if(self.buffer.buffer_full){
                             self.readyForUpdate = false
                             self.haveFirst = false
                             self.toSendIndex = 0
                             self.thisPacketSent = false
                             self.sendData()
                         }
+                        
+                        // we have one dataset, we don't need another until we
+                        // send it
+                        /*if haveSecond {
+                            self.readyForUpdate = false
+                            self.haveFirst = false
+                            self.toSendIndex = 0
+                            self.thisPacketSent = false
+                            self.sendData()
+                        }*/
                     }
                 }
             }

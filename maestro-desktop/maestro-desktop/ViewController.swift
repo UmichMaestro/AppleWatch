@@ -15,8 +15,11 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     @IBOutlet weak var fieldFileName: NSTextField!
     
-    @IBOutlet var accelX: NSTextField!
-    @IBOutlet var accelY: NSTextField!
+    
+    @IBOutlet weak var accelX_label: NSTextField!
+    @IBOutlet weak var pitch_label: NSTextField!
+    
+    @IBOutlet weak var yaw_label: NSTextField!
     
     var alg_manager:AlgorithmManager = AlgorithmManager()
     
@@ -145,12 +148,19 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 timeValue += 1
                 //Test for 4 floats
                 // display
+                print(contentFirst)
+                print(contentSecond)
+                print(contentThird)
+                print(contentFourth)
                 
-                accelX.stringValue = String(contentFirst)
-                accelY.stringValue = String(contentSecond)
+                pitch_label.stringValue = ""//String(contentFirst)
+                //yaw_label.stringValue = String(contentSecond)
+                //accelX_label.stringValue = String(contentThird)
                 
                 let pitch = contentFirst;
                 let yaw = contentSecond;
+                let accelX_value = contentThird;
+                let pitch2 = contentFourth;
 
                 if(alg_manager.cutoffState == AlgorithmManager.State.action_point){
                     if(!sound_produced)

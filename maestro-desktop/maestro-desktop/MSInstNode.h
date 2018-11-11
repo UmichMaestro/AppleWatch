@@ -39,6 +39,7 @@ public:
     void release();
 
     friend class MSEngine; // MSEngine is allowed to access the private methods
+    friend class MSInstWhole;
 };
 
 

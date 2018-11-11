@@ -2,7 +2,7 @@
 //eepskamp@umich.edu
 
 void setup();
-int startSound();
+int startSound(int articulationType, double initGain);
 void cutoff();
-void changeVolume(double gain);
+void changeVolume(int articulationType, double gain);
 void cleanUp();

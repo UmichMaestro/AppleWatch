@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		44634CDE203765CD008C3EB8 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44634CDD203765CD008C3EB8 /* Definitions.swift */; };
+		44CB13AD218D5A9F005C9D72 /* MSInstWhole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44CB13AB218D5A9F005C9D72 /* MSInstWhole.cpp */; };
 		44EA7EEF202CDC3800CBDFE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA7EEE202CDC3800CBDFE9 /* AppDelegate.swift */; };
 		44EA7EF1202CDC3800CBDFE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA7EF0202CDC3800CBDFE9 /* ViewController.swift */; };
 		44EA7EF3202CDC3800CBDFE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44EA7EF2202CDC3800CBDFE9 /* Assets.xcassets */; };
@@ -22,6 +23,8 @@
 /* Begin PBXFileReference section */
 		44558E5A2030D88F0017BE10 /* maestro-desktop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "maestro-desktop.entitlements"; sourceTree = "<group>"; };
 		44634CDD203765CD008C3EB8 /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		44CB13AB218D5A9F005C9D72 /* MSInstWhole.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MSInstWhole.cpp; sourceTree = "<group>"; };
+		44CB13AC218D5A9F005C9D72 /* MSInstWhole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSInstWhole.h; sourceTree = "<group>"; };
 		44EA7EEB202CDC3800CBDFE9 /* maestro-desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maestro-desktop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EA7EEE202CDC3800CBDFE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44EA7EF0202CDC3800CBDFE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 				854C8FB2216E7BDB0007A390 /* RtAudio.h */,
 				854C8FAC216E7BAB0007A390 /* MSEngine.cpp */,
 				854C8FAA216E7BAB0007A390 /* MSEngine.h */,
+				44CB13AB218D5A9F005C9D72 /* MSInstWhole.cpp */,
+				44CB13AC218D5A9F005C9D72 /* MSInstWhole.h */,
 				854C8FA7216E7BAB0007A390 /* MSInstNode.cpp */,
 				854C8FA9216E7BAB0007A390 /* MSInstNode.h */,
 				854C8FAD216E7BAB0007A390 /* wrapper.cpp */,
@@ -188,6 +193,7 @@
 				44634CDE203765CD008C3EB8 /* Definitions.swift in Sources */,
 				854C8FAE216E7BAB0007A390 /* MSInstNode.cpp in Sources */,
 				854C8FB1216E7BAB0007A390 /* wrapper.cpp in Sources */,
+				44CB13AD218D5A9F005C9D72 /* MSInstWhole.cpp in Sources */,
 				44EA7EEF202CDC3800CBDFE9 /* AppDelegate.swift in Sources */,
 				854C8FB0216E7BAB0007A390 /* MSEngine.cpp in Sources */,
 			);
@@ -325,12 +331,13 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/maestro-desktop",
+					"/Users/cjbaur/Documents/school/SynthEngine2.2-master/maestro/",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.maestro-desktop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,12 +355,13 @@
 				CODE_SIGN_ENTITLEMENTS = "maestro-desktop/maestro-desktop.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
+				DEVELOPMENT_TEAM = 46CKHJ3DB5;
 				INFOPLIST_FILE = "maestro-desktop/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/maestro-desktop",
+					"/Users/cjbaur/Documents/school/SynthEngine2.2-master/maestro/",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "umich.edu.maestro-desktop";
 				PRODUCT_NAME = "$(TARGET_NAME)";

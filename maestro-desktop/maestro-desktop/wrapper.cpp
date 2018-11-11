@@ -24,13 +24,19 @@ int num_instruments;
 extern "C" void setup()
 {
     s = MSEngine::sharedEngine();
-    string paths[] = {
-        "BbClar.ff.C4B4-5-330.msm",
+    string paths[][3] = {
+        {"Horn.ff.C4B4-10-442.msm",
+        "Horn.ff.C4B4-10-442-stacc.msm",
         "oboe.ff.C4B4-10-439.msm"
+        },
+        {"oboe.ff.C4B4-10-439.msm",
+        "Horn.ff.C4B4-10-442-stacc.msm",
+        "Horn.ff.C4B4-10-442.msm"
+        }
     };
     
-    //num_instruments = sizeof(paths)/sizeof(string);
-    num_instruments = 2;
+    
+    num_instruments = sizeof(paths)/(sizeof(string) * 3);
     for (int i=0; i<num_instruments; i++) {
         //MSInstNode inst(paths[i]); //testing linkage
         s.attachInstrument(paths[i]);
@@ -40,10 +46,10 @@ extern "C" void setup()
 }
 
 //REQUIRES 0 < gain < 1 (i think??)
-extern "C" void changeVolume(double gain)
+extern "C" void changeVolume(int articulationType, double gain)
 {
-    for (MSInstNode *i : s.getInstruments())
-        i->setGain(gain);
+    for (MSInstWhole *i : s.getInstruments())
+        i->changeVolume(articulationType, gain);
     
 }
 
@@ -52,10 +58,10 @@ extern "C" void cleanUp(){
 }
 
 
-extern "C" int startSound()
+extern "C" int startSound(int articulationType, double initGain = .25)
 {
     for (int i=0; i<num_instruments; i++) {
-        s.getInstruments()[i]->start(0.25);
+        s.getInstruments()[i]->startSound(articulationType, initGain);
         /*if (i==0 || i==2) {
          std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }*/
@@ -69,8 +75,8 @@ extern "C" int startSound()
 extern "C" void cutoff()
 {
     cout <<"cutoff called"<<endl;
-    for (MSInstNode *i : s.getInstruments()) {
-        i->release();
+    for (MSInstWhole *i : s.getInstruments()) {
+        i->cutoff();
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     cout << "-----------Cutoff here------------";

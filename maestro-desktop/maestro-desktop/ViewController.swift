@@ -9,6 +9,12 @@
 import Cocoa
 import CoreBluetooth
 
+enum ArticulationType: Int32{
+    case standard = 0
+    case staccato = 1
+    case legato = 2
+}
+
 var our_periph : CBPeripheral?
 
 class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
@@ -161,8 +167,8 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                         
                         let dynLevel:Double = dynamic.rawValue;
                         
-                        startSound()
-                        changeVolume(dynLevel)
+                        startSound(ArticulationType.standard.rawValue, 0.25)
+                        changeVolume(0, dynLevel)
                     }
                     
                     
@@ -261,25 +267,20 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     @IBAction func start_sound(_ sender: Any) {
         print("start button works")
-        //startSound()
-        
-        startSound()
-        
-        //sleep(1)
-        
-        //cutoff()
-        
+        startSound(ArticulationType.standard.rawValue, 0.25)
     }
     
     
-    @IBAction func end_sound(_ sender: Any)
-    {
+    @IBAction func end_sound(_ sender: Any){
         print("end button works")
 
         cutoff()
         //cleanUp()
     }
     
+    @IBAction func startSoundStaccato(_ sender: Any) {
+        startSound(ArticulationType.staccato.rawValue, 0.25)
+    }
     
 }
 

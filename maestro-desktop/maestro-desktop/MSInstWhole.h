@@ -1,14 +1,33 @@
 //
-//  MSInstWhole.hpp
-//  maestro-desktop
+//  MSInstWhole.h
+//  RtAudio
 //
-//  Created by Christopher Baur on 11/3/18.
-//  Copyright © 2018 Christopher Baur. All rights reserved.
+//  Created by Jake Baur on 11/3/18.
 //
 
-#ifndef MSInstWhole_hpp
-#define MSInstWhole_hpp
+#ifndef MSInstWhole_h
+#define MSInstWhole_h
 
 #include <stdio.h>
+#include <string>
+#include "MSInstNode.h"
 
-#endif /* MSInstWhole_hpp */
+class MSInstWhole {
+    std::vector<MSInstNode*> *instruments;
+    int current_articulation;
+    const int TOTAL_INSTRUMENTS = 3;
+    
+public:
+    MSInstWhole(std::string paths[]);
+    MSInstWhole();
+    
+    std::vector<MSInstNode*>& getInstruments();
+    void setupInstNodes(std::string paths[]);
+    void startSound(int articulation_type, double init_gain);
+    void cutoff();
+    void changeVolume(int articulation_type, double gain);
+    void updateCurrentArticulation(int articulation_type);
+};
+
+
+#endif

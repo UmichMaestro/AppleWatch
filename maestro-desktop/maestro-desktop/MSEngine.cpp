@@ -25,7 +25,7 @@ MSEngine::MSEngine() {
         return ;
     }
     
-    instruments = new vector<MSInstNode*>();
+    instruments = new vector<MSInstWhole*>();
     
     // parameter to open RtAudio stream
     outParam = new RtAudio::StreamParameters();
@@ -37,12 +37,12 @@ MSEngine::MSEngine() {
     audio->startStream();
 }
 
-vector<MSInstNode*>& MSEngine::getInstruments() {
+vector<MSInstWhole*>& MSEngine::getInstruments() {
     return *instruments;
 }
 
-void MSEngine::attachInstrument(string path) {
-    MSInstNode *inst = new MSInstNode(path);
+void MSEngine::attachInstrument(string paths[]) {
+    MSInstWhole *inst = new MSInstWhole(paths);
     instruments->push_back(inst);
 }
 

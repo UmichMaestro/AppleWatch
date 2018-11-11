@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "RtAudio.h"
 #include "MSInstNode.h"
+#include "MSInstWhole.h"
 
 #define SAMPLE_RATE 44100.0
 #define SAMPLE_WINDOW 441
@@ -29,20 +30,22 @@ public:
 private:
     RtAudio *audio;
     RtAudio::StreamParameters *outParam;
-    vector<MSInstNode*> *instruments;
+    vector<MSInstWhole*> *instruments;
     
     // static function should be implemented in the class definition
     static int staticCallback(void *outbuf, void *inbuf, unsigned int nFrames, double streamtime, RtAudioStreamStatus status, void *userdata) {
         memset(outbuf, 0, nFrames*2*sizeof(float));
-        for (MSInstNode *i : ((MSEngine*)userdata)->getInstruments())
-            i->synthesize((float*)outbuf, nFrames); // MSEngine is friend class of MSInstNode, so it can call synthesize()
+        for (MSInstWhole *i : ((MSEngine*)userdata)->getInstruments())
+            for (MSInstNode *j : i->getInstruments()) {
+                j->synthesize((float*)outbuf, nFrames); // MSEngine is friend class of MSInstNode, so it can call synthesize()
+            }
         return 0;
     }
     
 public:
-    void attachInstrument(string path);
+    void attachInstrument(string paths[]);
     void clearInstruments();
-    vector<MSInstNode*>& getInstruments();
+    vector<MSInstWhole*>& getInstruments();
     void cleanUp();
     
 };

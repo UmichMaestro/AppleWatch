@@ -18,6 +18,10 @@ class AlgorithmManager{
         case p=0.2, mp=0.4, mf=0.6, f=0.8, ff=1
     }
     
+    enum Articulations:Double {
+        case
+    }
+    
     enum State{
         case hold
         case prep
@@ -47,9 +51,13 @@ class AlgorithmManager{
     var maxYawLargest:Float
     var minYawLargest:Float
     var maxAccelYRange:Float
+    var maxAccelYSlope:Float
     var maxAccelYLargest:Float
+    var maxAccelYSampNum:Float
     var minAccelYLargest:Float
+    var minAccelYSampNum:Float
     var currentAccelYRange:Float
+    var currentAccelYSlope:Float
     var currentPitchRange:Float
     
     //cutoff detection
@@ -76,9 +84,13 @@ class AlgorithmManager{
         minYawLargest = 0
         currentPitchRange = 0
         maxAccelYRange = 0
+        maxAccelYSlope = 0
         maxAccelYLargest = 0
+        maxAccelYSampNum = 0
         minAccelYLargest = 0
+        minAccelYSampNum = 0
         currentAccelYRange = 0
+        currentAccelYSlope = 0
         
         
         prevPitch = 0
@@ -114,13 +126,27 @@ class AlgorithmManager{
             if(pitch < minPitchLargest){
                 minPitchLargest = pitch
             }
+            
+            if(accelY > maxAccelYLargest){
+                maxAccelYLargest = accelY
+            }
+            if(accelY < minAccelYLargest){
+                minAccelYLargest = accelY
+            }
+            
+            
+            
             maxPitchRange = maxPitchLargest - minPitchLargest
+            maxAccelYRange = maxAccelYLargest - minAccelYLargest
+            maxAccelYSlope =
             cutoffState = cutoffDetection(currentState: cutoffState, pitch:pitch, yaw:yaw)
             let dynamic:Dynamics = handleDynamic(current_range:maxPitchRange)
+            let articulation:Articulations = handleArticulation(current_range:maxAccelYRange, current_slope:maxAccelYSlope)
             if(cutoffState == .cutoff){
                 //we want to update the progState.
                 progState = .endedLargest
                 print(dynamic)
+                print(articulation)
             }
         }else if(progState == .endedLargest){
             //so on so forth...
@@ -133,10 +159,22 @@ class AlgorithmManager{
             if(pitch < minPitchLargest){
                 minPitchLargest = pitch
             }
+            
+            if(accelY > maxAccelYLargest){
+                maxAccelYLargest = accelY
+            }
+            if(accelY < minAccelYLargest){
+                minAccelYLargest = accelY
+            }
+            
             currentPitchRange = maxPitchLargest - minPitchLargest
+            currentAccelYRange = maxAccelYLargest - minAccelYLargest
+            currentAccelYSlope =
             cutoffState = cutoffDetection(currentState: cutoffState, pitch:pitch, yaw:yaw)
             let dynamic:Dynamics = handleDynamic(current_range:currentPitchRange)
+            let articulation:Articulations = handleArticulation(current_range:currentAccelYRange, current_slope:currentAccelYSlope)
             print(dynamic)
+            print(articulation)
         }
     }
     
@@ -154,6 +192,10 @@ class AlgorithmManager{
         }else{
             return .ff;
         }
+    }
+    
+    func handleArticulation(current_range:Float, current_slope:Float) -> Articulations {
+        
     }
     
     private func cutoffDetection(currentState:State, pitch:Float, yaw:Float) -> State{

@@ -158,31 +158,31 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
                 let pitch = contentFirst;
                 let yaw = contentSecond;
 
-                if(alg_manager.cutoffState == AlgorithmManager.State.action_point){
-                    if(!sound_produced)
-                    {
-                        print("we should hear sound right here")
-                        sound_produced = true
-                        let dynamic = alg_manager.handleDynamic(current_range: alg_manager.currentPitchRange);
+                    if(alg_manager.cutoffState == AlgorithmManager.State.action_point){
+                        if(!sound_produced)
+                        {
+                            print("we should hear sound right here")
+                            sound_produced = true
+                            let dynamic = alg_manager.handleDynamic(current_range: alg_manager.currentPitchRange);
+                            
+                            let dynLevel:Double = dynamic.rawValue;
+                            
+                            startSound(ArticulationType.standard.rawValue, 0.25)
+                            changeVolume(0, dynLevel)
+                        }
                         
-                        let dynLevel:Double = dynamic.rawValue;
                         
-                        startSound(ArticulationType.standard.rawValue, 0.25)
-                        changeVolume(0, dynLevel)
                     }
-                    
-                    
-                }
-                if(alg_manager.cutoffState == AlgorithmManager.State.cutoff){
-                    if(!cut_off_sound)
-                    {
-                        print("DONT make another sound")
-                        cut_off_sound = true
-                        cutoff()
+                    if(alg_manager.cutoffState == AlgorithmManager.State.cutoff){
+                        if(!cut_off_sound)
+                        {
+                            print("DONT make another sound")
+                            cut_off_sound = true
+                            cutoff()
 
+                        }
+                        
                     }
-                    
-                }
                 
                 if (timeSet){
                     alg_manager.update(pitch:pitch, yaw:yaw);
@@ -279,6 +279,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     @IBAction func startSoundStaccato(_ sender: Any) {
+        print("STAC!");
         startSound(ArticulationType.staccato.rawValue, 0.25)
     }
     

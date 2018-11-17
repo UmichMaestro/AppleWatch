@@ -1,15 +1,9 @@
-//
-//  ViewController.swift
-//  bluetooth_watch_test
-//
-//  Maestro 2018
-//
 
 import UIKit
 import CoreBluetooth
 import CoreMotion
 
-class ViewController: UIViewController, CBPeripheralManagerDelegate {
+class ViewLargest: UIViewController, CBPeripheralManagerDelegate {
     
     //CoreMotion "controlling object"
     let motionManager = CMMotionManager()
@@ -171,9 +165,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         var didSend = true
         
         /*
-        while didSend
-        {
-        */
+         while didSend
+         {
+         */
         if !thisPacketSent
         {
             
@@ -240,7 +234,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             toSend[1] = 1000.0
             toSend[2] = 1000.0
             toSend[3] = 1000.0
-
+            
             
             // Was it the last one?
             /*if (toSendIndex >= toSend.count) {
@@ -330,7 +324,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         let timeNow = CFAbsoluteTimeGetCurrent()
         let chunk = Data(from:timeNow)
         let didSend = peripheralManager!.updateValue(chunk,
-                                                 for: transferCharacteristic!, onSubscribedCentrals: nil)
+                                                     for: transferCharacteristic!, onSubscribedCentrals: nil)
         if !didSend {
             return
         }
@@ -339,3 +333,17 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     
 }
+
+//nifty functions to turn doubles into data objects and back
+extension Data {
+    
+    init<T>(from value: T) {
+        var value = value
+        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
+    }
+    
+    func to<T>(type:T.Type) -> T {
+        return self.withUnsafeBytes{ $0.pointee}
+    }
+}
+

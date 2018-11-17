@@ -7,33 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40CFB7B3219A4AB80032461A /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7AE219A4AB80032461A /* start.png */; };
-		40CFB7B4219A4AB80032461A /* finish.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7AF219A4AB80032461A /* finish.png */; };
-		40CFB7B9219A4AE90032461A /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7B8219A4AE90032461A /* logo.jpg */; };
-		40CFB7BD219A4C350032461A /* connected.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7BA219A4C350032461A /* connected.png */; };
-		40CFB7BE219A4C350032461A /* mac.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7BB219A4C350032461A /* mac.png */; };
-		40CFB7BF219A4C350032461A /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7BC219A4C350032461A /* bluetooth.png */; };
-		40CFB7C1219A50BC0032461A /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7C0219A50BC0032461A /* setup.png */; };
-		40CFB7C4219A56410032461A /* lesson.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7C2219A56410032461A /* lesson.png */; };
-		40CFB7C5219A56410032461A /* freeplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7C3219A56410032461A /* freeplay.png */; };
 		852D4B99205F08AA0076D30F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4B98205F08AA0076D30F /* AppDelegate.swift */; };
 		852D4B9B205F08AA0076D30F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4B9A205F08AA0076D30F /* ViewController.swift */; };
 		852D4B9E205F08AA0076D30F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852D4B9C205F08AA0076D30F /* Main.storyboard */; };
 		852D4BA0205F08AA0076D30F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 852D4B9F205F08AA0076D30F /* Assets.xcassets */; };
 		852D4BA3205F08AA0076D30F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852D4BA1205F08AA0076D30F /* LaunchScreen.storyboard */; };
 		852D4BAB205F09680076D30F /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4BAA205F09680076D30F /* Definitions.swift */; };
+		CD7C1887219A82860083EDEB /* ViewLargest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C1886219A82860083EDEB /* ViewLargest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		40CFB7AE219A4AB80032461A /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
-		40CFB7AF219A4AB80032461A /* finish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finish.png; sourceTree = "<group>"; };
-		40CFB7B8219A4AE90032461A /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
-		40CFB7BA219A4C350032461A /* connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connected.png; sourceTree = "<group>"; };
-		40CFB7BB219A4C350032461A /* mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mac.png; sourceTree = "<group>"; };
-		40CFB7BC219A4C350032461A /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetooth.png; sourceTree = "<group>"; };
-		40CFB7C0219A50BC0032461A /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setup.png; sourceTree = "<group>"; };
-		40CFB7C2219A56410032461A /* lesson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lesson.png; sourceTree = "<group>"; };
-		40CFB7C3219A56410032461A /* freeplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freeplay.png; sourceTree = "<group>"; };
 		852D4B95205F08AA0076D30F /* maestro-phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maestro-phone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		852D4B98205F08AA0076D30F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		852D4B9A205F08AA0076D30F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +25,7 @@
 		852D4BA2205F08AA0076D30F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		852D4BA4205F08AA0076D30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		852D4BAA205F09680076D30F /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		CD7C1886219A82860083EDEB /* ViewLargest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLargest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,22 +39,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40CFB7AD219A47250032461A /* image.xcassets */ = {
-			isa = PBXGroup;
-			children = (
-				40CFB7C3219A56410032461A /* freeplay.png */,
-				40CFB7C2219A56410032461A /* lesson.png */,
-				40CFB7C0219A50BC0032461A /* setup.png */,
-				40CFB7BC219A4C350032461A /* bluetooth.png */,
-				40CFB7BA219A4C350032461A /* connected.png */,
-				40CFB7BB219A4C350032461A /* mac.png */,
-				40CFB7B8219A4AE90032461A /* logo.jpg */,
-				40CFB7AF219A4AB80032461A /* finish.png */,
-				40CFB7AE219A4AB80032461A /* start.png */,
-			);
-			path = image.xcassets;
-			sourceTree = "<group>";
-		};
 		852D4B8C205F08AA0076D30F = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +58,6 @@
 		852D4B97205F08AA0076D30F /* maestro-phone */ = {
 			isa = PBXGroup;
 			children = (
-				40CFB7AD219A47250032461A /* image.xcassets */,
 				852D4B98205F08AA0076D30F /* AppDelegate.swift */,
 				852D4B9A205F08AA0076D30F /* ViewController.swift */,
 				852D4B9C205F08AA0076D30F /* Main.storyboard */,
@@ -98,6 +65,7 @@
 				852D4BA1205F08AA0076D30F /* LaunchScreen.storyboard */,
 				852D4BA4205F08AA0076D30F /* Info.plist */,
 				852D4BAA205F09680076D30F /* Definitions.swift */,
+				CD7C1886219A82860083EDEB /* ViewLargest.swift */,
 			);
 			path = "maestro-phone";
 			sourceTree = "<group>";
@@ -162,16 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				852D4BA3205F08AA0076D30F /* LaunchScreen.storyboard in Resources */,
-				40CFB7BE219A4C350032461A /* mac.png in Resources */,
 				852D4BA0205F08AA0076D30F /* Assets.xcassets in Resources */,
-				40CFB7B9219A4AE90032461A /* logo.jpg in Resources */,
-				40CFB7BF219A4C350032461A /* bluetooth.png in Resources */,
-				40CFB7C1219A50BC0032461A /* setup.png in Resources */,
-				40CFB7C4219A56410032461A /* lesson.png in Resources */,
-				40CFB7C5219A56410032461A /* freeplay.png in Resources */,
-				40CFB7B4219A4AB80032461A /* finish.png in Resources */,
-				40CFB7BD219A4C350032461A /* connected.png in Resources */,
-				40CFB7B3219A4AB80032461A /* start.png in Resources */,
 				852D4B9E205F08AA0076D30F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				852D4B9B205F08AA0076D30F /* ViewController.swift in Sources */,
+				CD7C1887219A82860083EDEB /* ViewLargest.swift in Sources */,
 				852D4BAB205F09680076D30F /* Definitions.swift in Sources */,
 				852D4B99205F08AA0076D30F /* AppDelegate.swift in Sources */,
 			);

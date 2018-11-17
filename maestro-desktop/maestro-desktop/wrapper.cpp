@@ -26,11 +26,11 @@ extern "C" void setup()
     s = MSEngine::sharedEngine();
     string paths[][3] = {
         {"Horn.ff.C4B4-10-442.msm",
-        "Horn.ff.C4B4-10-442-stacc.msm",
+        "Horn.ff.C4B4-10-442-staccato.msm",
         "oboe.ff.C4B4-10-439.msm"
         },
         {"oboe.ff.C4B4-10-439.msm",
-        "Horn.ff.C4B4-10-442-stacc.msm",
+        "Horn.ff.C4B4-10-442-staccato.msm",
         "Horn.ff.C4B4-10-442.msm"
         }
     };

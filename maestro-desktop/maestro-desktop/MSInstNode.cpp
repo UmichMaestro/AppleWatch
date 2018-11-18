@@ -46,7 +46,7 @@ MSInstNode::MSInstNode(std::string path) {
     phaseIncr = M_PI * 2 / SAMPLE_RATE * meta.frequency; // trigonometrical function trick. after this, we don't need frequency.
     partials = meta.partials;
     duration = meta.duration;
-    std:cout << "this is the duration " << duration;
+    std:cout << "this is the duration " << duration << endl;
     if (meta.start == 0 || meta.finish == 0) { // error handling for using not-segmented MSM file. 
         std::cout << "Not segmented: " << path << std::endl;
         sustainStart = DEFAULT_ENV_DURATION;

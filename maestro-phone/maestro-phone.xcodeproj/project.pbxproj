@@ -59,13 +59,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40CFB7AD219A47250032461A /* image.xcassets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = image.xcassets;
-			sourceTree = "<group>";
-		};
 		852D4B8C205F08AA0076D30F = {
 			isa = PBXGroup;
 			children = (
@@ -85,7 +78,6 @@
 		852D4B97205F08AA0076D30F /* maestro-phone */ = {
 			isa = PBXGroup;
 			children = (
-				40CFB7AD219A47250032461A /* image.xcassets */,
 				852D4B98205F08AA0076D30F /* AppDelegate.swift */,
 				852D4B9A205F08AA0076D30F /* ViewController.swift */,
 				852D4B9C205F08AA0076D30F /* Main.storyboard */,

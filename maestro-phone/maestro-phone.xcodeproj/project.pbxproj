@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40CFB7B3219A4AB80032461A /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7AE219A4AB80032461A /* start.png */; };
-		40CFB7B4219A4AB80032461A /* finish.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7AF219A4AB80032461A /* finish.png */; };
-		40CFB7B9219A4AE90032461A /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7B8219A4AE90032461A /* logo.jpg */; };
-		40CFB7BD219A4C350032461A /* connected.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7BA219A4C350032461A /* connected.png */; };
-		40CFB7BE219A4C350032461A /* mac.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7BB219A4C350032461A /* mac.png */; };
-		40CFB7BF219A4C350032461A /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7BC219A4C350032461A /* bluetooth.png */; };
-		40CFB7C1219A50BC0032461A /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7C0219A50BC0032461A /* setup.png */; };
-		40CFB7C4219A56410032461A /* lesson.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7C2219A56410032461A /* lesson.png */; };
-		40CFB7C5219A56410032461A /* freeplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CFB7C3219A56410032461A /* freeplay.png */; };
+		40B63EDC21A214DC00CF6583 /* connected.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED121A214DB00CF6583 /* connected.png */; };
+		40B63EDD21A214DC00CF6583 /* yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED221A214DC00CF6583 /* yes.png */; };
+		40B63EDE21A214DC00CF6583 /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED321A214DC00CF6583 /* bluetooth.png */; };
+		40B63EDF21A214DC00CF6583 /* no.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED421A214DC00CF6583 /* no.png */; };
+		40B63EE021A214DC00CF6583 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED521A214DC00CF6583 /* start.png */; };
+		40B63EE121A214DC00CF6583 /* finish.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED621A214DC00CF6583 /* finish.png */; };
+		40B63EE221A214DC00CF6583 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED721A214DC00CF6583 /* logo.jpg */; };
+		40B63EE321A214DC00CF6583 /* mac.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED821A214DC00CF6583 /* mac.png */; };
+		40B63EE421A214DC00CF6583 /* freeplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED921A214DC00CF6583 /* freeplay.png */; };
+		40B63EE521A214DC00CF6583 /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63EDA21A214DC00CF6583 /* setup.png */; };
+		40B63EE621A214DC00CF6583 /* lesson.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63EDB21A214DC00CF6583 /* lesson.png */; };
 		852D4B99205F08AA0076D30F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4B98205F08AA0076D30F /* AppDelegate.swift */; };
 		852D4B9B205F08AA0076D30F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4B9A205F08AA0076D30F /* ViewController.swift */; };
 		852D4B9E205F08AA0076D30F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852D4B9C205F08AA0076D30F /* Main.storyboard */; };
@@ -25,15 +27,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		40CFB7AE219A4AB80032461A /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = "<group>"; };
-		40CFB7AF219A4AB80032461A /* finish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finish.png; sourceTree = "<group>"; };
-		40CFB7B8219A4AE90032461A /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
-		40CFB7BA219A4C350032461A /* connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connected.png; sourceTree = "<group>"; };
-		40CFB7BB219A4C350032461A /* mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mac.png; sourceTree = "<group>"; };
-		40CFB7BC219A4C350032461A /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetooth.png; sourceTree = "<group>"; };
-		40CFB7C0219A50BC0032461A /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setup.png; sourceTree = "<group>"; };
-		40CFB7C2219A56410032461A /* lesson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lesson.png; sourceTree = "<group>"; };
-		40CFB7C3219A56410032461A /* freeplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freeplay.png; sourceTree = "<group>"; };
+		40B63ED121A214DB00CF6583 /* connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = connected.png; path = Assets.xcassets/connected.png; sourceTree = "<group>"; };
+		40B63ED221A214DC00CF6583 /* yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yes.png; path = Assets.xcassets/yes.png; sourceTree = "<group>"; };
+		40B63ED321A214DC00CF6583 /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluetooth.png; path = Assets.xcassets/bluetooth.png; sourceTree = "<group>"; };
+		40B63ED421A214DC00CF6583 /* no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no.png; path = Assets.xcassets/no.png; sourceTree = "<group>"; };
+		40B63ED521A214DC00CF6583 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = start.png; path = Assets.xcassets/start.png; sourceTree = "<group>"; };
+		40B63ED621A214DC00CF6583 /* finish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = finish.png; path = Assets.xcassets/finish.png; sourceTree = "<group>"; };
+		40B63ED721A214DC00CF6583 /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = logo.jpg; path = Assets.xcassets/logo.jpg; sourceTree = "<group>"; };
+		40B63ED821A214DC00CF6583 /* mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mac.png; path = Assets.xcassets/mac.png; sourceTree = "<group>"; };
+		40B63ED921A214DC00CF6583 /* freeplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = freeplay.png; path = Assets.xcassets/freeplay.png; sourceTree = "<group>"; };
+		40B63EDA21A214DC00CF6583 /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setup.png; path = Assets.xcassets/setup.png; sourceTree = "<group>"; };
+		40B63EDB21A214DC00CF6583 /* lesson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lesson.png; path = Assets.xcassets/lesson.png; sourceTree = "<group>"; };
 		852D4B95205F08AA0076D30F /* maestro-phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maestro-phone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		852D4B98205F08AA0076D30F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		852D4B9A205F08AA0076D30F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,15 +62,6 @@
 		40CFB7AD219A47250032461A /* image.xcassets */ = {
 			isa = PBXGroup;
 			children = (
-				40CFB7C3219A56410032461A /* freeplay.png */,
-				40CFB7C2219A56410032461A /* lesson.png */,
-				40CFB7C0219A50BC0032461A /* setup.png */,
-				40CFB7BC219A4C350032461A /* bluetooth.png */,
-				40CFB7BA219A4C350032461A /* connected.png */,
-				40CFB7BB219A4C350032461A /* mac.png */,
-				40CFB7B8219A4AE90032461A /* logo.jpg */,
-				40CFB7AF219A4AB80032461A /* finish.png */,
-				40CFB7AE219A4AB80032461A /* start.png */,
 			);
 			path = image.xcassets;
 			sourceTree = "<group>";
@@ -95,6 +90,17 @@
 				852D4B9A205F08AA0076D30F /* ViewController.swift */,
 				852D4B9C205F08AA0076D30F /* Main.storyboard */,
 				852D4B9F205F08AA0076D30F /* Assets.xcassets */,
+				40B63ED321A214DC00CF6583 /* bluetooth.png */,
+				40B63ED121A214DB00CF6583 /* connected.png */,
+				40B63ED621A214DC00CF6583 /* finish.png */,
+				40B63ED921A214DC00CF6583 /* freeplay.png */,
+				40B63EDB21A214DC00CF6583 /* lesson.png */,
+				40B63ED721A214DC00CF6583 /* logo.jpg */,
+				40B63ED821A214DC00CF6583 /* mac.png */,
+				40B63ED421A214DC00CF6583 /* no.png */,
+				40B63EDA21A214DC00CF6583 /* setup.png */,
+				40B63ED521A214DC00CF6583 /* start.png */,
+				40B63ED221A214DC00CF6583 /* yes.png */,
 				852D4BA1205F08AA0076D30F /* LaunchScreen.storyboard */,
 				852D4BA4205F08AA0076D30F /* Info.plist */,
 				852D4BAA205F09680076D30F /* Definitions.swift */,
@@ -161,18 +167,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B63EDE21A214DC00CF6583 /* bluetooth.png in Resources */,
+				40B63EE321A214DC00CF6583 /* mac.png in Resources */,
+				40B63EDD21A214DC00CF6583 /* yes.png in Resources */,
+				40B63EE521A214DC00CF6583 /* setup.png in Resources */,
+				40B63EE021A214DC00CF6583 /* start.png in Resources */,
 				852D4BA3205F08AA0076D30F /* LaunchScreen.storyboard in Resources */,
-				40CFB7BE219A4C350032461A /* mac.png in Resources */,
+				40B63EDF21A214DC00CF6583 /* no.png in Resources */,
+				40B63EE621A214DC00CF6583 /* lesson.png in Resources */,
 				852D4BA0205F08AA0076D30F /* Assets.xcassets in Resources */,
-				40CFB7B9219A4AE90032461A /* logo.jpg in Resources */,
-				40CFB7BF219A4C350032461A /* bluetooth.png in Resources */,
-				40CFB7C1219A50BC0032461A /* setup.png in Resources */,
-				40CFB7C4219A56410032461A /* lesson.png in Resources */,
-				40CFB7C5219A56410032461A /* freeplay.png in Resources */,
-				40CFB7B4219A4AB80032461A /* finish.png in Resources */,
-				40CFB7BD219A4C350032461A /* connected.png in Resources */,
-				40CFB7B3219A4AB80032461A /* start.png in Resources */,
+				40B63EE421A214DC00CF6583 /* freeplay.png in Resources */,
+				40B63EE221A214DC00CF6583 /* logo.jpg in Resources */,
 				852D4B9E205F08AA0076D30F /* Main.storyboard in Resources */,
+				40B63EE121A214DC00CF6583 /* finish.png in Resources */,
+				40B63EDC21A214DC00CF6583 /* connected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

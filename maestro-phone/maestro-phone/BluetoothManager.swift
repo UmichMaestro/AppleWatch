@@ -1,21 +1,26 @@
 //
-//  ViewController.swift
-//  bluetooth_watch_test
+//  BluetoothManager.swift
+//  maestro-phone
 //
-//  Maestro 2018
+//  Created by Prakash Kumar on 11/18/18.
+//  Copyright © 2018 Maestro. All rights reserved.
 //
 
+import Foundation
 import UIKit
+
 import CoreBluetooth
 import CoreMotion
 
-class ViewController: UIViewController, CBPeripheralManagerDelegate {
-    
+
+class BluetoothManager:NSObject, CBPeripheralManagerDelegate{
+
     //CoreMotion "controlling object"
     let motionManager = CMMotionManager()
     
     //Bluetooth "controlling object"
     var peripheralManager: CBPeripheralManager?
+    
     
     //variables to package up data and send it via Bluetooth
     var transferCharacteristic: CBMutableCharacteristic?
@@ -29,29 +34,16 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     var state:AppState = .bluetooth
     var buffer:Buffer = Buffer()
-
+    
     
     //end of message
     var sendingEOM = false
     
-    //called when app is open on the screen
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        toSendIndex = 0
-        //init BT manager object
-        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool)
-    {
-        super.viewDidDisappear(animated)
-        
-        //if the app is not on the screen, don't advertise data over BT
+    func onViewDisappear(){
         peripheralManager?.stopAdvertising()
         motionManager.stopDeviceMotionUpdates()
     }
+    
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager)
     {
@@ -59,7 +51,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         //if the peripheral isn't on, we can't transfer data over BT
         if(peripheral.state != .poweredOn)
         {
-            changeState(newState: .bluetooth)
+            //changeState(newState: .bluetooth)
             return
         }
         print("we are powered on!")
@@ -96,10 +88,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         }
         
         print("Succeeded!")
-        changeState(newState: .hello)
+        //changeState(newState: .hello)
         self.getMotionManagerUpdates()
     }
-    
     //function runs when a central device subscribes to our characteristic
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characterstic: CBCharacteristic)
     {
@@ -169,9 +160,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         var didSend = true
         
         /*
-        while didSend
-        {
-        */
+         while didSend
+         {
+         */
         if !thisPacketSent
         {
             
@@ -180,9 +171,9 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             
             //create a data object using the input
             /*var chunkZero = Data(from: toSend[0]) // this is accelX
-            let chunkOne = Data(from: toSend[1]) // this is accelY
-            let chunkTwo = Data(from: toSend[2]) // this is 2nd accelX
-            let chunkThree = Data(from: self.buffer.items[3]) // this is 2nd accelY*/
+             let chunkOne = Data(from: toSend[1]) // this is accelY
+             let chunkTwo = Data(from: toSend[2]) // this is 2nd accelX
+             let chunkThree = Data(from: self.buffer.items[3]) // this is 2nd accelY*/
             
             
             var chunkZero = Data(from: self.buffer.items[0]) // this is accelX
@@ -245,7 +236,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             toSend[1] = 1000.0
             toSend[2] = 1000.0
             toSend[3] = 1000.0
-
+            
             
             // Was it the last one?
             /*if (toSendIndex >= toSend.count) {
@@ -299,7 +290,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                             self.thisPacketSent = false
                             self.sendData()
                         }
-
+                        
                     }
                 }
             }
@@ -312,18 +303,18 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     //"Stop Data Collection" button -- stops data collection and data from sending
     /*@IBAction func stopDataCollection(_ sender: UIButton) {
-        motionManager.stopDeviceMotionUpdates()
-        //peripheralManager?.stopAdvertising()
-    }
-    @IBAction func startDataCollection(_ sender: Any) {
-        self.getMotionManagerUpdates()
-    }*/
+     motionManager.stopDeviceMotionUpdates()
+     //peripheralManager?.stopAdvertising()
+     }
+     @IBAction func startDataCollection(_ sender: Any) {
+     self.getMotionManagerUpdates()
+     }*/
     
     func sendLatency() {
         let timeNow = CFAbsoluteTimeGetCurrent()
         let chunk = Data(from:timeNow)
         let didSend = peripheralManager!.updateValue(chunk,
-                                                 for: transferCharacteristic!, onSubscribedCentrals: nil)
+                                                     for: transferCharacteristic!, onSubscribedCentrals: nil)
         if !didSend {
             return
         }
@@ -376,28 +367,5 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         changeState(newState: AppState(rawValue: state.rawValue + 1)!)
     }
     
-    @IBAction func startButtonPressed(_ sender: Any) {
-         motionManager.stopDeviceMotionUpdates()
-        
-        sleep(1)
-        
-        self.getMotionManagerUpdates()
-        
-        changeState(newState: AppState(rawValue: state.rawValue + 1)!)
-    }
     
 }
-
-//nifty functions to turn doubles into data objects and back
-extension Data {
-    
-    init<T>(from value: T) {
-        var value = value
-        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
-    }
-    
-    func to<T>(type:T.Type) -> T {
-        return self.withUnsafeBytes{ $0.pointee}
-    }
-}
-

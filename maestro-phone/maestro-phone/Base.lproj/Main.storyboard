@@ -664,7 +664,7 @@
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="Y5i-NK-X8c">
-                                <rect key="frame" x="58" y="120" width="274" height="547"/>
+                                <rect key="frame" x="58" y="189" width="274" height="547"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOx-L1-yGI">
                                         <rect key="frame" x="0.0" y="240" width="274" height="61"/>
@@ -852,10 +852,10 @@
                                     <constraint firstItem="Sal-Zp-KDL" firstAttribute="trailing" secondItem="MeG-ei-d3F" secondAttribute="trailing" id="sd5-BM-pBn"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="note:(Level 1 lessons)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQm-NA-ipd">
-                                <rect key="frame" x="200" y="75" width="165" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ive-sU-owu">
+                                <rect key="frame" x="146" y="121" width="106" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -887,8 +887,15 @@
                                     <constraint firstAttribute="height" constant="50" id="dHN-Pd-7hw"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbF-Xn-FWb">
+                                <rect key="frame" x="123" y="121" width="111" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="Xrw-uJ-3bT">
-                                <rect key="frame" x="58" y="120" width="274" height="547"/>
+                                <rect key="frame" x="50" y="187" width="274" height="547"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvI-ZX-E37">
                                         <rect key="frame" x="0.0" y="240" width="274" height="61"/>
@@ -1076,13 +1083,6 @@
                                     <constraint firstItem="SSv-qY-uAG" firstAttribute="leading" secondItem="HjU-8M-jps" secondAttribute="leading" id="zhw-bG-nUE"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="note:(Level 3 lessons)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqx-NH-vMj">
-                                <rect key="frame" x="200" y="75" width="168" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1111,8 +1111,32 @@
                                     <constraint firstAttribute="height" constant="50" id="BoT-Mq-APD"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6C-TN-TX3">
+                                <rect key="frame" x="121" y="121" width="110" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9i-sO-eoh">
+                                <rect key="frame" x="50" y="349" width="274" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="kt1-XD-fai"/>
+                                </constraints>
+                                <state key="normal" image="lesson_0004_lesson_btn2.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Lesson 2.3">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system" size="18"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OHU-I6-NUH">
-                                <rect key="frame" x="50" y="200" width="274" height="61"/>
+                                <rect key="frame" x="50" y="269" width="274" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="8ID-eh-m5f"/>
                                 </constraints>
@@ -1129,37 +1153,13 @@
                                 </state>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tkj-jZ-uPJ">
-                                <rect key="frame" x="50" y="120" width="274" height="61"/>
+                                <rect key="frame" x="50" y="189" width="274" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="t4w-cO-Ns5"/>
                                 </constraints>
                                 <state key="normal" image="lesson_0004_lesson_btn2.png">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Lesson 2.1">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="system" size="18"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="note:(Level 2 lessons)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcO-8m-pb3">
-                                <rect key="frame" x="200" y="75" width="168" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9i-sO-eoh">
-                                <rect key="frame" x="50" y="280" width="274" height="61"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="kt1-XD-fai"/>
-                                </constraints>
-                                <state key="normal" image="lesson_0004_lesson_btn2.png">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Lesson 2.3">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" metaFont="system" size="18"/>
@@ -1182,6 +1182,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38G-0k-OXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7694" y="1496"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9xc-9g-LPD">
+            <objects>
+                <viewController id="vak-44-m8X" sceneMemberID="viewController">
+                    <view key="view" contentMode="center" id="9We-F4-aZE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3HG-4r-oXb">
+                                <rect key="frame" x="16" y="36" width="72" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="b9V-bM-WnN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Y7-wV-arz">
+                                <rect key="frame" x="131" y="121" width="112" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kw0-M7-FZL">
+                                <rect key="frame" x="49" y="349" width="274" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="gJH-Kl-8bE"/>
+                                </constraints>
+                                <state key="normal" image="lesson_0004_lesson_btn2.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="4.3 The Farmer in the Dell">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system" size="18"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6cB-dq-Nzh">
+                                <rect key="frame" x="49" y="269" width="274" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="3tx-hZ-Bll"/>
+                                </constraints>
+                                <state key="normal" image="lesson_0004_lesson_btn2.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="4.2 Go Tell Aunt Rhody">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system" size="18"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SME-79-1Zv">
+                                <rect key="frame" x="49" y="189" width="274" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="oaL-8t-Noq"/>
+                                </constraints>
+                                <state key="normal" image="lesson_0004_lesson_btn2.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="4.1 London Bridge">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system" size="18"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="center" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KzR-sD-Ejd">
+                                <rect key="frame" x="49" y="429" width="274" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="U0u-mM-heX"/>
+                                </constraints>
+                                <state key="normal" image="lesson_0004_lesson_btn2.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="4.4 Twinkle Twinkle Little Star">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system" size="18"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wcA-ak-ZOq" firstAttribute="trailing" secondItem="3HG-4r-oXb" secondAttribute="trailing" constant="287" id="2js-6E-be6"/>
+                            <constraint firstItem="3HG-4r-oXb" firstAttribute="leading" secondItem="9We-F4-aZE" secondAttribute="leadingMargin" id="d0f-Xm-vo2"/>
+                            <constraint firstItem="3HG-4r-oXb" firstAttribute="top" secondItem="wcA-ak-ZOq" secondAttribute="top" constant="16" id="pN1-wG-Iie"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wcA-ak-ZOq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJc-RT-Ett" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9055" y="1496"/>
         </scene>
     </scenes>
     <resources>

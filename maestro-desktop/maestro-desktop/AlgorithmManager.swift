@@ -20,7 +20,6 @@ class AlgorithmManager{
     
 //    enum Articulations:Double {
 //        case
-    }
     
     enum State{
         case hold

@@ -15,7 +15,6 @@
 		852D4BAB205F09680076D30F /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4BAA205F09680076D30F /* Definitions.swift */; };
 		CD419A062195445E004493DD /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD419A052195445E004493DD /* Buffer.swift */; };
 		CD7C188B21A0EF0E0083EDEB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C188A21A0EF0E0083EDEB /* AppState.swift */; };
-		CD7C189521A1FAE20083EDEB /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C189421A1FAE20083EDEB /* BluetoothManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		852D4BAA205F09680076D30F /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		CD419A052195445E004493DD /* Buffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
 		CD7C188A21A0EF0E0083EDEB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		CD7C189421A1FAE20083EDEB /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +69,6 @@
 				852D4BAA205F09680076D30F /* Definitions.swift */,
 				CD419A052195445E004493DD /* Buffer.swift */,
 				CD7C188A21A0EF0E0083EDEB /* AppState.swift */,
-				CD7C189421A1FAE20083EDEB /* BluetoothManager.swift */,
 			);
 			path = "maestro-phone";
 			sourceTree = "<group>";
@@ -152,7 +149,6 @@
 				CD7C188B21A0EF0E0083EDEB /* AppState.swift in Sources */,
 				CD419A062195445E004493DD /* Buffer.swift in Sources */,
 				852D4BAB205F09680076D30F /* Definitions.swift in Sources */,
-				CD7C189521A1FAE20083EDEB /* BluetoothManager.swift in Sources */,
 				852D4B99205F08AA0076D30F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -336,12 +336,16 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     }
     
     
+
+    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var device: UIImageView!
     @IBOutlet weak var device_modifier: UIImageView!
     @IBOutlet weak var textString: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     
+    //this is a total hack... I'm sorry to whoever is reading this if I had time to learn iOS development better I would have done something better than this!!! :(
     func handleState(){
         switch(state){
         case .bluetooth:
@@ -349,41 +353,84 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             device.isHidden=true
             device_modifier.image = UIImage(named: "bluetooth")
             textString.text = "Please turn on the Bluetooth..."
-        case .gesture_obtained:
-            let a = 0
+            yesButton.isHidden = true
+            noButton.isHidden = true
+        case .largest_gesture_obtained:
+            startButton.isHidden = true
+            device.isHidden = true
+            device_modifier.isHidden = true
+            textString.isHidden = true
+            nextButton.isHidden = true
+            yesButton.isHidden = false
+            noButton.isHidden = false
         case .hello:
             device.isHidden = true
             device_modifier.isHidden = true
             textString.isHidden = true
             nextButton.isHidden = false
+            yesButton.isHidden = true
+            noButton.isHidden = true
         case .largest_gesture:
             startButton.isHidden = false
             device.isHidden = true
             device_modifier.isHidden = true
             textString.isHidden = true
             nextButton.isHidden = true
+            yesButton.isHidden = true
+            noButton.isHidden = true
         case .phone_wrist:
             let a = 0
         case .start_cond:
-            let a = 0
+            startButton.isHidden = false
+            device.isHidden = true
+            device_modifier.isHidden = true
+            textString.isHidden = true
+            nextButton.isHidden = true
+            yesButton.isHidden = true
+            noButton.isHidden = true
+        case .cond_toggle:
+            startButton.isHidden = false
+            device.isHidden = true
+            device_modifier.isHidden = true
+            textString.isHidden = true
+            nextButton.isHidden = true
+            yesButton.isHidden = true
+            noButton.isHidden = true
         default:
             let a = 0
         }
     }
     
+    @IBAction func yesButtonPressed(_ sender: Any) {
+        changeState(newState: .cond_toggle);
+    }
+    
+    @IBAction func noButtonPressed(_ sender: Any) {
+        changeState(newState: .largest_gesture);
+    }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         changeState(newState: AppState(rawValue: state.rawValue + 1)!)
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {
-         motionManager.stopDeviceMotionUpdates()
-        
-        sleep(1)
-        
+        motionManager.stopDeviceMotionUpdates()
+        usleep(100)
         self.getMotionManagerUpdates()
         
-        changeState(newState: AppState(rawValue: state.rawValue + 1)!)
+        if(state == .largest_gesture){
+            changeState(newState: .largest_gesture_obtained)
+        }
+        
+        //how this works: we will continually change between start_cond and cond_toggle when start is pressed. IF we notice a change from one to the other on the desktop app.... we need to be "looking" for the gesture w/ the alg manager
+        if(state == .start_cond){
+            changeState(newState: .cond_toggle)
+        }
+        else if(state == .cond_toggle){
+            changeState(newState: .start_cond)
+        }
+        
+        print(state)
     }
     
 }

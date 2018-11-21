@@ -14,6 +14,7 @@ enum AppState:Int{
     case hello = 1
     case phone_wrist = 2
     case largest_gesture = 3
-    case start_cond = 4
-    case gesture_obtained = 5
+    case largest_gesture_obtained = 4
+    case start_cond = 5
+    case cond_toggle = 6
 }

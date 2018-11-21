@@ -478,6 +478,22 @@
                                     <action selector="startDataCollection:" destination="6nX-59-o2i" eventType="touchUpInside" id="USK-P6-Ncg"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKq-MS-3gw">
+                                <rect key="frame" x="16" y="496" width="157" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="yes-1"/>
+                                <connections>
+                                    <action selector="yesButtonPressed:" destination="zXa-Fa-4bU" eventType="touchUpInside" id="ylv-cb-dPz"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-Xn-ke6">
+                                <rect key="frame" x="181" y="496" width="178" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="no-1"/>
+                                <connections>
+                                    <action selector="noButtonPressed:" destination="zXa-Fa-4bU" eventType="touchUpInside" id="L9l-sz-k99"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="mSE-yb-Rwq"/>
@@ -486,8 +502,10 @@
                         <outlet property="device" destination="bXL-c3-s2W" id="d2O-OK-Mg2"/>
                         <outlet property="device_modifier" destination="sV2-AG-X2B" id="TlP-na-F4K"/>
                         <outlet property="nextButton" destination="gVg-Qe-slc" id="mI9-QW-PlF"/>
+                        <outlet property="noButton" destination="nWe-Xn-ke6" id="S7c-Tm-dsI"/>
                         <outlet property="startButton" destination="kUg-fm-Rdw" id="JzZ-fq-qya"/>
                         <outlet property="textString" destination="YpA-MM-vWP" id="N57-kz-J0w"/>
+                        <outlet property="yesButton" destination="JKq-MS-3gw" id="yhj-nJ-67R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWq-Jy-7vm" sceneMemberID="firstResponder"/>

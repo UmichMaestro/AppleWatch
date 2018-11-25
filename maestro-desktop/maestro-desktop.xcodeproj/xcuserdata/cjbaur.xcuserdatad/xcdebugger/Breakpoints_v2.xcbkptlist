@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "maestro-desktop/wrapper.cpp"
-            timestampString = "563657344.651142"
+            timestampString = "564862261.115975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "setup()"
             landmarkType = "9">
          </BreakpointContent>

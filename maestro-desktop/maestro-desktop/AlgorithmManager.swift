@@ -73,13 +73,14 @@ class AlgorithmManager{
     let std_r_low: Float = 0.12;
     let leg_r_up: Float = 0.04;
     let sta_r_low: Float = 0.11;
-    let std_slope: Float = 0.22;
-    let leg_slope: Float = 0.15;
-    let sta_slope: Float = 0.48;
-    let std_s_up: Float = 0.35;
-    let std_s_low: Float = 0.12;
-    let leg_s_up: Float = 0.04;
-    let sta_s_low: Float = 0.17;
+    
+    let std_slope: Float = 0.018;
+    let leg_slope: Float = 0.016;
+    let sta_slope: Float = 0.44;
+    let std_s_up: Float = 0.082;
+    let std_s_low: Float = 0.01;
+    let leg_s_up: Float = 0.02;
+    let sta_s_low: Float = 0.35;
     
     //cutoff detection
     var prevPitch:Float
@@ -243,18 +244,18 @@ class AlgorithmManager{
         if (ratioRange <= (leg_range + leg_r_up) && ratioRange >= 0){
             legato[1] = 1;
         }
-        if (ratioRange <= 1 && ratioRange >= (sta_range - sta_r_low)){
+        if (ratioRange >= (sta_range - sta_r_low)){
             staccato[1] = 2;
         }
         
         if (ratioSlope <= (std_slope + std_s_up) && ratioSlope >= (std_slope - std_s_low)){
-            standard[2] = 2;
+            standard[2] = 1;
         }
         if (ratioSlope <= (leg_slope + leg_s_up) && ratioSlope >= 0){
             legato[2] = 1;
         }
-        if (ratioSlope <= 1 && ratioSlope >= (sta_slope - sta_s_low)){
-            staccato[2] = 2;
+        if (ratioSlope >= (sta_slope - sta_s_low)){
+            staccato[2] = 1;
         }
         
         if (diff_std_range < diff_std_range && diff_std_range < diff_sta_range){
@@ -269,7 +270,7 @@ class AlgorithmManager{
             standard[4] = 1;
         }else if (diff_leg_slope < diff_std_slope && diff_leg_slope < diff_sta_slope){
             legato[4] = 1;
-        }if (diff_sta_slope < diff_std_slope && diff_sta_slope < diff_leg_slope){
+        }else if (diff_sta_slope < diff_std_slope && diff_sta_slope < diff_leg_slope){
             staccato[4] = 5;
         }
         

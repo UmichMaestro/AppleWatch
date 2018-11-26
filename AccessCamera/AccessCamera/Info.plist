@@ -28,5 +28,9 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSCameraUsageDescription</key>
+	<string>allows for camera view</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>allows for audio recording</string>
 </dict>
 </plist>

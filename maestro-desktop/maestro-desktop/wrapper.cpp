@@ -25,13 +25,25 @@ extern "C" void setup()
 {
     s = MSEngine::sharedEngine();
     string paths[][3] = {
+        {"Bassoon.ff.C4B4-10-444.msm",
+        "Bassoon.ff.C4B4-10-staccato.msm",
+        "Bassoon.ff.C4B4-10-4-legato.msm"
+        },
+        {"BbClar.ff.C4B4-5.msm",
+        "BbClar.ff.C4B4-5-staccato.msm",
+        "BbClar.ff.C5B5-1-5-legato.msm"
+        },
+        {"flute.nonvib.ff.B3B4-11-442.msm",
+        "flute.nonvib.ff.B3B4-11-442-staccato.msm",
+        "flute.nonvib.ff.B3B4-11-4-legato.msm"
+        },
         {"Horn.ff.C4B4-10-442.msm",
-        "Horn.ff.C4B4-10-442-staccato.msm",
-        "oboe.ff.C4B4-10-439.msm"
+        "Horn.ff.C4B4-10-staccato.msm",
+        "Horn.ff.C4B4-10-4-legato.msm"
         },
         {"oboe.ff.C4B4-10-439.msm",
-        "Horn.ff.C4B4-10-442-staccato.msm",
-        "Horn.ff.C4B4-10-442.msm"
+        "oboe.ff.C4B4-10-staccato.msm",
+        "oboe.ff.C4B4-10-4-legato.msm"
         }
     };
     

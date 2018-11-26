@@ -13,8 +13,24 @@
 		852D4BA0205F08AA0076D30F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 852D4B9F205F08AA0076D30F /* Assets.xcassets */; };
 		852D4BA3205F08AA0076D30F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852D4BA1205F08AA0076D30F /* LaunchScreen.storyboard */; };
 		852D4BAB205F09680076D30F /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4BAA205F09680076D30F /* Definitions.swift */; };
-		CD419A062195445E004493DD /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD419A052195445E004493DD /* Buffer.swift */; };
-		CD7C188B21A0EF0E0083EDEB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C188A21A0EF0E0083EDEB /* AppState.swift */; };
+		CD1957E821A8F02900604295 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957E721A8F02900604295 /* Buffer.swift */; };
+		CD1957EA21A8F96F00604295 /* ViewHello.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957E921A8F96F00604295 /* ViewHello.swift */; };
+		CD1957EC21A8F98D00604295 /* ViewPhoneWrist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957EB21A8F98D00604295 /* ViewPhoneWrist.swift */; };
+		CD1957EE21A9099400604295 /* ViewConnected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957ED21A9099400604295 /* ViewConnected.swift */; };
+		CD1957F021A90CA500604295 /* ViewLargestGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1957EF21A90CA500604295 /* ViewLargestGesture.swift */; };
+		CD3FB5C821A911E600539F60 /* ViewLargestGestureObtained.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5C721A911E600539F60 /* ViewLargestGestureObtained.swift */; };
+		CD3FB5CA21A9206600539F60 /* ViewLessonSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5C921A9206600539F60 /* ViewLessonSelect.swift */; };
+		CD3FB5CC21A921D300539F60 /* ViewLessonSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5CB21A921D300539F60 /* ViewLessonSelected.swift */; };
+		CD3FB5CE21A9AD1E00539F60 /* ViewLevel1Selected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5CD21A9AD1E00539F60 /* ViewLevel1Selected.swift */; };
+		CD3FB5D021A9AD2800539F60 /* ViewLevel2Selected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5CF21A9AD2800539F60 /* ViewLevel2Selected.swift */; };
+		CD3FB5D221A9AD3000539F60 /* ViewLevel4Selected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5D121A9AD3000539F60 /* ViewLevel4Selected.swift */; };
+		CD3FB5D421A9AD3700539F60 /* ViewLevel3Selected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5D321A9AD3700539F60 /* ViewLevel3Selected.swift */; };
+		CD3FB5D621A9C1BC00539F60 /* ViewStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB5D521A9C1BC00539F60 /* ViewStart.swift */; };
+		CD7C1887219A82860083EDEB /* ViewLargest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C1886219A82860083EDEB /* ViewLargest.swift */; };
+		CD7C189C21A5B4CC0083EDEB /* ViewSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C189B21A5B4CC0083EDEB /* ViewSplash.swift */; };
+		CD7C189E21A625230083EDEB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C189D21A625230083EDEB /* AppState.swift */; };
+		CD7C18A021A627980083EDEB /* ViewBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C189F21A627980083EDEB /* ViewBluetooth.swift */; };
+		CD7C18A221A627E20083EDEB /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C18A121A627E20083EDEB /* BluetoothManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +42,24 @@
 		852D4BA2205F08AA0076D30F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		852D4BA4205F08AA0076D30F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		852D4BAA205F09680076D30F /* Definitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
-		CD419A052195445E004493DD /* Buffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
-		CD7C188A21A0EF0E0083EDEB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		CD1957E721A8F02900604295 /* Buffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
+		CD1957E921A8F96F00604295 /* ViewHello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHello.swift; sourceTree = "<group>"; };
+		CD1957EB21A8F98D00604295 /* ViewPhoneWrist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPhoneWrist.swift; sourceTree = "<group>"; };
+		CD1957ED21A9099400604295 /* ViewConnected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConnected.swift; sourceTree = "<group>"; };
+		CD1957EF21A90CA500604295 /* ViewLargestGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLargestGesture.swift; sourceTree = "<group>"; };
+		CD3FB5C721A911E600539F60 /* ViewLargestGestureObtained.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLargestGestureObtained.swift; sourceTree = "<group>"; };
+		CD3FB5C921A9206600539F60 /* ViewLessonSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLessonSelect.swift; sourceTree = "<group>"; };
+		CD3FB5CB21A921D300539F60 /* ViewLessonSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLessonSelected.swift; sourceTree = "<group>"; };
+		CD3FB5CD21A9AD1E00539F60 /* ViewLevel1Selected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLevel1Selected.swift; sourceTree = "<group>"; };
+		CD3FB5CF21A9AD2800539F60 /* ViewLevel2Selected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLevel2Selected.swift; sourceTree = "<group>"; };
+		CD3FB5D121A9AD3000539F60 /* ViewLevel4Selected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLevel4Selected.swift; sourceTree = "<group>"; };
+		CD3FB5D321A9AD3700539F60 /* ViewLevel3Selected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLevel3Selected.swift; sourceTree = "<group>"; };
+		CD3FB5D521A9C1BC00539F60 /* ViewStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStart.swift; sourceTree = "<group>"; };
+		CD7C1886219A82860083EDEB /* ViewLargest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLargest.swift; sourceTree = "<group>"; };
+		CD7C189B21A5B4CC0083EDEB /* ViewSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSplash.swift; sourceTree = "<group>"; };
+		CD7C189D21A625230083EDEB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		CD7C189F21A627980083EDEB /* ViewBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBluetooth.swift; sourceTree = "<group>"; };
+		CD7C18A121A627E20083EDEB /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +92,41 @@
 		852D4B97205F08AA0076D30F /* maestro-phone */ = {
 			isa = PBXGroup;
 			children = (
-				852D4B9C205F08AA0076D30F /* Main.storyboard */,
+				CD1957E621A8EC9B00604295 /* ViewControllers */,
 				852D4B98205F08AA0076D30F /* AppDelegate.swift */,
 				852D4B9A205F08AA0076D30F /* ViewController.swift */,
+				852D4B9C205F08AA0076D30F /* Main.storyboard */,
 				852D4B9F205F08AA0076D30F /* Assets.xcassets */,
 				852D4BA1205F08AA0076D30F /* LaunchScreen.storyboard */,
 				852D4BA4205F08AA0076D30F /* Info.plist */,
 				852D4BAA205F09680076D30F /* Definitions.swift */,
-				CD419A052195445E004493DD /* Buffer.swift */,
-				CD7C188A21A0EF0E0083EDEB /* AppState.swift */,
+				CD7C1886219A82860083EDEB /* ViewLargest.swift */,
+				CD7C189D21A625230083EDEB /* AppState.swift */,
+				CD7C18A121A627E20083EDEB /* BluetoothManager.swift */,
+				CD1957E721A8F02900604295 /* Buffer.swift */,
 			);
 			path = "maestro-phone";
+			sourceTree = "<group>";
+		};
+		CD1957E621A8EC9B00604295 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD7C189B21A5B4CC0083EDEB /* ViewSplash.swift */,
+				CD7C189F21A627980083EDEB /* ViewBluetooth.swift */,
+				CD1957E921A8F96F00604295 /* ViewHello.swift */,
+				CD1957EB21A8F98D00604295 /* ViewPhoneWrist.swift */,
+				CD1957ED21A9099400604295 /* ViewConnected.swift */,
+				CD1957EF21A90CA500604295 /* ViewLargestGesture.swift */,
+				CD3FB5C721A911E600539F60 /* ViewLargestGestureObtained.swift */,
+				CD3FB5C921A9206600539F60 /* ViewLessonSelect.swift */,
+				CD3FB5CB21A921D300539F60 /* ViewLessonSelected.swift */,
+				CD3FB5CD21A9AD1E00539F60 /* ViewLevel1Selected.swift */,
+				CD3FB5CF21A9AD2800539F60 /* ViewLevel2Selected.swift */,
+				CD3FB5D321A9AD3700539F60 /* ViewLevel3Selected.swift */,
+				CD3FB5D121A9AD3000539F60 /* ViewLevel4Selected.swift */,
+				CD3FB5D521A9C1BC00539F60 /* ViewStart.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,11 +201,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3FB5D221A9AD3000539F60 /* ViewLevel4Selected.swift in Sources */,
+				CD3FB5D621A9C1BC00539F60 /* ViewStart.swift in Sources */,
 				852D4B9B205F08AA0076D30F /* ViewController.swift in Sources */,
-				CD7C188B21A0EF0E0083EDEB /* AppState.swift in Sources */,
-				CD419A062195445E004493DD /* Buffer.swift in Sources */,
+				CD7C189C21A5B4CC0083EDEB /* ViewSplash.swift in Sources */,
+				CD7C18A221A627E20083EDEB /* BluetoothManager.swift in Sources */,
+				CD3FB5CA21A9206600539F60 /* ViewLessonSelect.swift in Sources */,
+				CD7C1887219A82860083EDEB /* ViewLargest.swift in Sources */,
+				CD3FB5D421A9AD3700539F60 /* ViewLevel3Selected.swift in Sources */,
+				CD7C189E21A625230083EDEB /* AppState.swift in Sources */,
 				852D4BAB205F09680076D30F /* Definitions.swift in Sources */,
 				852D4B99205F08AA0076D30F /* AppDelegate.swift in Sources */,
+				CD1957EA21A8F96F00604295 /* ViewHello.swift in Sources */,
+				CD3FB5C821A911E600539F60 /* ViewLargestGestureObtained.swift in Sources */,
+				CD1957EE21A9099400604295 /* ViewConnected.swift in Sources */,
+				CD3FB5D021A9AD2800539F60 /* ViewLevel2Selected.swift in Sources */,
+				CD3FB5CE21A9AD1E00539F60 /* ViewLevel1Selected.swift in Sources */,
+				CD3FB5CC21A921D300539F60 /* ViewLessonSelected.swift in Sources */,
+				CD1957F021A90CA500604295 /* ViewLargestGesture.swift in Sources */,
+				CD7C18A021A627980083EDEB /* ViewBluetooth.swift in Sources */,
+				CD1957E821A8F02900604295 /* Buffer.swift in Sources */,
+				CD1957EC21A8F98D00604295 /* ViewPhoneWrist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     
     //CoreMotion "controlling object"
     let motionManager = CMMotionManager()
-    
+
     //Bluetooth "controlling object"
     var peripheralManager: CBPeripheralManager?
     
@@ -27,9 +27,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     var haveFirst = false // used to determine which indexes to put the data in
     var thisPacketSent = false
     
-    var state:AppState = .bluetooth
-    var buffer:Buffer = Buffer()
-
     
     //end of message
     var sendingEOM = false
@@ -39,10 +36,12 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     {
         super.viewDidLoad()
         toSendIndex = 0
+        
         //init BT manager object
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         
     }
+    
     
     override func viewDidDisappear(_ animated: Bool)
     {
@@ -53,13 +52,19 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         motionManager.stopDeviceMotionUpdates()
     }
     
+    //we don't know what this does
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager)
     {
         print("state: \(peripheral.state)")
         //if the peripheral isn't on, we can't transfer data over BT
         if(peripheral.state != .poweredOn)
         {
-            changeState(newState: .bluetooth)
+            //we can update the view to show this....
+            
             return
         }
         print("we are powered on!")
@@ -96,8 +101,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         }
         
         print("Succeeded!")
-        changeState(newState: .hello)
-        self.getMotionManagerUpdates()
     }
     
     //function runs when a central device subscribes to our characteristic
@@ -179,16 +182,10 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             // make the next chunk of data to be sent
             
             //create a data object using the input
-            /*var chunkZero = Data(from: toSend[0]) // this is accelX
+            var chunkZero = Data(from: toSend[0]) // this is accelX
             let chunkOne = Data(from: toSend[1]) // this is accelY
             let chunkTwo = Data(from: toSend[2]) // this is 2nd accelX
-            let chunkThree = Data(from: self.buffer.items[3]) // this is 2nd accelY*/
-            
-            
-            var chunkZero = Data(from: self.buffer.items[0]) // this is accelX
-            let chunkOne = Data(from: self.buffer.items[1]) // this is accelY
-            let chunkTwo = Data(from: self.buffer.items[2]) // this is 2nd accelX
-            let chunkThree = Data(from: self.buffer.items[3]) // this is 2nd accelY
+            let chunkThree = Data(from: toSend[3]) // this is 2nd accelY
             chunkZero.append(chunkOne)
             chunkZero.append(chunkTwo)
             chunkZero.append(chunkThree)
@@ -238,7 +235,6 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
             self.readyForUpdate = true
             self.haveFirst = false
             self.thisPacketSent = true
-            self.buffer.clear()
             
             
             toSend[0] = 1000.0
@@ -287,19 +283,31 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
                         let yaw = motionData?.attitude.yaw;
                         
                         // set haveSecond to true for single sized test
-                        self.buffer.addItem(item: Float(pitch!))
-                        self.buffer.addItem(item: (Float(yaw!)))
-                        self.buffer.addItem(item: (Float(accelY!)))
-                        self.buffer.addItem(item: (Float(self.state.rawValue)))
+                        self.toSend[0] = Float(pitch!)
+                        self.toSend[1] = Float(yaw!)
                         
-                        if(self.buffer.buffer_full){
+                        var haveSecond = false
+                        // set have Second to true for single sized test
+                        if self.haveFirst {
+                            self.toSend[2] = Float(pitch!)
+                            self.toSend[3] = Float(yaw!)
+                            haveSecond = true
+                        } else {
+                            self.toSend[0] = Float(pitch!)
+                            self.toSend[1] = Float(yaw!)
+                            self.haveFirst = true
+                        }
+                        
+                        
+                        // we have one dataset, we don't need another until we
+                        // send it
+                        if haveSecond {
                             self.readyForUpdate = false
                             self.haveFirst = false
                             self.toSendIndex = 0
                             self.thisPacketSent = false
                             self.sendData()
                         }
-
                     }
                 }
             }
@@ -311,13 +319,13 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
     }
     
     //"Stop Data Collection" button -- stops data collection and data from sending
-    /*@IBAction func stopDataCollection(_ sender: UIButton) {
+    @IBAction func stopDataCollection(_ sender: UIButton) {
         motionManager.stopDeviceMotionUpdates()
         //peripheralManager?.stopAdvertising()
     }
     @IBAction func startDataCollection(_ sender: Any) {
         self.getMotionManagerUpdates()
-    }*/
+    }
     
     func sendLatency() {
         let timeNow = CFAbsoluteTimeGetCurrent()
@@ -330,121 +338,5 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         
     }
     
-    func changeState(newState:AppState){
-        state = newState;
-        handleState();
-    }
-    
-    
-
-    @IBOutlet weak var noButton: UIButton!
-    @IBOutlet weak var yesButton: UIButton!
-    @IBOutlet weak var device: UIImageView!
-    @IBOutlet weak var device_modifier: UIImageView!
-    @IBOutlet weak var textString: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var startButton: UIButton!
-    
-    //this is a total hack... I'm sorry to whoever is reading this if I had time to learn iOS development better I would have done something better than this!!! :(
-    func handleState(){
-        switch(state){
-        case .bluetooth:
-            device_modifier.isHidden = false
-            device.isHidden=true
-            device_modifier.image = UIImage(named: "bluetooth")
-            textString.text = "Please turn on the Bluetooth..."
-            yesButton.isHidden = true
-            noButton.isHidden = true
-        case .largest_gesture_obtained:
-            startButton.isHidden = true
-            device.isHidden = true
-            device_modifier.isHidden = true
-            textString.isHidden = true
-            nextButton.isHidden = true
-            yesButton.isHidden = false
-            noButton.isHidden = false
-        case .hello:
-            device.isHidden = true
-            device_modifier.isHidden = true
-            textString.isHidden = true
-            nextButton.isHidden = false
-            yesButton.isHidden = true
-            noButton.isHidden = true
-        case .largest_gesture:
-            startButton.isHidden = false
-            device.isHidden = true
-            device_modifier.isHidden = true
-            textString.isHidden = true
-            nextButton.isHidden = true
-            yesButton.isHidden = true
-            noButton.isHidden = true
-        case .phone_wrist:
-            let a = 0
-        case .start_cond:
-            startButton.isHidden = false
-            device.isHidden = true
-            device_modifier.isHidden = true
-            textString.isHidden = true
-            nextButton.isHidden = true
-            yesButton.isHidden = true
-            noButton.isHidden = true
-        case .cond_toggle:
-            startButton.isHidden = false
-            device.isHidden = true
-            device_modifier.isHidden = true
-            textString.isHidden = true
-            nextButton.isHidden = true
-            yesButton.isHidden = true
-            noButton.isHidden = true
-        default:
-            let a = 0
-        }
-    }
-    
-    @IBAction func yesButtonPressed(_ sender: Any) {
-        changeState(newState: .cond_toggle);
-    }
-    
-    @IBAction func noButtonPressed(_ sender: Any) {
-        changeState(newState: .largest_gesture);
-    }
-    
-    @IBAction func nextButtonPressed(_ sender: Any) {
-        changeState(newState: AppState(rawValue: state.rawValue + 1)!)
-    }
-    
-    @IBAction func startButtonPressed(_ sender: Any) {
-        motionManager.stopDeviceMotionUpdates()
-        usleep(100)
-        self.getMotionManagerUpdates()
-        
-        if(state == .largest_gesture){
-            changeState(newState: .largest_gesture_obtained)
-        }
-        
-        //how this works: we will continually change between start_cond and cond_toggle when start is pressed. IF we notice a change from one to the other on the desktop app.... we need to be "looking" for the gesture w/ the alg manager
-        if(state == .start_cond){
-            changeState(newState: .cond_toggle)
-        }
-        else if(state == .cond_toggle){
-            changeState(newState: .start_cond)
-        }
-        
-        print(state)
-    }
     
 }
-
-//nifty functions to turn doubles into data objects and back
-extension Data {
-    
-    init<T>(from value: T) {
-        var value = value
-        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
-    }
-    
-    func to<T>(type:T.Type) -> T {
-        return self.withUnsafeBytes{ $0.pointee}
-    }
-}
-

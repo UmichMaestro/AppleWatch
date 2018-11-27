@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include <vector>
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 MSInstWhole::MSInstWhole(std::string paths[]) {
     instruments = new std::vector<MSInstNode*>();

@@ -267,7 +267,7 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     @IBAction func start_sound(_ sender: Any) {
         print("start button works")
-        startSound(ArticulationType.standard.rawValue, 0.25)
+        startSound(ArticulationType.legato.rawValue, 0.25)
     }
     
     
@@ -282,6 +282,30 @@ class ViewController: NSViewController, CBCentralManagerDelegate, CBPeripheralDe
         print("STAC!");
         startSound(ArticulationType.staccato.rawValue, 0.25)
     }
+    
+    @IBAction func startTempoSample(_ sender: Any) {
+        let tempo: Double
+        if tempoTextField.stringValue.isEmpty {
+            tempo = 120
+        } else {
+            tempo = Double(tempoTextField.stringValue)!
+        }
+        var numberOfHits = 0
+        var metro: Timer!
+        
+        metro = Timer.scheduledTimer(withTimeInterval: 60/tempo, repeats: true, block: { (metro) in
+            if numberOfHits < 4 {
+                print(numberOfHits, "\n")
+                startSound(ArticulationType.staccato.rawValue, 0.25)
+                numberOfHits += 1
+            } else {
+                metro.invalidate()
+            }
+        })
+        metro.fire()
+    }
+    
+    @IBOutlet var tempoTextField: NSTextField!
     
 }
 

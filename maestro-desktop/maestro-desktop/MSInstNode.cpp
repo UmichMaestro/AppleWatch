@@ -102,7 +102,7 @@ void MSInstNode::synthesize(float *buf, unsigned int nFrames) {
             amp1 = amplitudeForTime(time+t+1);
 
             if (amp0 == NULL || amp1 == NULL) {
-                std::cout << "Released instrument" << endl;
+                //std::cout << "Released instrument" << endl;
                 time = -1; // we don't want to play this instrument anymore
                 return;
             }
@@ -130,6 +130,9 @@ void MSInstNode::synthesize(float *buf, unsigned int nFrames) {
             buf[outIndex*2] += out; // since we have two channels: left, right
             buf[outIndex*2+1] += out;
             
+            float factor = 0.5 * (1 - cos(2 * 3.1415626 * outIndex*2 / (nFrames*2-1)));
+            
+            
             p += phaseIncr; //TODO change c[hase backif you dont work
             gain += gainIncr; // ramping the gain change
         }
@@ -142,7 +145,7 @@ void MSInstNode::synthesize(float *buf, unsigned int nFrames) {
 }
 
 void MSInstNode::start(double initialGain) {
-    std::cout << "Start instrument" << endl;
+    //std::cout << "Start instrument" << endl;
     
     currentGain = initialGain;
     targetGain = initialGain;
@@ -155,7 +158,7 @@ void MSInstNode::setGain(double gain) {
 }
 
 void MSInstNode::release() {
-    std::cout << "Releasing instrument..." << endl;
+    //std::cout << "Releasing instrument..." << endl;
     
     time = this->sustainFinish;
 }

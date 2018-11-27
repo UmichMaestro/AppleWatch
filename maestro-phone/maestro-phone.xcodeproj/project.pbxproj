@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		407B200721ACAEF90033DB91 /* metronome.png in Resources */ = {isa = PBXBuildFile; fileRef = 407B200621ACAEF90033DB91 /* metronome.png */; };
+		407B200D21ACAF580033DB91 /* 1109_0004_flute.png in Resources */ = {isa = PBXBuildFile; fileRef = 407B200821ACAF580033DB91 /* 1109_0004_flute.png */; };
+		407B200E21ACAF580033DB91 /* 1109_0003_horn.png in Resources */ = {isa = PBXBuildFile; fileRef = 407B200921ACAF580033DB91 /* 1109_0003_horn.png */; };
+		407B200F21ACAF580033DB91 /* 1109_0001_clarinet.png in Resources */ = {isa = PBXBuildFile; fileRef = 407B200A21ACAF580033DB91 /* 1109_0001_clarinet.png */; };
+		407B201021ACAF580033DB91 /* 1109_0002_oboe.png in Resources */ = {isa = PBXBuildFile; fileRef = 407B200B21ACAF580033DB91 /* 1109_0002_oboe.png */; };
+		407B201121ACAF580033DB91 /* 1109_0000_bassoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 407B200C21ACAF580033DB91 /* 1109_0000_bassoon.png */; };
 		40B63EDC21A214DC00CF6583 /* connected.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED121A214DB00CF6583 /* connected.png */; };
 		40B63EDD21A214DC00CF6583 /* yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED221A214DC00CF6583 /* yes.png */; };
 		40B63EDE21A214DC00CF6583 /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B63ED321A214DC00CF6583 /* bluetooth.png */; };
@@ -36,6 +42,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		407B200621ACAEF90033DB91 /* metronome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metronome.png; sourceTree = "<group>"; };
+		407B200821ACAF580033DB91 /* 1109_0004_flute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1109_0004_flute.png; sourceTree = "<group>"; };
+		407B200921ACAF580033DB91 /* 1109_0003_horn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1109_0003_horn.png; sourceTree = "<group>"; };
+		407B200A21ACAF580033DB91 /* 1109_0001_clarinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1109_0001_clarinet.png; sourceTree = "<group>"; };
+		407B200B21ACAF580033DB91 /* 1109_0002_oboe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1109_0002_oboe.png; sourceTree = "<group>"; };
+		407B200C21ACAF580033DB91 /* 1109_0000_bassoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1109_0000_bassoon.png; sourceTree = "<group>"; };
 		40B63ED121A214DB00CF6583 /* connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = connected.png; path = Assets.xcassets/connected.png; sourceTree = "<group>"; };
 		40B63ED221A214DC00CF6583 /* yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yes.png; path = Assets.xcassets/yes.png; sourceTree = "<group>"; };
 		40B63ED321A214DC00CF6583 /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluetooth.png; path = Assets.xcassets/bluetooth.png; sourceTree = "<group>"; };
@@ -96,10 +108,16 @@
 		852D4B97205F08AA0076D30F /* maestro-phone */ = {
 			isa = PBXGroup;
 			children = (
+				407B200621ACAEF90033DB91 /* metronome.png */,
 				852D4B98205F08AA0076D30F /* AppDelegate.swift */,
 				852D4B9A205F08AA0076D30F /* ViewController.swift */,
 				852D4B9C205F08AA0076D30F /* Main.storyboard */,
 				852D4B9F205F08AA0076D30F /* Assets.xcassets */,
+				407B200C21ACAF580033DB91 /* 1109_0000_bassoon.png */,
+				407B200A21ACAF580033DB91 /* 1109_0001_clarinet.png */,
+				407B200B21ACAF580033DB91 /* 1109_0002_oboe.png */,
+				407B200921ACAF580033DB91 /* 1109_0003_horn.png */,
+				407B200821ACAF580033DB91 /* 1109_0004_flute.png */,
 				40B63EEB21A43FB600CF6583 /* lesson_0000_4.png */,
 				40B63EEE21A43FB600CF6583 /* lesson_0001_3.png */,
 				40B63EEA21A43FB600CF6583 /* lesson_0002_2.png */,
@@ -186,13 +204,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				407B200721ACAEF90033DB91 /* metronome.png in Resources */,
+				407B201021ACAF580033DB91 /* 1109_0002_oboe.png in Resources */,
 				40B63EDE21A214DC00CF6583 /* bluetooth.png in Resources */,
 				40B63EE321A214DC00CF6583 /* mac.png in Resources */,
+				407B200D21ACAF580033DB91 /* 1109_0004_flute.png in Resources */,
 				40B63EDD21A214DC00CF6583 /* yes.png in Resources */,
+				407B200F21ACAF580033DB91 /* 1109_0001_clarinet.png in Resources */,
 				40B63EE521A214DC00CF6583 /* setup.png in Resources */,
 				40B63EF621A43FB600CF6583 /* lesson_0001_3.png in Resources */,
 				40B63EF521A43FB600CF6583 /* lesson_0006_next_circle2.png in Resources */,
 				40B63EF221A43FB600CF6583 /* lesson_0002_2.png in Resources */,
+				407B200E21ACAF580033DB91 /* 1109_0003_horn.png in Resources */,
 				40B63EE021A214DC00CF6583 /* start.png in Resources */,
 				852D4BA3205F08AA0076D30F /* LaunchScreen.storyboard in Resources */,
 				40B63EDF21A214DC00CF6583 /* no.png in Resources */,
@@ -203,6 +226,7 @@
 				40B63EE421A214DC00CF6583 /* freeplay.png in Resources */,
 				40B63EE221A214DC00CF6583 /* logo.jpg in Resources */,
 				852D4B9E205F08AA0076D30F /* Main.storyboard in Resources */,
+				407B201121ACAF580033DB91 /* 1109_0000_bassoon.png in Resources */,
 				40B63EE121A214DC00CF6583 /* finish.png in Resources */,
 				40B63EDC21A214DC00CF6583 /* connected.png in Resources */,
 				40B63EF121A43FB600CF6583 /* lesson_0004_lesson_btn2.png in Resources */,

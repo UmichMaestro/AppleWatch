@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40FE136321B1C60B00AC72B6 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 40FE136221B1C60B00AC72B6 /* AppIcon.appiconset */; };
 		852D4B99205F08AA0076D30F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4B98205F08AA0076D30F /* AppDelegate.swift */; };
 		852D4B9B205F08AA0076D30F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852D4B9A205F08AA0076D30F /* ViewController.swift */; };
 		852D4B9E205F08AA0076D30F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852D4B9C205F08AA0076D30F /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40FE136221B1C60B00AC72B6 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		852D4B95205F08AA0076D30F /* maestro-phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maestro-phone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		852D4B98205F08AA0076D30F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		852D4B9A205F08AA0076D30F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				852D4B9A205F08AA0076D30F /* ViewController.swift */,
 				852D4B9C205F08AA0076D30F /* Main.storyboard */,
 				852D4B9F205F08AA0076D30F /* Assets.xcassets */,
+				40FE136221B1C60B00AC72B6 /* AppIcon.appiconset */,
 				852D4BA1205F08AA0076D30F /* LaunchScreen.storyboard */,
 				852D4BA4205F08AA0076D30F /* Info.plist */,
 				852D4BAA205F09680076D30F /* Definitions.swift */,
@@ -188,6 +191,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40FE136321B1C60B00AC72B6 /* AppIcon.appiconset in Resources */,
 				852D4BA3205F08AA0076D30F /* LaunchScreen.storyboard in Resources */,
 				852D4BA0205F08AA0076D30F /* Assets.xcassets in Resources */,
 				852D4B9E205F08AA0076D30F /* Main.storyboard in Resources */,
@@ -362,12 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
+				DEVELOPMENT_TEAM = WC93SGJV9X;
 				INFOPLIST_FILE = "maestro-phone/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = maestro3.maestro;
+				PRODUCT_BUNDLE_IDENTIFIER = maestro3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -379,12 +384,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2H8PN5Y9PZ;
+				DEVELOPMENT_TEAM = WC93SGJV9X;
 				INFOPLIST_FILE = "maestro-phone/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = maestro3.maestro;
+				PRODUCT_BUNDLE_IDENTIFIER = maestro3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

@@ -22,6 +22,7 @@ class ViewLargestGesture:UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
          print(state)
+        bluetooth_manager.stop()
         if(state != .largest_gesture){
             changeViewController(state: state)
         }

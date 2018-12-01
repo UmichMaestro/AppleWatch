@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AlT-4L-tOG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AlT-4L-tOG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -593,7 +593,7 @@
                                     <action selector="dynamicsPressed:" destination="kfW-rC-x5b" eventType="touchUpInside" id="tY1-F8-Uau"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tP9-7K-yN2">
+                            <button opaque="NO" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tP9-7K-yN2">
                                 <rect key="frame" x="58" y="519" width="274" height="110"/>
                                 <state key="normal" title="Button" image="level4"/>
                                 <connections>
@@ -604,7 +604,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cVd-f7-n5H" firstAttribute="leading" secondItem="flq-TC-lxi" secondAttribute="leading" constant="58" id="3BB-Kk-VNs"/>
-                            <constraint firstItem="flq-TC-lxi" firstAttribute="bottom" secondItem="tP9-7K-yN2" secondAttribute="bottom" constant="38" id="8wF-Qc-Tz6"/>
+                            <constraint firstItem="flq-TC-lxi" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tP9-7K-yN2" secondAttribute="bottom" constant="38" id="8wF-Qc-Tz6"/>
                             <constraint firstItem="cVd-f7-n5H" firstAttribute="top" secondItem="qvU-gH-cU4" secondAttribute="bottom" constant="34" id="BQr-eo-fEe"/>
                             <constraint firstItem="cVd-f7-n5H" firstAttribute="leading" secondItem="TZ5-Df-C3m" secondAttribute="leading" id="BlC-CA-vGw"/>
                             <constraint firstItem="TZ5-Df-C3m" firstAttribute="leading" secondItem="aQA-jh-hAu" secondAttribute="leading" id="EXa-up-QPn"/>

@@ -20,6 +20,12 @@ class ViewLessonSelected:UIViewController{
         
     }
     
+    @IBAction func RecalibrateGesturePressed(_ sender: Any) {
+        state = .largest_gesture
+        changeViewController(state:state)
+        
+    }
+    
     @IBAction func singlesoundsPressed(_ sender: Any) {
         state = .level_one
         changeViewController(state: state)

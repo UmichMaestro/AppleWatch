@@ -20,6 +20,11 @@ class ViewLevel1Selected:UIViewController{
         
     }
 
+    @IBAction func RecalibrateButtonPressed(_ sender: Any) {
+        state = .largest_gesture
+        changeViewController(state:state)
+    }
+    
     @IBAction func b1Pressed(_ sender: Any) {
         level_state_prim = 11 * 2
         state = .start

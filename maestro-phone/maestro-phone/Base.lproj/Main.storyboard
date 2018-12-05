@@ -514,6 +514,9 @@
                                 <rect key="frame" x="282" y="46" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Recalibrate"/>
+                                <connections>
+                                    <action selector="RecalibrateButtonPressed:" destination="2Ti-Oe-hVQ" eventType="touchUpInside" id="1ug-1q-ldv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9x-Ux-IYz">
                                 <rect key="frame" x="24" y="46" width="34" height="30"/>

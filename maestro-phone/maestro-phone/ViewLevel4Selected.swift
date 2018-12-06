@@ -19,6 +19,10 @@ class ViewLevel4Selected:UIViewController{
         
     }
     
+    @IBAction func RecalibrateButtonPressed(_ sender: Any) {
+        state = .largest_gesture
+        changeViewController(state:state)
+    }
     func changeViewController(state:AppState){
         print("called")
         let controller = storyboard?.instantiateViewController(withIdentifier: state_lookup[state.rawValue]!) as! UIViewController

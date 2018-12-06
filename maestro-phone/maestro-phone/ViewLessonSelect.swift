@@ -32,6 +32,10 @@ class ViewLessonSelect:UIViewController{
         changeViewController(state: state)
         
     }
+    @IBAction func RecalibrateButtonPressed(_ sender: Any) {
+        state = .largest_gesture
+        changeViewController(state:state)
+    }
     
     @IBAction func freeplayButtonPressed(_ sender: Any) {
     }
